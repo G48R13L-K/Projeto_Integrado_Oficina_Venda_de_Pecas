@@ -9,10 +9,10 @@ namespace Projeto_Integrado
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
         public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Descricao { get; set; }
-        public decimal Preco { get; set; }
-        public int Quantidade { get; set; }
+        public string NomePeca { get; set; }
+        public string DescricaoPeca { get; set; }
+        public decimal PrecoPeca { get; set; }
+        public int QuantidadePeca { get; set; }
 
     }
 }

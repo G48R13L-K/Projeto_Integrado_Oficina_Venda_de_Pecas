@@ -34,6 +34,7 @@
             btnClientes = new Button();
             btnVendas = new Button();
             btnFechar = new Button();
+            labelBemvindo = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -43,87 +44,111 @@
             groupBox1.Controls.Add(btnPecas);
             groupBox1.Controls.Add(btnClientes);
             groupBox1.Controls.Add(btnVendas);
-            groupBox1.Location = new Point(12, 149);
+            groupBox1.Location = new Point(16, 129);
+            groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(776, 289);
+            groupBox1.Padding = new Padding(4);
+            groupBox1.Size = new Size(873, 370);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 
             // btnRelatorio
             // 
-            btnRelatorio.BackColor = Color.DarkSeaGreen;
+            btnRelatorio.BackColor = Color.White;
             btnRelatorio.FlatAppearance.BorderSize = 0;
             btnRelatorio.FlatStyle = FlatStyle.Flat;
-            btnRelatorio.Location = new Point(31, 192);
+            btnRelatorio.Location = new Point(40, 246);
+            btnRelatorio.Margin = new Padding(4);
             btnRelatorio.Name = "btnRelatorio";
-            btnRelatorio.Size = new Size(168, 70);
+            btnRelatorio.Size = new Size(218, 90);
             btnRelatorio.TabIndex = 3;
             btnRelatorio.Text = "Relatório de Vendas";
             btnRelatorio.UseVisualStyleBackColor = false;
+            btnRelatorio.Click += btnRelatorio_Click;
             // 
             // btnPecas
             // 
-            btnPecas.BackColor = Color.DarkSeaGreen;
+            btnPecas.BackColor = Color.White;
             btnPecas.FlatAppearance.BorderSize = 0;
             btnPecas.FlatStyle = FlatStyle.Flat;
-            btnPecas.Location = new Point(567, 192);
+            btnPecas.Location = new Point(626, 246);
+            btnPecas.Margin = new Padding(4);
             btnPecas.Name = "btnPecas";
-            btnPecas.Size = new Size(168, 70);
+            btnPecas.Size = new Size(218, 90);
             btnPecas.TabIndex = 2;
             btnPecas.Text = "Peças";
             btnPecas.UseVisualStyleBackColor = false;
+            btnPecas.Click += btnPecas_Click;
             // 
             // btnClientes
             // 
-            btnClientes.BackColor = Color.DarkSeaGreen;
+            btnClientes.BackColor = Color.White;
             btnClientes.FlatAppearance.BorderSize = 0;
             btnClientes.FlatStyle = FlatStyle.Flat;
-            btnClientes.Location = new Point(290, 192);
+            btnClientes.Location = new Point(336, 246);
+            btnClientes.Margin = new Padding(4);
             btnClientes.Name = "btnClientes";
-            btnClientes.Size = new Size(168, 70);
+            btnClientes.Size = new Size(218, 90);
             btnClientes.TabIndex = 1;
             btnClientes.Text = "Clientes";
             btnClientes.UseVisualStyleBackColor = false;
+            btnClientes.Click += btnClientes_Click;
             // 
             // btnVendas
             // 
-            btnVendas.BackColor = Color.DarkSeaGreen;
+            btnVendas.BackColor = Color.White;
             btnVendas.FlatAppearance.BorderSize = 0;
             btnVendas.FlatStyle = FlatStyle.Flat;
             btnVendas.Font = new Font("Segoe UI", 14F);
-            btnVendas.Location = new Point(31, 70);
+            btnVendas.Location = new Point(40, 90);
+            btnVendas.Margin = new Padding(4);
             btnVendas.Name = "btnVendas";
-            btnVendas.Size = new Size(704, 70);
+            btnVendas.Size = new Size(804, 90);
             btnVendas.TabIndex = 0;
             btnVendas.Text = "Vendas";
             btnVendas.UseVisualStyleBackColor = false;
+            btnVendas.Click += btnVendas_Click;
             // 
             // btnFechar
             // 
-            btnFechar.BackColor = Color.DarkSeaGreen;
+            btnFechar.BackColor = Color.Transparent;
             btnFechar.FlatAppearance.BorderSize = 0;
             btnFechar.FlatStyle = FlatStyle.Flat;
-            btnFechar.Location = new Point(737, 12);
+            btnFechar.Location = new Point(823, 0);
+            btnFechar.Margin = new Padding(4);
             btnFechar.Name = "btnFechar";
-            btnFechar.Size = new Size(51, 46);
+            btnFechar.Size = new Size(66, 59);
             btnFechar.TabIndex = 4;
             btnFechar.Text = "X";
             btnFechar.UseVisualStyleBackColor = false;
             btnFechar.Click += btnFechar_Click_1;
             // 
+            // labelBemvindo
+            // 
+            labelBemvindo.AutoSize = true;
+            labelBemvindo.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelBemvindo.Location = new Point(164, 14);
+            labelBemvindo.Name = "labelBemvindo";
+            labelBemvindo.Size = new Size(0, 45);
+            labelBemvindo.TabIndex = 5;
+            // 
             // FrmPrincipal
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(902, 503);
+            Controls.Add(labelBemvindo);
             Controls.Add(btnFechar);
             Controls.Add(groupBox1);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4);
             Name = "FrmPrincipal";
             Text = "Form2";
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -135,5 +160,6 @@
         private Button btnPecas;
         private Button btnFechar;
         private int btnFechar_Click;
+        private Label labelBemvindo;
     }
 }

@@ -12,15 +12,38 @@ namespace Projeto_Integrado
 {
     public partial class FrmPrincipal : Form
     {
-        public FrmPrincipal()
+        public FrmPrincipal(string nome, string senha)
         {
             InitializeComponent();
+            labelBemvindo.Text = " Bem-vindo " + nome;
         }
 
 
         private void btnFechar_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnVendas_Click(object sender, EventArgs e)
+        {
+            var formVendas = new FrmVendas();
+            formVendas.ShowDialog();
+        }
+
+        private void btnRelatorio_Click(object sender, EventArgs e)
+        {
+            var formRelatorio = new FrmRelatorio();
+            formRelatorio.ShowDialog();
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            var formListaCadastro = new FrmListaCadastro();
+            formListaCadastro.ShowDialog();
+        }
+
+        private void btnPecas_Click(object sender, EventArgs e)
+        {
         }
     }
 }

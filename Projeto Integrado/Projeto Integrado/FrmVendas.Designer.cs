@@ -28,28 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            txtNome = new TextBox();
             label1 = new Label();
             btnFechar = new Button();
             txtPeca = new TextBox();
             txtQuantidadde = new TextBox();
-            txtModelo = new TextBox();
             label2 = new Label();
-            label3 = new Label();
             label4 = new Label();
             dataTime = new DateTimePicker();
             label5 = new Label();
             btnSalvar = new Button();
             btnCancelar = new Button();
+            txtCliente = new ComboBox();
             SuspendLayout();
-            // 
-            // txtNome
-            // 
-            txtNome.Location = new Point(12, 82);
-            txtNome.Margin = new Padding(3, 4, 3, 4);
-            txtNome.Name = "txtNome";
-            txtNome.Size = new Size(628, 35);
-            txtNome.TabIndex = 0;
             // 
             // label1
             // 
@@ -71,6 +61,7 @@
             btnFechar.TabIndex = 1;
             btnFechar.Text = "X";
             btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.Click += btnFechar_Click;
             // 
             // txtPeca
             // 
@@ -82,19 +73,11 @@
             // 
             // txtQuantidadde
             // 
-            txtQuantidadde.Location = new Point(12, 342);
+            txtQuantidadde.Location = new Point(12, 247);
             txtQuantidadde.Margin = new Padding(3, 4, 3, 4);
             txtQuantidadde.Name = "txtQuantidadde";
             txtQuantidadde.Size = new Size(628, 35);
             txtQuantidadde.TabIndex = 0;
-            // 
-            // txtModelo
-            // 
-            txtModelo.Location = new Point(12, 246);
-            txtModelo.Margin = new Padding(3, 4, 3, 4);
-            txtModelo.Name = "txtModelo";
-            txtModelo.Size = new Size(628, 35);
-            txtModelo.TabIndex = 0;
             // 
             // label2
             // 
@@ -105,19 +88,10 @@
             label2.TabIndex = 1;
             label2.Text = "Peça";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(12, 214);
-            label3.Name = "label3";
-            label3.Size = new Size(78, 29);
-            label3.TabIndex = 1;
-            label3.Text = "Modelo";
-            // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 310);
+            label4.Location = new Point(12, 215);
             label4.Name = "label4";
             label4.Size = new Size(114, 29);
             label4.TabIndex = 1;
@@ -125,7 +99,7 @@
             // 
             // dataTime
             // 
-            dataTime.Location = new Point(12, 432);
+            dataTime.Location = new Point(12, 337);
             dataTime.Margin = new Padding(3, 4, 3, 4);
             dataTime.Name = "dataTime";
             dataTime.Size = new Size(436, 35);
@@ -134,7 +108,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(12, 399);
+            label5.Location = new Point(12, 304);
             label5.Name = "label5";
             label5.Size = new Size(54, 29);
             label5.TabIndex = 3;
@@ -145,46 +119,54 @@
             btnSalvar.BackColor = Color.FromArgb(0, 192, 0);
             btnSalvar.FlatAppearance.BorderSize = 0;
             btnSalvar.FlatStyle = FlatStyle.Flat;
-            btnSalvar.Location = new Point(393, 526);
+            btnSalvar.Location = new Point(388, 391);
             btnSalvar.Margin = new Padding(3, 4, 3, 4);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(124, 40);
             btnSalvar.TabIndex = 4;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // btnCancelar
             // 
             btnCancelar.BackColor = Color.Red;
             btnCancelar.FlatAppearance.BorderSize = 0;
             btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Location = new Point(516, 526);
+            btnCancelar.Location = new Point(515, 391);
             btnCancelar.Margin = new Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(124, 40);
             btnCancelar.TabIndex = 5;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
+            // txtCliente
+            // 
+            txtCliente.FormattingEnabled = true;
+            txtCliente.Location = new Point(19, 77);
+            txtCliente.Name = "txtCliente";
+            txtCliente.Size = new Size(620, 37);
+            txtCliente.TabIndex = 6;
             // 
             // FrmVendas
             // 
             AutoScaleDimensions = new SizeF(11F, 29F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
-            ClientSize = new Size(651, 579);
+            ClientSize = new Size(651, 453);
+            Controls.Add(txtCliente);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             Controls.Add(label5);
             Controls.Add(dataTime);
             Controls.Add(btnFechar);
             Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(txtModelo);
             Controls.Add(txtQuantidadde);
             Controls.Add(txtPeca);
-            Controls.Add(txtNome);
             Font = new Font("Arial Narrow", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
@@ -195,19 +177,16 @@
         }
 
         #endregion
-
-        private TextBox txtNome;
         private Label label1;
         private Button btnFechar;
         private TextBox txtPeca;
         private TextBox txtQuantidadde;
-        private TextBox txtModelo;
         private Label label2;
-        private Label label3;
         private Label label4;
         private DateTimePicker dataTime;
         private Label label5;
         private Button btnSalvar;
         private Button btnCancelar;
+        private ComboBox txtCliente;
     }
 }

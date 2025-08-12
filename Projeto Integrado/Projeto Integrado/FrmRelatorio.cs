@@ -104,5 +104,22 @@ namespace Projeto_Integrado
         {
             this.Close();
         }
+
+        private void condicao()
+        { 
+            var isAutorizedToUpdateData = (UsuarioHelper.Funcao == "Gerente" || UsuarioHelper.Funcao == "Administrativo");
+
+            if (isAutorizedToUpdateData)
+            {
+                btnEditar.Enabled = true;
+                btnCancelar.Enabled = true;
+            }
+            else
+            {
+                btnEditar.Enabled = false;
+                btnCancelar.Enabled = false;
+            }
+
     }
+    
 }

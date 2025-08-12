@@ -1,3 +1,5 @@
+using Projeto_Integrado;
+
 namespace Projeto_Integrado
 {
     public partial class FrmLogin : Form
@@ -9,20 +11,27 @@ namespace Projeto_Integrado
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            bool loginValido = validarLogin(txtUsuario.Text, txtSenha.Text);
-            if (loginValido)
+            var usuarioValidado = validarLogin(txtUsuario.Text, txtSenha.Text);
+            if (usuarioValidado.isValid)
             {
+                UsuarioHelper.NomeUsuario = usuarioValidado.cliente.NomeCliente;
+                UsuarioHelper.Funcao = usuarioValidado.cliente.Funcao;
+
                 this.Hide();
                 var frmPrincipal = new FrmPrincipal(txtUsuario.Text, txtSenha.Text);
                 frmPrincipal.Show();
             }
         }
 
-        private bool validarLogin(string nome, string senha)
+        private UsuarioData validarLogin(string nome, string senha)
         {
             bool usuarioValido = false;
+
+            Cliente? usuario;
             using (var banco = new VendasDbContest())
             {
+                usuario = banco
+                    .Clientes
                 var usuario = banco
                     .Usuario
                     .FirstOrDefault(u => u.Email.ToLower() == nome.ToLower() && u.Senha == senha);
@@ -32,14 +41,13 @@ namespace Projeto_Integrado
             }
             if (usuarioValido)
             {
-                return true;
+                return new UsuarioData(){ cliente = usuario, isValid = true};
             }
             else
             {
                 MessageBox.Show("Login ou Senha Invalidos");
             }
-            return false;
-
+            return new UsuarioData() { cliente = usuario, isValid = true };
         }
         private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
@@ -52,4 +60,10 @@ namespace Projeto_Integrado
             Application.Exit();
         }
     }
+}
+
+internal class UsuarioData
+{
+    public Cliente? cliente { get; set; }
+    public bool isValid { get; set; }
 }

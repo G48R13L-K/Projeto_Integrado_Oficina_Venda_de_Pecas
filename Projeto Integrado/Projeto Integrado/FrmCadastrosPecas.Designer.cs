@@ -1,0 +1,212 @@
+﻿namespace Projeto_Integrado
+{
+    partial class FrmCadastrosPecas
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            btnCancelar = new Button();
+            btnSalvar = new Button();
+            btnFechar = new Button();
+            label7 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label1 = new Label();
+            txtValorPeca = new TextBox();
+            txtQuantidadePeca = new TextBox();
+            txtNomePeca = new ComboBox();
+            label5 = new Label();
+            txtDescricaoPeca = new TextBox();
+            SuspendLayout();
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = Color.Red;
+            btnCancelar.FlatAppearance.BorderSize = 0;
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Location = new Point(970, 515);
+            btnCancelar.Margin = new Padding(4);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(147, 56);
+            btnCancelar.TabIndex = 26;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.BackColor = Color.Lime;
+            btnSalvar.FlatAppearance.BorderSize = 0;
+            btnSalvar.FlatStyle = FlatStyle.Flat;
+            btnSalvar.Location = new Point(827, 515);
+            btnSalvar.Margin = new Padding(4);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(146, 56);
+            btnSalvar.TabIndex = 25;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.UseVisualStyleBackColor = false;
+            btnSalvar.Click += btnSalvar_Click;
+            // 
+            // btnFechar
+            // 
+            btnFechar.FlatAppearance.BorderSize = 0;
+            btnFechar.FlatStyle = FlatStyle.Flat;
+            btnFechar.Location = new Point(1082, -2);
+            btnFechar.Margin = new Padding(4);
+            btnFechar.Name = "btnFechar";
+            btnFechar.Size = new Size(72, 44);
+            btnFechar.TabIndex = 24;
+            btnFechar.Text = "X";
+            btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.Click += btnFechar_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.Location = new Point(420, 26);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(310, 48);
+            label7.TabIndex = 22;
+            label7.Text = "Cadastro de peças";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(29, 292);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(281, 32);
+            label4.TabIndex = 19;
+            label4.Text = "valor  da peça  individual";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(29, 186);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(139, 32);
+            label3.TabIndex = 18;
+            label3.Text = "Quantidade";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(32, 75);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(170, 32);
+            label1.TabIndex = 16;
+            label1.Text = "Nome da peça";
+            // 
+            // txtValorPeca
+            // 
+            txtValorPeca.Location = new Point(26, 345);
+            txtValorPeca.Margin = new Padding(4, 5, 4, 5);
+            txtValorPeca.Name = "txtValorPeca";
+            txtValorPeca.Size = new Size(1088, 39);
+            txtValorPeca.TabIndex = 14;
+            // 
+            // txtQuantidadePeca
+            // 
+            txtQuantidadePeca.Location = new Point(26, 238);
+            txtQuantidadePeca.Margin = new Padding(4, 5, 4, 5);
+            txtQuantidadePeca.Name = "txtQuantidadePeca";
+            txtQuantidadePeca.Size = new Size(1083, 39);
+            txtQuantidadePeca.TabIndex = 13;
+            // 
+            // txtNomePeca
+            // 
+            txtNomePeca.FormattingEnabled = true;
+            txtNomePeca.Items.AddRange(new object[] { "Cliente", "Funcionario" });
+            txtNomePeca.Location = new Point(29, 122);
+            txtNomePeca.Margin = new Padding(4, 5, 4, 5);
+            txtNomePeca.Name = "txtNomePeca";
+            txtNomePeca.Size = new Size(1088, 40);
+            txtNomePeca.TabIndex = 10;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(26, 408);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(116, 32);
+            label5.TabIndex = 19;
+            label5.Text = "Descrição";
+            // 
+            // txtDescricaoPeca
+            // 
+            txtDescricaoPeca.Location = new Point(29, 445);
+            txtDescricaoPeca.Margin = new Padding(4, 5, 4, 5);
+            txtDescricaoPeca.Name = "txtDescricaoPeca";
+            txtDescricaoPeca.Size = new Size(1088, 39);
+            txtDescricaoPeca.TabIndex = 14;
+            // 
+            // FrmCadastrosPecas
+            // 
+            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(192, 192, 255);
+            ClientSize = new Size(1140, 591);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnSalvar);
+            Controls.Add(btnFechar);
+            Controls.Add(label7);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label1);
+            Controls.Add(txtDescricaoPeca);
+            Controls.Add(txtValorPeca);
+            Controls.Add(txtQuantidadePeca);
+            Controls.Add(txtNomePeca);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4);
+            Name = "FrmCadastrosPecas";
+            Text = "FrmCadastrosPecas";
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+        private Button btnCancelar;
+        private Button btnSalvar;
+        private Button btnFechar;
+        private Label label7;
+        private Label label4;
+        private Label label3;
+        private Label label1;
+        private TextBox txtValorPeca;
+        private TextBox txtQuantidadePeca;
+        private ComboBox txtNomePeca;
+        private Label label5;
+        private TextBox txtDescricaoPeca;
+    }
+}

@@ -12,10 +12,10 @@ namespace Projeto_Integrado
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             var usuarioValidado = validarLogin(txtUsuario.Text, txtSenha.Text);
-            if (usuarioValidado.isValid)
+            if (usuarioValidado.isValid && usuarioValidado.Usuario is not null) // Add null check for Usuario.
             {
-                UsuarioHelper.NomeUsuario = usuarioValidado.cliente.NomeCliente;
-                UsuarioHelper.Funcao = usuarioValidado.cliente.Funcao;
+                UsuarioHelper.NomeUsuario = usuarioValidado.Usuario.NomeCliente;
+                UsuarioHelper.Funcao = usuarioValidado.Usuario.Funcao; // Corrected property access.
 
                 this.Hide();
                 var frmPrincipal = new FrmPrincipal(txtUsuario.Text, txtSenha.Text);
@@ -25,29 +25,30 @@ namespace Projeto_Integrado
 
         private UsuarioData validarLogin(string nome, string senha)
         {
+            Usuario? usuario = null; // Initialize the variable to avoid null reference issues.
             bool usuarioValido = false;
 
-            Cliente? usuario;
             using (var banco = new VendasDbContest())
             {
                 usuario = banco
-                    .Clientes
-                var usuario = banco
                     .Usuario
                     .FirstOrDefault(u => u.Email.ToLower() == nome.ToLower() && u.Senha == senha);
-                if (usuario is not null)
 
+                if (usuario is not null)
+                {
                     usuarioValido = true;
+                }
             }
+
             if (usuarioValido)
             {
-                return new UsuarioData(){ cliente = usuario, isValid = true};
+                return new UsuarioData() { Usuario = usuario, isValid = true };
             }
             else
             {
                 MessageBox.Show("Login ou Senha Invalidos");
+                return new UsuarioData() { Usuario = null, isValid = false }; // Ensure proper handling of null values.
             }
-            return new UsuarioData() { cliente = usuario, isValid = true };
         }
         private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
@@ -64,6 +65,6 @@ namespace Projeto_Integrado
 
 internal class UsuarioData
 {
-    public Cliente? cliente { get; set; }
+    public Usuario? Usuario { get; set; }
     public bool isValid { get; set; }
 }

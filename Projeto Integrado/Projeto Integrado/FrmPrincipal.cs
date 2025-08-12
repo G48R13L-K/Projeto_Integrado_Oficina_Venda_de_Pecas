@@ -38,7 +38,7 @@ namespace Projeto_Integrado
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            var formListaCadastro = new FrmListaCadastro();
+            var formListaCadastro = new FrmListaCadastroUsuario();
             formListaCadastro.ShowDialog();
         }
 

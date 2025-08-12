@@ -1,6 +1,6 @@
 ﻿namespace Projeto_Integrado
 {
-    partial class FrmListaCadastro
+    partial class FrmListaCadastroUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            btnCancelar = new Button();
+            btnExcluir = new Button();
             btnMaisCadastro = new Button();
             btnSalvar = new Button();
             dataGridView1 = new DataGridView();
@@ -42,31 +42,31 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btnCancelar);
+            groupBox1.Controls.Add(btnExcluir);
             groupBox1.Controls.Add(btnMaisCadastro);
             groupBox1.Controls.Add(btnSalvar);
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Location = new Point(16, 97);
-            groupBox1.Margin = new Padding(4, 4, 4, 4);
+            groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 4, 4, 4);
+            groupBox1.Padding = new Padding(4);
             groupBox1.Size = new Size(1086, 529);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
             // 
-            // btnCancelar
+            // btnExcluir
             // 
-            btnCancelar.BackColor = Color.Red;
-            btnCancelar.FlatAppearance.BorderSize = 0;
-            btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Location = new Point(916, 477);
-            btnCancelar.Margin = new Padding(4, 4, 4, 4);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(146, 44);
-            btnCancelar.TabIndex = 1;
-            btnCancelar.Text = "Escluir";
-            btnCancelar.UseVisualStyleBackColor = false;
+            btnExcluir.BackColor = Color.Red;
+            btnExcluir.FlatAppearance.BorderSize = 0;
+            btnExcluir.FlatStyle = FlatStyle.Flat;
+            btnExcluir.Location = new Point(916, 477);
+            btnExcluir.Margin = new Padding(4);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(146, 44);
+            btnExcluir.TabIndex = 1;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.UseVisualStyleBackColor = false;
+            btnExcluir.Click += btnCancelar_Click;
             // 
             // btnMaisCadastro
             // 
@@ -74,20 +74,22 @@
             btnMaisCadastro.FlatAppearance.BorderSize = 0;
             btnMaisCadastro.FlatStyle = FlatStyle.Flat;
             btnMaisCadastro.Location = new Point(8, 60);
-            btnMaisCadastro.Margin = new Padding(4, 4, 4, 4);
+            btnMaisCadastro.Margin = new Padding(4);
             btnMaisCadastro.Name = "btnMaisCadastro";
             btnMaisCadastro.Size = new Size(182, 44);
             btnMaisCadastro.TabIndex = 1;
             btnMaisCadastro.Text = "Novo Cadastro";
             btnMaisCadastro.UseVisualStyleBackColor = false;
+            btnMaisCadastro.Click += btnMaisCadastro_Click;
             // 
             // btnSalvar
             // 
             btnSalvar.BackColor = Color.FromArgb(0, 192, 0);
+            btnSalvar.Enabled = false;
             btnSalvar.FlatAppearance.BorderSize = 0;
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.Location = new Point(775, 477);
-            btnSalvar.Margin = new Padding(4, 4, 4, 4);
+            btnSalvar.Margin = new Padding(4);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(146, 44);
             btnSalvar.TabIndex = 1;
@@ -99,19 +101,21 @@
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(8, 111);
-            dataGridView1.Margin = new Padding(4, 4, 4, 4);
+            dataGridView1.Margin = new Padding(4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(1054, 358);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // txtPesquisa
             // 
             txtPesquisa.Location = new Point(185, 15);
-            txtPesquisa.Margin = new Padding(4, 4, 4, 4);
+            txtPesquisa.Margin = new Padding(4);
             txtPesquisa.Name = "txtPesquisa";
-            txtPesquisa.Size = new Size(778, 39);
+            txtPesquisa.Size = new Size(778, 34);
             txtPesquisa.TabIndex = 4;
+            txtPesquisa.TextChanged += txtPesquisa_TextChanged;
             // 
             // label1
             // 
@@ -119,7 +123,7 @@
             label1.Location = new Point(53, 19);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(105, 32);
+            label1.Size = new Size(86, 28);
             label1.TabIndex = 3;
             label1.Text = "Pesquisa";
             // 
@@ -128,16 +132,17 @@
             btnFechar.FlatAppearance.BorderSize = 0;
             btnFechar.FlatStyle = FlatStyle.Flat;
             btnFechar.Location = new Point(1061, 7);
-            btnFechar.Margin = new Padding(4, 4, 4, 4);
+            btnFechar.Margin = new Padding(4);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(51, 44);
             btnFechar.TabIndex = 5;
             btnFechar.Text = "X";
             btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.Click += btnFechar_Click;
             // 
-            // FrmListaCadastro
+            // FrmListaCadastroUsuario
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             ClientSize = new Size(1113, 643);
@@ -147,8 +152,8 @@
             Controls.Add(btnFechar);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 4, 4, 4);
-            Name = "FrmListaCadastro";
+            Margin = new Padding(4);
+            Name = "FrmListaCadastroUsuario";
             Text = "FrmListaCadastro";
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -159,7 +164,7 @@
         #endregion
 
         private GroupBox groupBox1;
-        private Button btnCancelar;
+        private Button btnExcluir;
         private Button btnMaisCadastro;
         private Button btnSalvar;
         private DataGridView dataGridView1;

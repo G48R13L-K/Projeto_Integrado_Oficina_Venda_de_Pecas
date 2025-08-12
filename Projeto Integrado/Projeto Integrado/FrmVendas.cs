@@ -38,7 +38,7 @@ namespace Projeto_Integrado
                 // carregar combodo cliente consultado pelo id do cliente da venda selecionada
                 using (var bd = new VendasDbContest())
                 {
-                    var cliente = bd.Clientes.Find(VendaSelecionada.ClienteId);
+                    var cliente = bd.Usuario.Find(VendaSelecionada.ClienteId);
                     if (cliente != null)
                     {
                         txtCliente.Text = cliente.NomeCliente;
@@ -69,7 +69,7 @@ namespace Projeto_Integrado
                         _Vendas = banco.Vendas.Find(VendaSelecionada.Id);
                         if (_Vendas != null)
                         {
-                            _Vendas.ClienteId = banco.Clientes.FirstOrDefault(c => c.NomeCliente == txtCliente.Text)?.Id ?? 0;
+                            _Vendas.ClienteId = banco.Usuario.FirstOrDefault(c => c.NomeCliente == txtCliente.Text)?.Id ?? 0;
                             _Vendas.PecaId = banco.Pecas.FirstOrDefault(p => p.NomePeca == txtPeca.Text)?.Id ?? 0;
                             _Vendas.Quantidade = int.Parse(txtQuantidadde.Text);
                             _Vendas.DataVenda = dataTime.Value;

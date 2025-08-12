@@ -27,7 +27,7 @@ namespace Projeto_Integrado
         {
             using (var bd = new VendasDbContest())
             {
-                var usuario = bd.Clientes.AsQueryable();
+                var usuario = bd.Usuario.AsQueryable();
                 if (!string.IsNullOrEmpty(txtPesquisa.Text))
                 {
                     usuario = usuario.Where(u => u.NomeCliente.Contains(txtPesquisa.Text) ||

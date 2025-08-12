@@ -21,7 +21,7 @@ namespace Projeto_Integrado
             base.OnConfiguring(optionsBuilder);
         }
 
-        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
         public DbSet<Peca> Pecas { get; set; }
 

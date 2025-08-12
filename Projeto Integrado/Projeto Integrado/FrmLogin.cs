@@ -24,7 +24,7 @@ namespace Projeto_Integrado
             using (var banco = new VendasDbContest())
             {
                 var usuario = banco
-                    .Clientes
+                    .Usuario
                     .FirstOrDefault(u => u.Email.ToLower() == nome.ToLower() && u.Senha == senha);
                 if (usuario is not null)
 

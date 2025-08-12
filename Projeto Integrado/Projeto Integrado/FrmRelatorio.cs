@@ -21,6 +21,7 @@ namespace Projeto_Integrado
         private void FrmRelatorio_Load(object sender, EventArgs e)
         {
             BuscarVenda();
+            condicao();
         }
 
         private void BuscarVenda()
@@ -106,7 +107,7 @@ namespace Projeto_Integrado
         }
 
         private void condicao()
-        { 
+        {
             var isAutorizedToUpdateData = (UsuarioHelper.Funcao == "Gerente" || UsuarioHelper.Funcao == "Administrativo");
 
             if (isAutorizedToUpdateData)
@@ -120,6 +121,7 @@ namespace Projeto_Integrado
                 btnCancelar.Enabled = false;
             }
 
+        }
+
     }
-    
 }

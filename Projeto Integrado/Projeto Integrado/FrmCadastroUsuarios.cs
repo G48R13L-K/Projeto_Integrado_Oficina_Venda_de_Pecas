@@ -72,12 +72,13 @@ namespace Projeto_Integrado
             using (var banco = new VendasDbContest())
             {
                 //capta os dados do formulário
+                string PerfilUsuario = cmbUsuarios.Text;
                 string Nome = txtNome.Text;
                 string Email = txtEmail.Text;
                 string Telefone = txtTelefone.Text;
                 string CpfUsuario = txtCPF.Text; // entra como string
+                condicaoFuncao();
                 string Funcao = comboFuncao.Text;
-                string PerfilUsuario = cmbUsuarios.Text;
                 string Senha = txtSenha.Text;
 
                 if (string.IsNullOrEmpty(Nome))
@@ -156,13 +157,16 @@ namespace Projeto_Integrado
         {
             using (var banco = new VendasDbContest())
             {
+                
                 //capta os dados do formulário
+                string PerfilUsuario = cmbUsuarios.Text;
                 string Nome = txtNome.Text;
                 string Email = txtEmail.Text;
                 string Telefone = txtTelefone.Text;
                 string CpfUsuario = txtCPF.Text; // entra como string
+
+                condicaoFuncao();
                 string Funcao = comboFuncao.Text;
-                string PerfilUsuario = cmbUsuarios.Text;
                 string Senha = txtSenha.Text;
 
                 if (string.IsNullOrEmpty(Nome))
@@ -234,6 +238,22 @@ namespace Projeto_Integrado
                 MessageBox.Show("Usuário atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
+        }
+        private void condicaoFuncao()
+        {
+            var CondicaoFuncao = comboFuncao.Text;
+
+            if (CondicaoFuncao=="Cliente")
+            {
+                comboFuncao.Enabled = false;
+                txtSenha.Enabled = false;
+            }
+            else
+            {
+                comboFuncao.Enabled = true;
+                txtSenha.Enabled = true;
+            }
+
         }
     }
 }

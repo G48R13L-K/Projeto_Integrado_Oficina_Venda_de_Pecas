@@ -16,6 +16,7 @@ namespace Projeto_Integrado
         public FrmListaCadastroUsuario()
         {
             InitializeComponent();
+            condicao();
         }
 
         void btnFechar_Click(object sender, EventArgs e)
@@ -65,6 +66,25 @@ namespace Projeto_Integrado
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void condicao()
+        {
+            var isAutorizedToUpdateData = (UsuarioHelper.Funcao == "Gerente" || UsuarioHelper.Funcao == "Administrativo");
+
+            if (isAutorizedToUpdateData)
+            {
+                btnEditar.Enabled = true;
+                btnExcluir.Enabled = true;
+                btnMaisCadastro.Enabled = true;
+            }
+            else
+            {
+                btnEditar.Enabled = false;
+                btnExcluir.Enabled = false;
+                btnMaisCadastro.Enabled = false;
+            }
+
         }
     }
 }

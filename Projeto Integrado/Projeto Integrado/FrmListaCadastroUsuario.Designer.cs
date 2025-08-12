@@ -31,7 +31,7 @@
             groupBox1 = new GroupBox();
             btnExcluir = new Button();
             btnMaisCadastro = new Button();
-            btnSalvar = new Button();
+            btnEditar = new Button();
             dataGridView1 = new DataGridView();
             txtPesquisa = new TextBox();
             label1 = new Label();
@@ -44,7 +44,7 @@
             // 
             groupBox1.Controls.Add(btnExcluir);
             groupBox1.Controls.Add(btnMaisCadastro);
-            groupBox1.Controls.Add(btnSalvar);
+            groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Location = new Point(16, 97);
             groupBox1.Margin = new Padding(4);
@@ -82,19 +82,19 @@
             btnMaisCadastro.UseVisualStyleBackColor = false;
             btnMaisCadastro.Click += btnMaisCadastro_Click;
             // 
-            // btnSalvar
+            // btnEditar
             // 
-            btnSalvar.BackColor = Color.FromArgb(0, 192, 0);
-            btnSalvar.Enabled = false;
-            btnSalvar.FlatAppearance.BorderSize = 0;
-            btnSalvar.FlatStyle = FlatStyle.Flat;
-            btnSalvar.Location = new Point(775, 477);
-            btnSalvar.Margin = new Padding(4);
-            btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(146, 44);
-            btnSalvar.TabIndex = 1;
-            btnSalvar.Text = "Editar";
-            btnSalvar.UseVisualStyleBackColor = false;
+            btnEditar.BackColor = Color.FromArgb(0, 192, 0);
+            btnEditar.Enabled = false;
+            btnEditar.FlatAppearance.BorderSize = 0;
+            btnEditar.FlatStyle = FlatStyle.Flat;
+            btnEditar.Location = new Point(775, 477);
+            btnEditar.Margin = new Padding(4);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(146, 44);
+            btnEditar.TabIndex = 1;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 
@@ -166,7 +166,7 @@
         private GroupBox groupBox1;
         private Button btnExcluir;
         private Button btnMaisCadastro;
-        private Button btnSalvar;
+        private Button btnEditar;
         private DataGridView dataGridView1;
         private TextBox txtPesquisa;
         private Label label1;

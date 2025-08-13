@@ -30,7 +30,6 @@
         {
             label1 = new Label();
             btnFechar = new Button();
-            txtPeca = new TextBox();
             txtQuantidadde = new TextBox();
             label2 = new Label();
             label4 = new Label();
@@ -38,7 +37,8 @@
             label5 = new Label();
             btnSalvar = new Button();
             btnCancelar = new Button();
-            txtCliente = new ComboBox();
+            CBXCliente = new ComboBox();
+            cbxPeca = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -62,14 +62,6 @@
             btnFechar.Text = "X";
             btnFechar.UseVisualStyleBackColor = true;
             btnFechar.Click += btnFechar_Click;
-            // 
-            // txtPeca
-            // 
-            txtPeca.Location = new Point(12, 155);
-            txtPeca.Margin = new Padding(3, 4, 3, 4);
-            txtPeca.Name = "txtPeca";
-            txtPeca.Size = new Size(628, 35);
-            txtPeca.TabIndex = 0;
             // 
             // txtQuantidadde
             // 
@@ -142,13 +134,21 @@
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // txtCliente
+            // CBXCliente
             // 
-            txtCliente.FormattingEnabled = true;
-            txtCliente.Location = new Point(19, 77);
-            txtCliente.Name = "txtCliente";
-            txtCliente.Size = new Size(620, 37);
-            txtCliente.TabIndex = 6;
+            CBXCliente.FormattingEnabled = true;
+            CBXCliente.Location = new Point(19, 77);
+            CBXCliente.Name = "CBXCliente";
+            CBXCliente.Size = new Size(620, 37);
+            CBXCliente.TabIndex = 6;
+            // 
+            // cbxPeca
+            // 
+            cbxPeca.FormattingEnabled = true;
+            cbxPeca.Location = new Point(12, 154);
+            cbxPeca.Name = "cbxPeca";
+            cbxPeca.Size = new Size(620, 37);
+            cbxPeca.TabIndex = 7;
             // 
             // FrmVendas
             // 
@@ -156,7 +156,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             ClientSize = new Size(651, 453);
-            Controls.Add(txtCliente);
+            Controls.Add(cbxPeca);
+            Controls.Add(CBXCliente);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
             Controls.Add(label5);
@@ -166,7 +167,6 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(txtQuantidadde);
-            Controls.Add(txtPeca);
             Font = new Font("Arial Narrow", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
@@ -179,7 +179,6 @@
         #endregion
         private Label label1;
         private Button btnFechar;
-        private TextBox txtPeca;
         private TextBox txtQuantidadde;
         private Label label2;
         private Label label4;
@@ -187,6 +186,7 @@
         private Label label5;
         private Button btnSalvar;
         private Button btnCancelar;
-        private ComboBox txtCliente;
+        private ComboBox CBXCliente;
+        private ComboBox cbxPeca;
     }
 }

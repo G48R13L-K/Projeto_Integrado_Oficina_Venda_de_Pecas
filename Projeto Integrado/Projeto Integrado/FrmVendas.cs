@@ -18,6 +18,26 @@ namespace Projeto_Integrado
         public FrmVendas()
         {
             InitializeComponent();
+            CarregarCombobox();
+            CarregarPecas();
+        }
+
+        private void CarregarPecas()
+        {
+           var pecas = new List<Peca>() 
+           {
+              
+           };
+            using (var bd = new VendasDbContest())
+            {
+                // Carregar peças do banco de dados
+                pecas = bd.Pecas.ToList();
+            }
+            cbxPeca.DataSource = pecas;
+           cbxPeca.DisplayMember = "NomePeca"; // Nome da peça a ser exibido no combobox
+           cbxPeca.ValueMember = "Id"; // Id da peça a ser usado como valor do combobox
+           cbxPeca.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbxPeca.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         public FrmVendas(Venda venda)
@@ -27,6 +47,26 @@ namespace Projeto_Integrado
             VendaSelecionada = venda;
 
             PreencherCampos();
+            CarregarCombobox();
+        }
+
+        private void CarregarCombobox()
+        {
+            List<Usuario> clientes = new List<Usuario>() 
+            {
+                
+               
+            };
+            using (var bd = new VendasDbContest())
+            {
+                // Carregar clientes do banco de dados
+                clientes = bd.Usuario.ToList();
+            }
+            CBXCliente.DataSource = clientes;
+            CBXCliente.DisplayMember = "NomeCliente"; // Nome do cliente a ser exibido no combobox
+            CBXCliente.ValueMember = "Id"; // Id do cliente a ser usado como valor do combobox
+            CBXCliente.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            CBXCliente.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
         private void PreencherCampos()
@@ -41,10 +81,10 @@ namespace Projeto_Integrado
                     var cliente = bd.Usuario.Find(VendaSelecionada.ClienteId);
                     if (cliente != null)
                     {
-                        txtCliente.Text = cliente.NomeCliente;
+                        CBXCliente.Text = cliente.NomeCliente;
                     }
                     var peca = bd.Pecas.Find(VendaSelecionada.PecaId);
-                    txtPeca.Text = peca.NomePeca;
+                    cbxPeca.Text = peca.NomePeca;
                 }
 
 
@@ -64,22 +104,27 @@ namespace Projeto_Integrado
             {
                 using (var banco = new VendasDbContest())
                 {
-                    if (VendaSelecionada != null)
-                    {
-                        _Vendas = banco.Vendas.Find(VendaSelecionada.Id);
-                        if (_Vendas != null)
-                        {
-                            _Vendas.ClienteId = banco.Usuario.FirstOrDefault(c => c.NomeCliente == txtCliente.Text)?.Id ?? 0;
-                            _Vendas.PecaId = banco.Pecas.FirstOrDefault(p => p.NomePeca == txtPeca.Text)?.Id ?? 0;
-                            _Vendas.Quantidade = int.Parse(txtQuantidadde.Text);
-                            _Vendas.DataVenda = dataTime.Value;
-                            banco.Vendas.Update(_Vendas);
-                            banco.SaveChanges();
-                            MessageBox.Show("Venda atualizada com sucesso!", "Sucesso",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
-                        }
-                    }
+                   
+                        string nomeCliente = CBXCliente.Text;
+                        string nomePeca = cbxPeca.Text;
+                        int quantidade = int.Parse(txtQuantidadde.Text);
+                        DateTime dataVenda = dataTime.Value;
+
+                    var novavendas = banco.Vendas.First(x => x.Id == _Vendas.Id);
+
+                    novavendas.ClienteId = 0;
+                            novavendas.PecaId = 0;
+                            novavendas.Quantidade = quantidade;
+                    novavendas.DataVenda = dataVenda;
+                        
+                        banco.Vendas.Update(novavendas);
+                        banco.SaveChanges();
+                        MessageBox.Show("Senha cadastrada com sucesso!", "Sucesso",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+
+
+                    
                 }
 
 
@@ -93,13 +138,35 @@ namespace Projeto_Integrado
         {
             using (var banco = new VendasDbContest())
             {
-                string nomeCliente = txtCliente.Text;
-                string nomePeca = txtPeca.Text;
+                string nomeCliente = CBXCliente.Text;
+                string nomePeca =cbxPeca.Text;
                 int quantidade = int.Parse(txtQuantidadde.Text);
                 DateTime dataVenda = dataTime.Value;
 
-                var venda = banco.Vendas.First(x => x.Id == _Vendas.Id);
-                banco.Vendas.Update(venda);
+                var clienteSelecionado = (Usuario)CBXCliente.SelectedItem;
+
+                if (clienteSelecionado == null || clienteSelecionado.Id == 0)
+                {
+                    MessageBox.Show("Selecione um cliente válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                var pecaSelecionada = (Peca)cbxPeca.SelectedItem;
+                if (pecaSelecionada == null || pecaSelecionada.Id == 0)
+                {
+                    MessageBox.Show("Selecione uma peça válida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var novavendas = new Venda()
+                {
+                    // obter id do cbx
+
+                    ClienteId = clienteSelecionado.Id,
+                    PecaId = pecaSelecionada.Id,
+                    Quantidade = quantidade,
+                    DataVenda = dataVenda
+                };
+                banco.Vendas.Update(novavendas);
                 banco.SaveChanges();
                 MessageBox.Show("Senha cadastrada com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);

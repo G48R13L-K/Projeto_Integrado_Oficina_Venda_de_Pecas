@@ -113,7 +113,7 @@
             txtPesquisa.Location = new Point(185, 15);
             txtPesquisa.Margin = new Padding(4);
             txtPesquisa.Name = "txtPesquisa";
-            txtPesquisa.Size = new Size(778, 34);
+            txtPesquisa.Size = new Size(778, 39);
             txtPesquisa.TabIndex = 4;
             txtPesquisa.TextChanged += txtPesquisa_TextChanged;
             // 
@@ -123,7 +123,7 @@
             label1.Location = new Point(53, 19);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(86, 28);
+            label1.Size = new Size(105, 32);
             label1.TabIndex = 3;
             label1.Text = "Pesquisa";
             // 
@@ -142,7 +142,7 @@
             // 
             // FrmListaCadastroUsuario
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             ClientSize = new Size(1113, 643);
@@ -155,6 +155,7 @@
             Margin = new Padding(4);
             Name = "FrmListaCadastroUsuario";
             Text = "FrmListaCadastro";
+            Load += FrmListaCadastroUsuario_Load_1;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

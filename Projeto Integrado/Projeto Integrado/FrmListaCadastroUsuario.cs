@@ -86,5 +86,10 @@ namespace Projeto_Integrado
             }
 
         }
+
+        private void FrmListaCadastroUsuario_Load_1(object sender, EventArgs e)
+        {
+            CarregarUsuarios();
+        }
     }
 }

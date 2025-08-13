@@ -57,6 +57,7 @@ namespace Projeto_Integrado
 
 
 
+
         private void CadastrarUmaNovaPeca()
         {
             using (var banco = new VendasDbContest())

@@ -12,7 +12,7 @@ using Projeto_Integrado;
 namespace Projeto_Integrado.Migrations
 {
     [DbContext(typeof(VendasDbContest))]
-    [Migration("20250812230519_v2")]
+    [Migration("20250812224842_v2")]
     partial class v2
     {
         /// <inheritdoc />

@@ -95,6 +95,7 @@
             btnEditar.TabIndex = 1;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.Click += btnEditar_Click;
             // 
             // dataGridView1
             // 
@@ -155,7 +156,7 @@
             Margin = new Padding(4);
             Name = "FrmListaCadastroUsuario";
             Text = "FrmListaCadastro";
-            Load += FrmListaCadastroUsuario_Load_1;
+            Load += FrmListaCadastroUsuario_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

@@ -16,6 +16,7 @@ namespace Projeto_Integrado
         public FrmListaCadastroUsuario()
         {
             InitializeComponent();
+            CarregarUsuarios();
             condicao();
         }
 
@@ -23,10 +24,6 @@ namespace Projeto_Integrado
         {
             Close();
 
-        }
-        private void FrmListaCadastroUsuario_Load(object sender, EventArgs e)
-        {
-            CarregarUsuarios();
         }
 
         private void CarregarUsuarios()
@@ -56,10 +53,11 @@ namespace Projeto_Integrado
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
             {
                 var usuarioSelecionado = dataGridView1.Rows[e.RowIndex].DataBoundItem as Usuario;
-
+                btnEditar.Enabled = true;
             }
         }
 
@@ -87,7 +85,21 @@ namespace Projeto_Integrado
 
         }
 
-        private void FrmListaCadastroUsuario_Load_1(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (UsuarioSelecionado != null)
+            {
+                var frmCadastro = new FrmCadastroUsuarios(UsuarioSelecionado);
+                frmCadastro.ShowDialog();
+                CarregarUsuarios();
+
+                CarregarUsuarios();
+                UsuarioSelecionado = null;
+            }
+
+        }
+
+        private void FrmListaCadastroUsuario_Load(object sender, EventArgs e)
         {
             CarregarUsuarios();
         }

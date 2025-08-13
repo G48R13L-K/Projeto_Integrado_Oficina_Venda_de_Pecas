@@ -21,7 +21,9 @@ namespace Projeto_Integrado
 
         private void btnFechar_Click_1(object sender, EventArgs e)
         {
+            var fromLogin = new FrmLogin();
             this.Close();
+            fromLogin.Show();
         }
 
         private void btnVendas_Click(object sender, EventArgs e)
@@ -33,6 +35,7 @@ namespace Projeto_Integrado
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
             var formRelatorio = new FrmRelatorio();
+            formRelatorio.Enabled = true; // Ensure the form is enabled
             formRelatorio.ShowDialog();
         }
 
@@ -44,6 +47,8 @@ namespace Projeto_Integrado
 
         private void btnPecas_Click(object sender, EventArgs e)
         {
+            var formPecas = new FrmEstoquePecas();
+            formPecas.ShowDialog();
         }
     }
 }

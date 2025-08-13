@@ -51,7 +51,7 @@ namespace Projeto_Integrado
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (txtNome == null)
+            if (_usuario == null)
             {
                 InserirUsuario();
             }
@@ -131,6 +131,7 @@ namespace Projeto_Integrado
                     return;
                 }
 
+               
                 var usuario = banco.Usuario.First(x => x.Id == _usuario.Id);
                 usuario.PerfilUsuario = PerfilUsuario;
                 usuario.NomeCliente = Nome;

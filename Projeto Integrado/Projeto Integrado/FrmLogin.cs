@@ -12,10 +12,10 @@ namespace Projeto_Integrado
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             var usuarioValidado = validarLogin(txtUsuario.Text, txtSenha.Text);
-            if (usuarioValidado.isValid && usuarioValidado.Usuario is not null) // Add null check for Usuario.
+            if (usuarioValidado.isValid && usuarioValidado.usuario is not null)
             {
-                UsuarioHelper.NomeUsuario = usuarioValidado.Usuario.NomeCliente;
-                UsuarioHelper.Funcao = usuarioValidado.Usuario.Funcao; // Corrected property access.
+                UsuarioHelper.NomeUsuario = usuarioValidado.usuario.NomeCliente;
+                UsuarioHelper.Funcao = usuarioValidado.usuario.Funcao;
 
                 this.Hide();
                 var frmPrincipal = new FrmPrincipal(txtUsuario.Text, txtSenha.Text);

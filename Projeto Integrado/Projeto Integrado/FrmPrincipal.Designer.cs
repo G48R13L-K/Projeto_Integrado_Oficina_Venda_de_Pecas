@@ -62,6 +62,7 @@
             btnRelatorio.Name = "btnRelatorio";
             btnRelatorio.Size = new Size(218, 90);
             btnRelatorio.TabIndex = 3;
+            btnRelatorio.TabStop = false;
             btnRelatorio.Text = "Relatório de Vendas";
             btnRelatorio.UseVisualStyleBackColor = false;
             btnRelatorio.Click += btnRelatorio_Click;

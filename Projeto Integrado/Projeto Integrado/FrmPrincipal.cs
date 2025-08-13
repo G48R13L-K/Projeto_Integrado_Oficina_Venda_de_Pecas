@@ -35,7 +35,7 @@ namespace Projeto_Integrado
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
             var formRelatorio = new FrmRelatorio();
-            formRelatorio.Enabled = true; // Ensure the form is enabled
+           
             formRelatorio.ShowDialog();
         }
 

@@ -33,6 +33,7 @@ namespace Projeto_Integrado
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
             var formRelatorio = new FrmRelatorio();
+
             formRelatorio.ShowDialog();
         }
 

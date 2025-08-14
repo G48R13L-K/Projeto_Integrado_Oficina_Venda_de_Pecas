@@ -59,14 +59,14 @@
             btnExcluir.BackColor = Color.Red;
             btnExcluir.FlatAppearance.BorderSize = 0;
             btnExcluir.FlatStyle = FlatStyle.Flat;
-            btnExcluir.Location = new Point(916, 477);
+            btnExcluir.Location = new Point(932, 476);
             btnExcluir.Margin = new Padding(4);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(146, 44);
             btnExcluir.TabIndex = 1;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = false;
-            btnExcluir.Click += btnCancelar_Click;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnMaisCadastro
             // 
@@ -85,7 +85,6 @@
             // btnEditar
             // 
             btnEditar.BackColor = Color.FromArgb(0, 192, 0);
-            btnEditar.Enabled = false;
             btnEditar.FlatAppearance.BorderSize = 0;
             btnEditar.FlatStyle = FlatStyle.Flat;
             btnEditar.Location = new Point(775, 477);
@@ -108,6 +107,7 @@
             dataGridView1.Size = new Size(1054, 358);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // txtPesquisa
             // 
@@ -146,7 +146,7 @@
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
-            ClientSize = new Size(1113, 643);
+            ClientSize = new Size(1113, 632);
             Controls.Add(groupBox1);
             Controls.Add(txtPesquisa);
             Controls.Add(label1);

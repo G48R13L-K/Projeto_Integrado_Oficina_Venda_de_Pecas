@@ -31,6 +31,8 @@
             groupBox1 = new GroupBox();
             btnRelatorio = new Button();
             btnPecas = new Button();
+            btnEstoqui = new Button();
+            btnCadastros = new Button();
             btnClientes = new Button();
             btnVendas = new Button();
             btnFechar = new Button();
@@ -42,6 +44,8 @@
             // 
             groupBox1.Controls.Add(btnRelatorio);
             groupBox1.Controls.Add(btnPecas);
+            groupBox1.Controls.Add(btnEstoqui);
+            groupBox1.Controls.Add(btnCadastros);
             groupBox1.Controls.Add(btnClientes);
             groupBox1.Controls.Add(btnVendas);
             groupBox1.Location = new Point(16, 129);
@@ -81,12 +85,40 @@
             btnPecas.UseVisualStyleBackColor = false;
             btnPecas.Click += btnPecas_Click;
             // 
+            // btnEstoqui
+            // 
+            btnEstoqui.BackColor = Color.White;
+            btnEstoqui.FlatAppearance.BorderSize = 0;
+            btnEstoqui.FlatStyle = FlatStyle.Flat;
+            btnEstoqui.Location = new Point(626, 96);
+            btnEstoqui.Margin = new Padding(4);
+            btnEstoqui.Name = "btnEstoqui";
+            btnEstoqui.Size = new Size(218, 90);
+            btnEstoqui.TabIndex = 1;
+            btnEstoqui.Text = "Estoque";
+            btnEstoqui.UseVisualStyleBackColor = false;
+            btnEstoqui.Click += btnEstoqui_Click;
+            // 
+            // btnCadastros
+            // 
+            btnCadastros.BackColor = Color.White;
+            btnCadastros.FlatAppearance.BorderSize = 0;
+            btnCadastros.FlatStyle = FlatStyle.Flat;
+            btnCadastros.Location = new Point(344, 98);
+            btnCadastros.Margin = new Padding(4);
+            btnCadastros.Name = "btnCadastros";
+            btnCadastros.Size = new Size(218, 90);
+            btnCadastros.TabIndex = 1;
+            btnCadastros.Text = "Cadastros";
+            btnCadastros.UseVisualStyleBackColor = false;
+            btnCadastros.Click += btnCadastros_Click;
+            // 
             // btnClientes
             // 
             btnClientes.BackColor = Color.White;
             btnClientes.FlatAppearance.BorderSize = 0;
             btnClientes.FlatStyle = FlatStyle.Flat;
-            btnClientes.Location = new Point(336, 246);
+            btnClientes.Location = new Point(344, 246);
             btnClientes.Margin = new Padding(4);
             btnClientes.Name = "btnClientes";
             btnClientes.Size = new Size(218, 90);
@@ -101,10 +133,10 @@
             btnVendas.FlatAppearance.BorderSize = 0;
             btnVendas.FlatStyle = FlatStyle.Flat;
             btnVendas.Font = new Font("Segoe UI", 14F);
-            btnVendas.Location = new Point(40, 90);
+            btnVendas.Location = new Point(40, 96);
             btnVendas.Margin = new Padding(4);
             btnVendas.Name = "btnVendas";
-            btnVendas.Size = new Size(804, 90);
+            btnVendas.Size = new Size(218, 90);
             btnVendas.TabIndex = 0;
             btnVendas.Text = "Vendas";
             btnVendas.UseVisualStyleBackColor = false;
@@ -162,5 +194,7 @@
         private Button btnFechar;
         private int btnFechar_Click;
         private Label labelBemvindo;
+        private Button btnCadastros;
+        private Button btnEstoqui;
     }
 }

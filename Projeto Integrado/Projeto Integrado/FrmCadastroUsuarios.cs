@@ -11,9 +11,10 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Projeto_Integrado
 {
-    
+
     public partial class FrmCadastroUsuarios : Form
     {
+
         private Usuario _usuario;
         public FrmCadastroUsuarios()
         {
@@ -31,7 +32,7 @@ namespace Projeto_Integrado
 
         private void CarregarDadosTela()
         {
-            if(_usuario != null)
+            if (_usuario != null)
             {
                 txtNome.Text = _usuario.NomeCliente;
                 txtEmail.Text = _usuario.Email;
@@ -131,7 +132,7 @@ namespace Projeto_Integrado
                     return;
                 }
 
-               
+
                 var usuario = banco.Usuario.First(x => x.Id == _usuario.Id);
                 usuario.PerfilUsuario = PerfilUsuario;
                 usuario.NomeCliente = Nome;
@@ -142,23 +143,23 @@ namespace Projeto_Integrado
                 usuario.Senha = Senha;
                 banco.Update(usuario);
                 banco.SaveChanges();
-                MessageBox.Show("Usuário atualizado com sucesso!","Sucesso",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Usuário atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
 
 
 
             }
         }
-               
-           
 
-        
+
+
+
 
         private void InserirUsuario()
         {
             using (var banco = new VendasDbContest())
             {
-                
+
                 //capta os dados do formulário
                 string PerfilUsuario = cmbUsuarios.Text;
                 string Nome = txtNome.Text;
@@ -231,8 +232,8 @@ namespace Projeto_Integrado
                     Telefone = Telefone,
                     Funcao = Funcao,
                     Senha = Senha,
-                    
-    };
+
+                };
 
                 banco.Usuario.Add(usuario);
                 banco.SaveChanges();
@@ -244,7 +245,7 @@ namespace Projeto_Integrado
         {
             var CondicaoFuncao = comboFuncao.Text;
 
-            if (CondicaoFuncao=="Cliente")
+            if (CondicaoFuncao == "Cliente")
             {
                 comboFuncao.Enabled = false;
                 txtSenha.Enabled = false;
@@ -255,6 +256,36 @@ namespace Projeto_Integrado
                 txtSenha.Enabled = true;
             }
 
+        }
+
+
+
+        private void comboFuncao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //crear uma condição onde avilite o campo senha apenas se o a função da pessoa for diferente de Funcionário 
+            if (comboFuncao.Text == "Funcionário")
+            {
+                txtSenha.Enabled = false;
+            }
+            else
+            {
+                txtSenha.Enabled = true;
+            }
+
+        }
+
+        private void cmbUsuarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbUsuarios.Text == "Cliente")
+            {
+                comboFuncao.Enabled = false;
+                txtSenha.Enabled = false;
+            }
+            else
+            {
+                comboFuncao.Enabled = true;
+                txtSenha.Enabled = false;
+            }
         }
     }
 }

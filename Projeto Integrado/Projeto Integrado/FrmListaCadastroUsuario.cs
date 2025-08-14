@@ -22,7 +22,7 @@ namespace Projeto_Integrado
 
         void btnFechar_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
 
         }
 
@@ -56,34 +56,36 @@ namespace Projeto_Integrado
 
             if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
             {
-                var usuarioSelecionado = dataGridView1.Rows[e.RowIndex].DataBoundItem as Usuario;
+                UsuarioSelecionado = dataGridView1.Rows[e.RowIndex].DataBoundItem as Usuario;
                 btnEditar.Enabled = true;
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void condicao()
-        {
-            var isAutorizedToUpdateData = (UsuarioHelper.Funcao == "Gerente" || UsuarioHelper.Funcao == "Administrativo");
-
-            if (isAutorizedToUpdateData)
+            if (UsuarioSelecionado != null)
             {
-                btnEditar.Enabled = true;
-                btnExcluir.Enabled = true;
-                btnMaisCadastro.Enabled = true;
+                var confirmResult = MessageBox.Show("Deseja realmente excluir este usuário?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    using (var db = new VendasDbContest())
+                    {
+                        db.Usuario.Remove(UsuarioSelecionado);
+                        db.SaveChanges();
+                        CarregarUsuarios();
+                        MessageBox.Show("Usuário excluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     
+                        UsuarioSelecionado = null;
+                    }
+                }
             }
             else
             {
-                btnEditar.Enabled = false;
-                btnExcluir.Enabled = false;
-                btnMaisCadastro.Enabled = false;
+                MessageBox.Show("Nenhum usuário selecionado para exclusão.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
+
+
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -91,8 +93,6 @@ namespace Projeto_Integrado
             {
                 var frmCadastro = new FrmCadastroUsuarios(UsuarioSelecionado);
                 frmCadastro.ShowDialog();
-                CarregarUsuarios();
-
                 CarregarUsuarios();
                 UsuarioSelecionado = null;
             }
@@ -103,5 +103,25 @@ namespace Projeto_Integrado
         {
             CarregarUsuarios();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            {
+                var usuarioSelecionado = dataGridView1.Rows[e.RowIndex].DataBoundItem as Usuario;
+                btnEditar.Enabled = true;
+            }
+        }
+        private void condicao()
+        {
+            var isAutorizedToUpdateData = (UsuarioHelper.Funcao == "Gerente" || UsuarioHelper.Funcao == "Administrativo");
+            if (isAutorizedToUpdateData)
+            {
+                btnEditar.Enabled = true;
+                btnExcluir.Enabled = true;
+            }
+        }
     }
 }
+    

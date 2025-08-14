@@ -49,5 +49,17 @@ namespace Projeto_Integrado
             var formPecas = new FrmEstoquePecas();
             formPecas.ShowDialog();
         }
+
+        private void btnCadastros_Click(object sender, EventArgs e)
+        {
+            var formCadastroUsuarios = new FrmCadastroUsuarios();
+            formCadastroUsuarios.ShowDialog();
+        }
+
+        private void btnEstoqui_Click(object sender, EventArgs e)
+        {
+            var formEstoque = new FrmEstoquePecas();
+            formEstoque.ShowDialog();
+        }
     }
 }

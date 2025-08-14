@@ -55,8 +55,9 @@
             cmbUsuarios.Location = new Point(31, 115);
             cmbUsuarios.Margin = new Padding(3, 4, 3, 4);
             cmbUsuarios.Name = "cmbUsuarios";
-            cmbUsuarios.Size = new Size(838, 36);
+            cmbUsuarios.Size = new Size(838, 40);
             cmbUsuarios.TabIndex = 0;
+            cmbUsuarios.SelectedIndexChanged += cmbUsuarios_SelectedIndexChanged;
             // 
             // comboFuncao
             // 
@@ -66,15 +67,16 @@
             comboFuncao.Location = new Point(29, 636);
             comboFuncao.Margin = new Padding(3, 4, 3, 4);
             comboFuncao.Name = "comboFuncao";
-            comboFuncao.Size = new Size(366, 36);
+            comboFuncao.Size = new Size(366, 40);
             comboFuncao.TabIndex = 0;
+            comboFuncao.SelectedIndexChanged += comboFuncao_SelectedIndexChanged;
             // 
             // txtNome
             // 
             txtNome.Location = new Point(31, 201);
             txtNome.Margin = new Padding(3, 4, 3, 4);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(838, 34);
+            txtNome.Size = new Size(838, 39);
             txtNome.TabIndex = 1;
             // 
             // txtCPF
@@ -82,7 +84,7 @@
             txtCPF.Location = new Point(34, 311);
             txtCPF.Margin = new Padding(3, 4, 3, 4);
             txtCPF.Name = "txtCPF";
-            txtCPF.Size = new Size(834, 34);
+            txtCPF.Size = new Size(834, 39);
             txtCPF.TabIndex = 1;
             // 
             // txtEmail
@@ -90,7 +92,7 @@
             txtEmail.Location = new Point(31, 421);
             txtEmail.Margin = new Padding(3, 4, 3, 4);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(838, 34);
+            txtEmail.Size = new Size(838, 39);
             txtEmail.TabIndex = 1;
             // 
             // txtTelefone
@@ -98,7 +100,7 @@
             txtTelefone.Location = new Point(31, 540);
             txtTelefone.Margin = new Padding(3, 4, 3, 4);
             txtTelefone.Name = "txtTelefone";
-            txtTelefone.Size = new Size(838, 34);
+            txtTelefone.Size = new Size(838, 39);
             txtTelefone.TabIndex = 1;
             // 
             // label1
@@ -106,7 +108,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(34, 79);
             label1.Name = "label1";
-            label1.Size = new Size(124, 28);
+            label1.Size = new Size(152, 32);
             label1.TabIndex = 2;
             label1.Text = "Perfil usuario";
             // 
@@ -115,7 +117,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(29, 162);
             label2.Name = "label2";
-            label2.Size = new Size(66, 28);
+            label2.Size = new Size(80, 32);
             label2.TabIndex = 3;
             label2.Text = "Nome";
             // 
@@ -124,7 +126,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(34, 275);
             label3.Name = "label3";
-            label3.Size = new Size(45, 28);
+            label3.Size = new Size(54, 32);
             label3.TabIndex = 4;
             label3.Text = "CPF";
             // 
@@ -133,7 +135,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(31, 386);
             label4.Name = "label4";
-            label4.Size = new Size(59, 28);
+            label4.Size = new Size(71, 32);
             label4.TabIndex = 5;
             label4.Text = "Email";
             // 
@@ -142,7 +144,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(31, 504);
             label5.Name = "label5";
-            label5.Size = new Size(84, 28);
+            label5.Size = new Size(106, 32);
             label5.TabIndex = 6;
             label5.Text = "Telefone";
             // 
@@ -151,7 +153,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(29, 600);
             label6.Name = "label6";
-            label6.Size = new Size(75, 28);
+            label6.Size = new Size(91, 32);
             label6.TabIndex = 6;
             label6.Text = "Função";
             // 
@@ -161,7 +163,7 @@
             label7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.Location = new Point(332, 22);
             label7.Name = "label7";
-            label7.Size = new Size(136, 41);
+            label7.Size = new Size(160, 48);
             label7.TabIndex = 6;
             label7.Text = "Cadastro";
             // 
@@ -175,7 +177,7 @@
             btnFechar.TabIndex = 7;
             btnFechar.Text = "X";
             btnFechar.UseVisualStyleBackColor = true;
-            btnFechar.Click += this.btnFechar_Click;
+            btnFechar.Click += btnFechar_Click;
             // 
             // btnSalvar
             // 
@@ -205,9 +207,10 @@
             // 
             // txtSenha
             // 
+            txtSenha.Enabled = false;
             txtSenha.Location = new Point(496, 637);
             txtSenha.Name = "txtSenha";
-            txtSenha.Size = new Size(357, 34);
+            txtSenha.Size = new Size(357, 39);
             txtSenha.TabIndex = 9;
             // 
             // label8
@@ -215,13 +218,13 @@
             label8.AutoSize = true;
             label8.Location = new Point(496, 600);
             label8.Name = "label8";
-            label8.Size = new Size(65, 28);
+            label8.Size = new Size(80, 32);
             label8.TabIndex = 6;
             label8.Text = "Senha";
             // 
             // FrmCadastroUsuarios
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             ClientSize = new Size(919, 757);

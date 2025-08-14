@@ -37,9 +37,9 @@
             label1 = new Label();
             txtValorPeca = new TextBox();
             txtQuantidadePeca = new TextBox();
-            txtNomePeca = new ComboBox();
             label5 = new Label();
             txtDescricaoPeca = new TextBox();
+            txtNomePeca = new TextBox();
             SuspendLayout();
             // 
             // btnCancelar
@@ -140,16 +140,6 @@
             txtQuantidadePeca.Size = new Size(1083, 39);
             txtQuantidadePeca.TabIndex = 13;
             // 
-            // txtNomePeca
-            // 
-            txtNomePeca.FormattingEnabled = true;
-            txtNomePeca.Items.AddRange(new object[] { "Cliente", "Funcionario" });
-            txtNomePeca.Location = new Point(29, 122);
-            txtNomePeca.Margin = new Padding(4, 5, 4, 5);
-            txtNomePeca.Name = "txtNomePeca";
-            txtNomePeca.Size = new Size(1088, 40);
-            txtNomePeca.TabIndex = 10;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -168,6 +158,14 @@
             txtDescricaoPeca.Size = new Size(1088, 39);
             txtDescricaoPeca.TabIndex = 14;
             // 
+            // txtNomePeca
+            // 
+            txtNomePeca.Location = new Point(29, 133);
+            txtNomePeca.Margin = new Padding(4, 5, 4, 5);
+            txtNomePeca.Name = "txtNomePeca";
+            txtNomePeca.Size = new Size(1083, 39);
+            txtNomePeca.TabIndex = 13;
+            // 
             // FrmCadastrosPecas
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -184,8 +182,8 @@
             Controls.Add(label1);
             Controls.Add(txtDescricaoPeca);
             Controls.Add(txtValorPeca);
-            Controls.Add(txtQuantidadePeca);
             Controls.Add(txtNomePeca);
+            Controls.Add(txtQuantidadePeca);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
@@ -205,8 +203,8 @@
         private Label label1;
         private TextBox txtValorPeca;
         private TextBox txtQuantidadePeca;
-        private ComboBox txtNomePeca;
         private Label label5;
         private TextBox txtDescricaoPeca;
+        private TextBox txtNomePeca;
     }
 }

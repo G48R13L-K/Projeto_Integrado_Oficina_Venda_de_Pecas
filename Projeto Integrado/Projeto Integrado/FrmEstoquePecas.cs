@@ -13,6 +13,14 @@ namespace Projeto_Integrado
     public partial class FrmEstoquePecas : Form
     {
         Peca? pecaSelecionada;
+
+        public FrmEstoquePecas()
+        {
+            InitializeComponent();
+            BuscarPecas();
+            condicao();
+        }
+
         public FrmEstoquePecas(Peca pecaSelecionada)
         {
             InitializeComponent();

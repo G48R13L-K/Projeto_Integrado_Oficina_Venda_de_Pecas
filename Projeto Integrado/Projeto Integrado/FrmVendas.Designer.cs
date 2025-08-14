@@ -46,7 +46,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(12, 40);
             label1.Name = "label1";
-            label1.Size = new Size(157, 29);
+            label1.Size = new Size(133, 24);
             label1.TabIndex = 1;
             label1.Text = "Nome do Cliente";
             // 
@@ -68,7 +68,7 @@
             txtQuantidadde.Location = new Point(12, 247);
             txtQuantidadde.Margin = new Padding(3, 4, 3, 4);
             txtQuantidadde.Name = "txtQuantidadde";
-            txtQuantidadde.Size = new Size(628, 35);
+            txtQuantidadde.Size = new Size(628, 30);
             txtQuantidadde.TabIndex = 0;
             // 
             // label2
@@ -76,7 +76,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(12, 122);
             label2.Name = "label2";
-            label2.Size = new Size(58, 29);
+            label2.Size = new Size(47, 24);
             label2.TabIndex = 1;
             label2.Text = "Peça";
             // 
@@ -85,7 +85,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(12, 215);
             label4.Name = "label4";
-            label4.Size = new Size(114, 29);
+            label4.Size = new Size(94, 24);
             label4.TabIndex = 1;
             label4.Text = "Quantidade";
             // 
@@ -94,7 +94,7 @@
             dataTime.Location = new Point(12, 337);
             dataTime.Margin = new Padding(3, 4, 3, 4);
             dataTime.Name = "dataTime";
-            dataTime.Size = new Size(436, 35);
+            dataTime.Size = new Size(436, 30);
             dataTime.TabIndex = 2;
             // 
             // label5
@@ -102,7 +102,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(12, 304);
             label5.Name = "label5";
-            label5.Size = new Size(54, 29);
+            label5.Size = new Size(45, 24);
             label5.TabIndex = 3;
             label5.Text = "Data";
             // 
@@ -139,7 +139,7 @@
             CBXCliente.FormattingEnabled = true;
             CBXCliente.Location = new Point(19, 77);
             CBXCliente.Name = "CBXCliente";
-            CBXCliente.Size = new Size(620, 37);
+            CBXCliente.Size = new Size(620, 32);
             CBXCliente.TabIndex = 6;
             // 
             // cbxPeca
@@ -147,12 +147,12 @@
             cbxPeca.FormattingEnabled = true;
             cbxPeca.Location = new Point(12, 154);
             cbxPeca.Name = "cbxPeca";
-            cbxPeca.Size = new Size(620, 37);
+            cbxPeca.Size = new Size(620, 32);
             cbxPeca.TabIndex = 7;
             // 
             // FrmVendas
             // 
-            AutoScaleDimensions = new SizeF(11F, 29F);
+            AutoScaleDimensions = new SizeF(10F, 24F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             ClientSize = new Size(651, 453);
@@ -172,6 +172,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "FrmVendas";
             Text = "FrmVendas";
+            Load += FrmVendas_Load;
             ResumeLayout(false);
             PerformLayout();
         }

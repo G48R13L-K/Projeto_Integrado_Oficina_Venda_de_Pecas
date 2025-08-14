@@ -16,25 +16,28 @@ namespace Projeto_Integrado
         public FrmRelatorio()
         {
             InitializeComponent();
+            BuscarVenda();
         }
 
         private void FrmRelatorio_Load(object sender, EventArgs e)
         {
             BuscarVenda();
-            condicao();
+           
         }
 
         private void BuscarVenda()
         {
             using (var bd = new VendasDbContest())
             {
-                var usuario = bd.Usuario.AsQueryable();
+                var Venda = bd.Vendas.AsQueryable();
                 if (!string.IsNullOrEmpty(txtPesquisa.Text))
                 {
-                    usuario = usuario.Where(u => u.NomeCliente.Contains(txtPesquisa.Text) ||
-                                                    u.Email.Contains(txtPesquisa.Text));
+                    Venda = Venda.Where(u => u.Id.Equals(txtPesquisa.Text) ||
+                                                    u.ClienteId.Equals(txtPesquisa.Text)||
+                                                    u.DataVenda.Equals(txtPesquisa.Text));
+
                 }
-                dataGridView1.DataSource = usuario.ToList();
+                dataGridView1.DataSource = Venda.ToList();
 
             }
         }
@@ -55,19 +58,11 @@ namespace Projeto_Integrado
             // abrir tela de editar
             if (VendaSelecionada != null)
             {
-                using (var bd = new VendasDbContest())
-                {
-                    var venda = bd.Vendas.Find(VendaSelecionada.Id);
-                    if (venda != null)
-                    {
-                        new FrmVendas(venda).ShowDialog();
-                        BuscarVenda();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Venda não encontrada.");
-                    }
-                }
+                var frmVendas = new FrmVendas(VendaSelecionada);
+                frmVendas.ShowDialog();
+                BuscarVenda();
+                VendaSelecionada = null;
+
             }
             else
             {
@@ -79,21 +74,25 @@ namespace Projeto_Integrado
         {
             if (VendaSelecionada != null)
             {
-                using (var bd = new VendasDbContest())
+                var confirmResult = MessageBox.Show("Tem certeza que deseja cancelar esta venda?", "Confirmação", MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
                 {
-                    var venda = bd.Vendas.Find(VendaSelecionada.Id);
-                    if (venda != null)
+                    using (var bd = new VendasDbContest())
                     {
-                        bd.Vendas.Remove(venda);
+                        bd.Vendas.Remove(VendaSelecionada);
                         bd.SaveChanges();
                         MessageBox.Show("Venda cancelada com sucesso.");
                         BuscarVenda();
+                        VendaSelecionada = null;
                     }
-                    else
-                    {
-                        MessageBox.Show("Venda não encontrada.");
-                    }
+
                 }
+                else
+                {
+                    
+                    return;
+                }
+           
             }
             else
             {
@@ -106,25 +105,18 @@ namespace Projeto_Integrado
             this.Close();
         }
 
-        private void condicao()
-        {
-            var isAutorizedToUpdateData = (UsuarioHelper.Funcao == "Gerente" || UsuarioHelper.Funcao == "Administrativo");
+      
 
-            if (isAutorizedToUpdateData)
-            {
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            {   
+                VendaSelecionada = dataGridView1.Rows[e.RowIndex].DataBoundItem as Venda;
                 btnEditar.Enabled = true;
                 btnCancelar.Enabled = true;
-            }
-            else
-            {
-                btnEditar.Enabled = false;
-                btnCancelar.Enabled = false;
+
             }
 
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
 
         }
     }

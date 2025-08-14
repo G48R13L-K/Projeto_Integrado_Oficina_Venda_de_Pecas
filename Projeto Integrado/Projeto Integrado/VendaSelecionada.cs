@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Projeto_Integrado
 {
-    public class Venda
+    public class VendaSelecionada
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

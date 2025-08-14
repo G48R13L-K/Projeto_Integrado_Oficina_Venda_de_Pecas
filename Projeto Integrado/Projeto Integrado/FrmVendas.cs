@@ -13,22 +13,24 @@ namespace Projeto_Integrado
     public partial class FrmVendas : Form
 
     {
-        Venda? VendaSelecionada;
-        private Venda _Vendas;
+        VendaSelecionada? VendaSelecionada;
+        private VendaSelecionada _Vendas;
         public FrmVendas()
         {
             InitializeComponent();
             CarregarCombobox();
 
         }
-        public FrmVendas(Venda venda)
+        public FrmVendas(VendaSelecionada vendaSelecionada)
         {
-            VendaSelecionada = venda;
-            if (venda != null)
+           
+            if (vendaSelecionada != null)
             {
-                // Preencher os campos com os dados da venda selecionada
+                InitializeComponent();
                 PreencherCampos();
                 CarregarPecas();
+                VendaSelecionada = vendaSelecionada;
+
             }
         }
 
@@ -87,7 +89,7 @@ namespace Projeto_Integrado
 
         private void PreencherCampos()
         {
-            // Verifica se a venda selecionada é nula
+           
             // preencher campos
             if (VendaSelecionada != null)
             {
@@ -101,6 +103,7 @@ namespace Projeto_Integrado
                     }
                     var peca = bd.Pecas.Find(VendaSelecionada.PecaId);
                     cbxPeca.Text = peca.NomePeca;
+                    txtQuantidadde.Text = VendaSelecionada.Quantidade.ToString();
                 }
 
 
@@ -182,7 +185,7 @@ namespace Projeto_Integrado
                     return;
                 }
 
-                var novavendas = new Venda()
+                var novavendas = new VendaSelecionada()
                 {
                     // obter id do cbx
 

@@ -12,7 +12,7 @@ namespace Projeto_Integrado
 {
     public partial class FrmRelatorio : Form
     {
-        Venda? VendaSelecionada;
+        VendaSelecionada? VendaSelecionada;
         public FrmRelatorio()
         {
             InitializeComponent();
@@ -111,7 +111,7 @@ namespace Projeto_Integrado
         {
             if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
             {   
-                VendaSelecionada = dataGridView1.Rows[e.RowIndex].DataBoundItem as Venda;
+                VendaSelecionada = dataGridView1.Rows[e.RowIndex].DataBoundItem as VendaSelecionada;
                 btnEditar.Enabled = true;
                 btnCancelar.Enabled = true;
 

@@ -13,23 +13,25 @@ namespace Projeto_Integrado
     public partial class FrmVendas : Form
 
     {
-        Venda? VendaSelecionada;
-        private Venda _Vendas;
+        
+        private VendaSelecionada _vendaSelecionada;
         public FrmVendas()
         {
             InitializeComponent();
             CarregarCombobox();
 
         }
-        public FrmVendas(Venda venda)
+        public FrmVendas(VendaSelecionada vendaSelecionada)
         {
-            VendaSelecionada = venda;
-            if (venda != null)
-            {
-                // Preencher os campos com os dados da venda selecionada
+
+            _vendaSelecionada = vendaSelecionada;
+            
+                InitializeComponent();
                 PreencherCampos();
                 CarregarPecas();
-            }
+                CarregarCombobox();
+               
+            
         }
 
         private void CarregarPecas()
@@ -87,20 +89,21 @@ namespace Projeto_Integrado
 
         private void PreencherCampos()
         {
-            // Verifica se a venda selecionada é nula
+           
             // preencher campos
-            if (VendaSelecionada != null)
+            if (_vendaSelecionada != null)
             {
                 // carregar combodo cliente consultado pelo id do cliente da venda selecionada
                 using (var bd = new VendasDbContest())
                 {
-                    var cliente = bd.Usuario.Find(VendaSelecionada.ClienteId);
+                    var cliente = bd.Usuario.Find(_vendaSelecionada.ClienteId);
                     if (cliente != null)
                     {
                         CBXCliente.Text = cliente.NomeCliente;
                     }
-                    var peca = bd.Pecas.Find(VendaSelecionada.PecaId);
+                    var peca = bd.Pecas.Find(_vendaSelecionada.PecaId);
                     cbxPeca.Text = peca.NomePeca;
+                    txtQuantidadde.Text = _vendaSelecionada.Quantidade.ToString();
                 }
 
 
@@ -109,7 +112,7 @@ namespace Projeto_Integrado
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (_Vendas == null)
+            if (_vendaSelecionada == null)
             {
                 // Se a venda não existe, cria uma nova
                 Cadastravenda();
@@ -135,17 +138,19 @@ namespace Projeto_Integrado
                     int quantidade = int.Parse(txtQuantidadde.Text);
                     DateTime dataVenda = dataTime.Value;
 
-                    var novavendas = banco.Vendas.First(x => x.Id == _Vendas.Id);
+                    var novavendas = banco.Vendas.First(x => x.Id == _vendaSelecionada.Id);
 
-                    novavendas.ClienteId = 0;
-                    novavendas.PecaId = 0;
+                    novavendas.ClienteId = Convert.ToInt32(CBXCliente.SelectedValue);
+                    novavendas.PecaId = Convert.ToInt32(cbxPeca.SelectedValue);
                     novavendas.Quantidade = quantidade;
                     novavendas.DataVenda = dataVenda;
 
+                 
                     banco.Vendas.Update(novavendas);
                     banco.SaveChanges();
                     MessageBox.Show("Senha cadastrada com sucesso!", "Sucesso",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _vendaSelecionada = null;
                     this.Close();
 
 
@@ -182,7 +187,7 @@ namespace Projeto_Integrado
                     return;
                 }
 
-                var novavendas = new Venda()
+                var novavendas = new VendaSelecionada()
                 {
                     // obter id do cbx
 

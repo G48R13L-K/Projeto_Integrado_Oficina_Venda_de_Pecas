@@ -12,9 +12,13 @@ namespace Projeto_Integrado
 {
     public partial class FrmEstoquePecas : Form
     {
-        public FrmEstoquePecas()
+        Peca? pecaSelecionada;
+        public FrmEstoquePecas(Peca pecaSelecionada)
         {
             InitializeComponent();
+            BuscarPecas();
+            condicao();
+            this.pecaSelecionada = pecaSelecionada;
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -43,10 +47,85 @@ namespace Projeto_Integrado
                 }
                 dataGridView1.DataSource = pecas.ToList();
 
-
-
-
             }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            {
+                var pecaSelecionada = dataGridView1.Rows[e.RowIndex].DataBoundItem as Peca;
+                btnEditar.Enabled = true;
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (btnEditar.Enabled == true)
+            {
+                if (pecaSelecionada != null)
+                {
+                    var frmCadastros = new FrmEstoquePecas(pecaSelecionada);
+                    frmCadastros.ShowDialog();
+
+                    BuscarPecas();
+                    pecaSelecionada = null;
+
+                }
+                else
+                {
+                    MessageBox.Show("Selecione uma peça para editar.");
+                }
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            if (btnExcluir.Enabled==true)
+            {
+                if (pecaSelecionada != null)
+                {
+                    using (var banco = new VendasDbContest())
+                    {
+                        var pecaParaExcluir = banco.Pecas.FirstOrDefault(p => p.Id == pecaSelecionada.Id);
+                        if (pecaParaExcluir != null)
+                        {
+                            banco.Pecas.Remove(pecaParaExcluir);
+                            banco.SaveChanges();
+                            MessageBox.Show("Peça excluída com sucesso!");
+                            BuscarPecas();
+                            pecaSelecionada = null;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Selecione uma peça para excluir.");
+                        }
+                    }
+                }
+                
+            }
+            
+            
+
+        }
+
+        private void condicao()
+        {
+            var isAutorizedToUpdateData = (UsuarioHelper.Funcao == "Gerente" || UsuarioHelper.Funcao == "Administrativo");
+
+            if (isAutorizedToUpdateData)
+            {
+                btnEditar.Enabled = true;
+                btnExcluir.Enabled = true;
+                
+            }
+            else
+            {
+                btnEditar.Enabled = false;
+                btnExcluir.Enabled = false;
+               
+            }
+
         }
     }
 }

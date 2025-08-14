@@ -12,7 +12,7 @@ namespace Projeto_Integrado
 {
     public partial class FrmCadastrosPecas : Form
     {
-        Venda? VendaSelecionada;
+        Peca? PecaSelecionada;
        
         public FrmCadastrosPecas()
         {
@@ -21,7 +21,7 @@ namespace Projeto_Integrado
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (VendaSelecionada == null)
+            if (PecaSelecionada == null)
             {
                 CadastrarUmaNovaPeca();
             }
@@ -40,7 +40,7 @@ namespace Projeto_Integrado
                 string descricaoPeca = txtDescricaoPeca.Text;
                 decimal precoPeca = decimal.Parse(txtValorPeca.Text);
                 int quantidadePeca = int.Parse(txtQuantidadePeca.Text);
-                var pecaNova = banco.Pecas.First(p => p.Id == VendaSelecionada.Id);
+                var pecaNova = banco.Pecas.First(p => p.Id == PecaSelecionada.Id);
 
                 pecaNova.NomePeca = txtNomePeca.Text;
                 pecaNova.DescricaoPeca = txtDescricaoPeca.Text;

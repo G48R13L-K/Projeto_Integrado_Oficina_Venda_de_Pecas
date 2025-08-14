@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            btnCancelar = new Button();
+            btnExcluir = new Button();
             btnEditar = new Button();
             dataGridView1 = new DataGridView();
             btnIncuirPecas = new Button();
@@ -42,7 +42,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btnCancelar);
+            groupBox1.Controls.Add(btnExcluir);
             groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Location = new Point(18, 116);
@@ -52,21 +52,21 @@
             groupBox1.Size = new Size(1093, 417);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
             // 
-            // btnCancelar
+            // btnExcluir
             // 
-            btnCancelar.BackColor = Color.Red;
-            btnCancelar.FlatAppearance.BorderSize = 0;
-            btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Segoe UI", 14F);
-            btnCancelar.Location = new Point(954, 364);
-            btnCancelar.Margin = new Padding(2);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(111, 49);
-            btnCancelar.TabIndex = 1;
-            btnCancelar.Text = "Excluir";
-            btnCancelar.UseVisualStyleBackColor = false;
+            btnExcluir.BackColor = Color.Red;
+            btnExcluir.FlatAppearance.BorderSize = 0;
+            btnExcluir.FlatStyle = FlatStyle.Flat;
+            btnExcluir.Font = new Font("Segoe UI", 14F);
+            btnExcluir.Location = new Point(954, 364);
+            btnExcluir.Margin = new Padding(2);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(111, 49);
+            btnExcluir.TabIndex = 1;
+            btnExcluir.Text = "Excluir";
+            btnExcluir.UseVisualStyleBackColor = false;
+            btnExcluir.Click += btnCancelar_Click;
             // 
             // btnEditar
             // 
@@ -81,6 +81,7 @@
             btnEditar.TabIndex = 1;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.Click += btnEditar_Click;
             // 
             // dataGridView1
             // 
@@ -92,6 +93,7 @@
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(1060, 316);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // btnIncuirPecas
             // 
@@ -164,7 +166,7 @@
         #endregion
 
         private GroupBox groupBox1;
-        private Button btnCancelar;
+        private Button btnExcluir;
         private Button btnIncuirPecas;
         private Button btnEditar;
         private DataGridView dataGridView1;

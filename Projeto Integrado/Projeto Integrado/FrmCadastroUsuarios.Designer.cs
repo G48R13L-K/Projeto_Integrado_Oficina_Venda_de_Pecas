@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             cmbUsuarios = new ComboBox();
             comboFuncao = new ComboBox();
             txtNome = new TextBox();
@@ -46,6 +47,8 @@
             btnCancelar = new Button();
             txtSenha = new TextBox();
             label8 = new Label();
+            errorProvider1 = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // cmbUsuarios
@@ -222,6 +225,10 @@
             label8.TabIndex = 6;
             label8.Text = "Senha";
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // FrmCadastroUsuarios
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -251,6 +258,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "FrmCadastroUsuarios";
             Text = "FrmCadastro";
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -275,5 +283,6 @@
         private Button btnCancelar;
         private TextBox txtSenha;
         private Label label8;
+        private ErrorProvider errorProvider1;
     }
 }

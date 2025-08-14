@@ -19,43 +19,43 @@ namespace Projeto_Integrado
         {
             InitializeComponent();
             CarregarCombobox();
-            CarregarPecas();
+
+        }
+        public FrmVendas(Venda venda)
+        {
+            VendaSelecionada = venda;
+            if (venda != null)
+            {
+                // Preencher os campos com os dados da venda selecionada
+                PreencherCampos();
+                CarregarPecas();
+            }
         }
 
         private void CarregarPecas()
         {
-           var pecas = new List<Peca>() 
-           {
-              
-           };
+            var pecas = new List<Peca>()
+            {
+
+            };
             using (var bd = new VendasDbContest())
             {
                 // Carregar peças do banco de dados
                 pecas = bd.Pecas.ToList();
             }
             cbxPeca.DataSource = pecas;
-           cbxPeca.DisplayMember = "NomePeca"; // Nome da peça a ser exibido no combobox
-           cbxPeca.ValueMember = "Id"; // Id da peça a ser usado como valor do combobox
-           cbxPeca.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbxPeca.DisplayMember = "NomePeca"; // Nome da peça a ser exibido no combobox
+            cbxPeca.ValueMember = "Id"; // Id da peça a ser usado como valor do combobox
+            cbxPeca.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbxPeca.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
-        public FrmVendas(Venda venda)
-        {
-            InitializeComponent();
-
-            VendaSelecionada = venda;
-
-            PreencherCampos();
-            CarregarCombobox();
-        }
 
         private void CarregarCombobox()
         {
-            List<Usuario> clientes = new List<Usuario>() 
+            List<Usuario> clientes = new List<Usuario>()
             {
-                
-               
+
             };
             using (var bd = new VendasDbContest())
             {
@@ -67,6 +67,22 @@ namespace Projeto_Integrado
             CBXCliente.ValueMember = "Id"; // Id do cliente a ser usado como valor do combobox
             CBXCliente.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             CBXCliente.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            List<Peca> pecas = new List<Peca>()
+            {
+
+            };
+            using (var bd = new VendasDbContest())
+            {
+                // Carregar peças do banco de dados
+                pecas = bd.Pecas.ToList();
+            }
+            cbxPeca.DataSource = pecas;
+            cbxPeca.DisplayMember = "NomePeca"; // Nome da peça a ser exibido no combobox
+            cbxPeca.ValueMember = "Id"; // Id da peça a ser usado como valor do combobox
+            cbxPeca.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbxPeca.AutoCompleteSource = AutoCompleteSource.ListItems;
+
         }
 
         private void PreencherCampos()
@@ -93,8 +109,17 @@ namespace Projeto_Integrado
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            Cadastravenda();
-            ActualizarVenda();
+            if (_Vendas == null)
+            {
+                // Se a venda não existe, cria uma nova
+                Cadastravenda();
+            }
+            else
+            {
+
+                // Se a venda já existe, atualiza
+                ActualizarVenda();
+            }
 
         }
 
@@ -104,27 +129,27 @@ namespace Projeto_Integrado
             {
                 using (var banco = new VendasDbContest())
                 {
-                   
-                        string nomeCliente = CBXCliente.Text;
-                        string nomePeca = cbxPeca.Text;
-                        int quantidade = int.Parse(txtQuantidadde.Text);
-                        DateTime dataVenda = dataTime.Value;
+
+                    string nomeCliente = CBXCliente.Text;
+                    string nomePeca = cbxPeca.Text;
+                    int quantidade = int.Parse(txtQuantidadde.Text);
+                    DateTime dataVenda = dataTime.Value;
 
                     var novavendas = banco.Vendas.First(x => x.Id == _Vendas.Id);
 
                     novavendas.ClienteId = 0;
-                            novavendas.PecaId = 0;
-                            novavendas.Quantidade = quantidade;
+                    novavendas.PecaId = 0;
+                    novavendas.Quantidade = quantidade;
                     novavendas.DataVenda = dataVenda;
-                        
-                        banco.Vendas.Update(novavendas);
-                        banco.SaveChanges();
-                        MessageBox.Show("Senha cadastrada com sucesso!", "Sucesso",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+
+                    banco.Vendas.Update(novavendas);
+                    banco.SaveChanges();
+                    MessageBox.Show("Senha cadastrada com sucesso!", "Sucesso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
 
 
-                    
+
                 }
 
 
@@ -139,7 +164,7 @@ namespace Projeto_Integrado
             using (var banco = new VendasDbContest())
             {
                 string nomeCliente = CBXCliente.Text;
-                string nomePeca =cbxPeca.Text;
+                string nomePeca = cbxPeca.Text;
                 int quantidade = int.Parse(txtQuantidadde.Text);
                 DateTime dataVenda = dataTime.Value;
 
@@ -168,7 +193,7 @@ namespace Projeto_Integrado
                 };
                 banco.Vendas.Update(novavendas);
                 banco.SaveChanges();
-                MessageBox.Show("Senha cadastrada com sucesso!", "Sucesso",
+                MessageBox.Show("Venda realizada com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
 
@@ -185,6 +210,11 @@ namespace Projeto_Integrado
         private void btnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void FrmVendas_Load(object sender, EventArgs e)
+        {
+            PreencherCampos();
         }
     }
 

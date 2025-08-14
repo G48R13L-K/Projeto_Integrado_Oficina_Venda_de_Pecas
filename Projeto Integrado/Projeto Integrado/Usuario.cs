@@ -9,7 +9,7 @@ namespace Projeto_Integrado
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string NomeCliente { get; set; }
-        public int CPF { get; set; }
+        public string CPF { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
         public string PerfilUsuario { get; set; }

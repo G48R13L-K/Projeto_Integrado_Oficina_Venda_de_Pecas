@@ -26,7 +26,7 @@ namespace Projeto_Integrado
             InitializeComponent();
             BuscarPecas();
             condicao();
-            this.pecaSelecionada = pecaSelecionada;
+            
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -73,7 +73,7 @@ namespace Projeto_Integrado
             {
                 if (pecaSelecionada != null)
                 {
-                    var frmCadastros = new FrmEstoquePecas(pecaSelecionada);
+                    var frmCadastros = new FrmEstoquePecas();
                     frmCadastros.ShowDialog();
 
                     BuscarPecas();
@@ -91,8 +91,7 @@ namespace Projeto_Integrado
         {
             if (btnExcluir.Enabled==true)
             {
-                if (pecaSelecionada != null)
-                {
+              
                     using (var banco = new VendasDbContest())
                     {
                         var pecaParaExcluir = banco.Pecas.FirstOrDefault(p => p.Id == pecaSelecionada.Id);
@@ -108,7 +107,7 @@ namespace Projeto_Integrado
                         {
                             MessageBox.Show("Selecione uma peça para excluir.");
                         }
-                    }
+                
                 }
                 
             }

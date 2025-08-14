@@ -34,9 +34,8 @@ namespace Projeto_Integrado
 
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
-            var formRelatorio = new FrmRelatorio();
-
-            formRelatorio.ShowDialog();
+            var FrmRelatorio = new FrmRelatorio();
+            FrmRelatorio.ShowDialog();
         }
 
         private void btnClientes_Click(object sender, EventArgs e)

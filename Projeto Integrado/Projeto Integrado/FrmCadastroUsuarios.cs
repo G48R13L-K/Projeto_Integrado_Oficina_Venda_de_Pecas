@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Projeto_Integrado
@@ -78,69 +79,39 @@ namespace Projeto_Integrado
                 string Email = txtEmail.Text;
                 string Telefone = txtTelefone.Text;
                 string CpfUsuario = txtCPF.Text; // entra como string
-                condicaoFuncao();
                 string Funcao = comboFuncao.Text;
                 string Senha = txtSenha.Text;
 
-                if (string.IsNullOrEmpty(Nome))
-                {
-                    MessageBox.Show("Preencha o campo Nome.");
-                    return;
-                }
-                if (string.IsNullOrEmpty(Email))
-                {
-                    MessageBox.Show("Preencha o campo Email.");
-                    return;
-                }
-                if (string.IsNullOrEmpty(Senha))
-                {
-                    MessageBox.Show("Preencha o campo Senha.");
-                    return;
-                }
-                if (string.IsNullOrEmpty(Telefone))
-                {
-                    MessageBox.Show("Preencha o campo Telefone.");
-                    return;
-                }
-                if (string.IsNullOrEmpty(CpfUsuario))
-                {
-                    MessageBox.Show("Preencha o campo CPF.");
-                    return;
-                }
-                if (string.IsNullOrEmpty(PerfilUsuario))
-                {
-                    MessageBox.Show("Selecione o Perfil do Usuário.");
-                    return;
-                }
-                if (PerfilUsuario != "Cliente")
-                {
-                    comboFuncao.Enabled = true;
-                }
-                if (comboFuncao.Enabled == true)
-                {
-                    if (string.IsNullOrEmpty(Funcao))
-                    {
-                        MessageBox.Show("Selecione a Função.");
-                        return;
-                    }
-                }
-
-                // Converte CPF de string em inteiro
-                if (!int.TryParse(CpfUsuario, out int cpfInt))
-                {
-                    MessageBox.Show("CPF deve ser um número válido.");
-                    return;
-                }
-
 
                 var usuario = banco.Usuario.First(x => x.Id == _usuario.Id);
+
                 usuario.PerfilUsuario = PerfilUsuario;
                 usuario.NomeCliente = Nome;
-                usuario.CPF = cpfInt; // Convertido para inteiro
+                usuario.CPF = CpfUsuario; // Convertido para inteiro
                 usuario.Email = Email;
                 usuario.Telefone = Telefone;
                 usuario.Funcao = Funcao;
                 usuario.Senha = Senha;
+
+                var validaUsuario = ValidarCampoParaUsuario();
+                var validaCliente = ValidarCampoCliente();
+                if (usuario.PerfilUsuario == "Cliente")
+                {
+                    validaCliente = false;
+                    if (!validaCliente)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    validaUsuario = false;
+                    if (!validaUsuario)
+                    {
+                        return;
+                    }
+                }
+
                 banco.Update(usuario);
                 banco.SaveChanges();
                 MessageBox.Show("Usuário atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -164,77 +135,40 @@ namespace Projeto_Integrado
                 string PerfilUsuario = cmbUsuarios.Text;
                 string Nome = txtNome.Text;
                 string Email = txtEmail.Text;
-                string Telefone = txtTelefone.Text;
-                string CpfUsuario = txtCPF.Text; // entra como string
+                string telefone = txtTelefone.Text;
+                string CpfUsuario = txtCPF.Text;
 
-                condicaoFuncao();
-                string Funcao = comboFuncao.Text;
-                string Senha = txtSenha.Text;
 
-                if (string.IsNullOrEmpty(Nome))
-                {
-                    MessageBox.Show("Preencha o campo Nome.");
-                    return;
-                }
-                if (string.IsNullOrEmpty(Email))
-                {
-                    MessageBox.Show("Preencha o campo Email.");
-                    return;
-                }
-                if (string.IsNullOrEmpty(Senha))
-                {
-                    MessageBox.Show("Preencha o campo Senha.");
-                    return;
-                }
-                if (string.IsNullOrEmpty(Telefone))
-                {
-                    MessageBox.Show("Preencha o campo Telefone.");
-                    return;
-                }
-                if (string.IsNullOrEmpty(CpfUsuario))
-                {
-                    MessageBox.Show("Preencha o campo CPF.");
-                    return;
-                }
 
-                if (string.IsNullOrEmpty(PerfilUsuario))
-                {
-                    MessageBox.Show("Selecione o Perfil do Usuário.");
-                    return;
-                }
-                if (PerfilUsuario != "Cliente")
-                {
-                    comboFuncao.Enabled = true;
-                }
-
-                if (comboFuncao.Enabled == true)
-                {
-                    if (string.IsNullOrEmpty(Funcao))
-                    {
-                        MessageBox.Show("Selecione a Função.");
-                        return;
-                    }
-                }
-
-                // Converte CPF de string em inteiro
-                if (!int.TryParse(CpfUsuario, out int cpfInt))
-                {
-                    MessageBox.Show("CPF deve ser um número válido.");
-                    return;
-                }
 
                 var usuario = new Usuario
                 {
                     PerfilUsuario = PerfilUsuario,
                     NomeCliente = Nome,
-                    CPF = cpfInt, // Convertido para inteiro
                     Email = Email,
-                    Telefone = Telefone,
-                    Funcao = Funcao,
-                    Senha = Senha,
-
+                    Telefone = telefone,
+                    CPF = CpfUsuario, // Mantém como string para validação
+                    Funcao = comboFuncao.Text,
+                    Senha = txtSenha.Text
                 };
-
+                var validaUsuario = ValidarCampoParaUsuario();
+                var validaCliente = ValidarCampoCliente();
+                if (usuario.PerfilUsuario == "Cliente")
+                {
+                    validaCliente = false;
+                    if (!validaCliente)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    validaUsuario = false;
+                    if (!validaUsuario)
+                    {
+                        return;
+                    }
+                }
                 banco.Usuario.Add(usuario);
                 banco.SaveChanges();
                 MessageBox.Show("Usuário atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -286,6 +220,63 @@ namespace Projeto_Integrado
                 comboFuncao.Enabled = true;
                 txtSenha.Enabled = false;
             }
+        }
+        private bool ValidarCampoParaUsuario()
+        {
+            errorProvider1.Clear();
+            if (txtEmail.Text.IsNullOrEmpty())
+            {
+                errorProvider1.SetError(txtEmail, "O campo EMAIL é obrigatório.");
+            }
+            if (txtSenha.Text.Length < 6)
+            {
+                errorProvider1.SetError(txtSenha, "A senha tem que ter mais que 6 dígitos.");
+
+            }
+            if (txtCPF.Text.IsNullOrEmpty())
+            {
+                errorProvider1.SetError(txtCPF, "O campo CPF é obrigatório.");
+            }
+
+            if (txtNome.Text.IsNullOrEmpty())
+            {
+                errorProvider1.SetError(txtNome, "O campo NAME é obrigatório.");
+            }
+            if (txtSenha.Text.IsNullOrEmpty())
+            {
+                errorProvider1.SetError(txtSenha, "O campo SENHA é obrigatório.");
+            }
+            if (comboFuncao.Text.IsNullOrEmpty())
+            {
+                errorProvider1.SetError(comboFuncao, "Éste campo é obrigatório.");
+            }
+
+            if (!errorProvider1.HasErrors) return true;
+
+            return false;
+
+
+        }
+        private bool ValidarCampoCliente()
+        {
+            errorProvider1.Clear();
+           
+          
+            if (txtCPF.Text.IsNullOrEmpty())
+            {
+                errorProvider1.SetError(txtCPF, "O campo CPF é obrigatório.");
+            }
+
+            if (txtNome.Text.IsNullOrEmpty())
+            {
+                errorProvider1.SetError(txtNome, "O campo NAME é obrigatório.");
+            }
+           
+          
+
+            if (!errorProvider1.HasErrors) return true;
+
+            return false;
         }
     }
 }

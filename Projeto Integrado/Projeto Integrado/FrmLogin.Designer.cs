@@ -30,9 +30,10 @@
         {
             panel1 = new Panel();
             txtUsuario = new TextBox();
-            txtSenha = new TextBox();
             btnEntrar = new Button();
             btnFechar = new Button();
+            maskedSenha = new MaskedTextBox();
+            lblSenha = new Label();
             SuspendLayout();
             // 
             // panel1
@@ -48,23 +49,14 @@
             // txtUsuario
             // 
             txtUsuario.Font = new Font("Arial Narrow", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUsuario.Location = new Point(529, 120);
+            txtUsuario.Location = new Point(529, 137);
             txtUsuario.Margin = new Padding(4);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(367, 44);
+            txtUsuario.Size = new Size(367, 38);
             txtUsuario.TabIndex = 1;
-            txtUsuario.Text = "USUARIO";
-            txtUsuario.TextChanged += txtUsuario_TextChanged;
-            // 
-            // txtSenha
-            // 
-            txtSenha.Font = new Font("Arial Narrow", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSenha.Location = new Point(529, 243);
-            txtSenha.Margin = new Padding(4);
-            txtSenha.Name = "txtSenha";
-            txtSenha.Size = new Size(367, 44);
-            txtSenha.TabIndex = 2;
-            txtSenha.Text = "SENHA";
+            txtUsuario.Text = "Usuário";
+            txtUsuario.Enter += txtUsuario_Enter;
+            txtUsuario.Leave += txtUsuario_Leave;
             // 
             // btnEntrar
             // 
@@ -88,20 +80,43 @@
             btnFechar.Location = new Point(918, 0);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(56, 34);
-            btnFechar.TabIndex = 4;
+            btnFechar.TabIndex = 0;
             btnFechar.Text = "X";
             btnFechar.UseVisualStyleBackColor = true;
             btnFechar.Click += btnFechar_Click;
             // 
+            // maskedSenha
+            // 
+            maskedSenha.Font = new Font("Arial Narrow", 16F);
+            maskedSenha.Location = new Point(529, 257);
+            maskedSenha.Name = "maskedSenha";
+            maskedSenha.Size = new Size(368, 38);
+            maskedSenha.TabIndex = 2;
+            maskedSenha.UseSystemPasswordChar = true;
+            maskedSenha.Enter += maskedSenha_Enter;
+            maskedSenha.Leave += maskedSenha_Leave;
+            // 
+            // lblSenha
+            // 
+            lblSenha.AutoSize = true;
+            lblSenha.BackColor = Color.White;
+            lblSenha.Font = new Font("Arial Narrow", 16F);
+            lblSenha.Location = new Point(529, 260);
+            lblSenha.Name = "lblSenha";
+            lblSenha.Size = new Size(77, 31);
+            lblSenha.TabIndex = 4;
+            lblSenha.Text = "Senha";
+            // 
             // FrmLogin
             // 
-            AutoScaleDimensions = new SizeF(13F, 33F);
+            AutoScaleDimensions = new SizeF(11F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             ClientSize = new Size(975, 529);
+            Controls.Add(lblSenha);
+            Controls.Add(maskedSenha);
             Controls.Add(btnFechar);
             Controls.Add(btnEntrar);
-            Controls.Add(txtSenha);
             Controls.Add(txtUsuario);
             Controls.Add(panel1);
             Font = new Font("Arial Narrow", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -117,8 +132,9 @@
 
         private Panel panel1;
         private TextBox txtUsuario;
-        private TextBox txtSenha;
         private Button btnEntrar;
         private Button btnFechar;
+        private MaskedTextBox maskedSenha;
+        private Label lblSenha;
     }
 }

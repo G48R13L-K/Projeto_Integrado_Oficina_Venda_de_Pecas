@@ -30,36 +30,42 @@ namespace Projeto_Integrado
         {
             var formVendas = new FrmVendas();
             formVendas.ShowDialog();
+            
         }
 
         private void btnRelatorio_Click(object sender, EventArgs e)
         {
             var FrmRelatorio = new FrmRelatorio();
             FrmRelatorio.ShowDialog();
+            
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
             var formListaCadastro = new FrmListaCadastroUsuario();
             formListaCadastro.ShowDialog();
+            
         }
 
         private void btnPecas_Click(object sender, EventArgs e)
         {
-            var formPecas = new FrmEstoquePecas();
+            var formPecas = new FrmCadastrosPecas();
             formPecas.ShowDialog();
+            
         }
 
         private void btnCadastros_Click(object sender, EventArgs e)
         {
             var formCadastroUsuarios = new FrmCadastroUsuarios();
             formCadastroUsuarios.ShowDialog();
+           
         }
 
         private void btnEstoqui_Click(object sender, EventArgs e)
         {
             var formEstoque = new FrmEstoquePecas();
             formEstoque.ShowDialog();
+            
         }
     }
 }

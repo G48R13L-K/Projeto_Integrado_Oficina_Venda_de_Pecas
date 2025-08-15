@@ -26,7 +26,7 @@ namespace Projeto_Integrado
             InitializeComponent();
             BuscarPecas();
             condicao();
-            
+
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -89,30 +89,30 @@ namespace Projeto_Integrado
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if (btnExcluir.Enabled==true)
+            if (btnExcluir.Enabled == true)
             {
-              
-                    using (var banco = new VendasDbContest())
+
+                using (var banco = new VendasDbContest())
+                {
+                    var pecaParaExcluir = banco.Pecas.FirstOrDefault(p => p.Id == pecaSelecionada.Id);
+                    if (pecaParaExcluir != null)
                     {
-                        var pecaParaExcluir = banco.Pecas.FirstOrDefault(p => p.Id == pecaSelecionada.Id);
-                        if (pecaParaExcluir != null)
-                        {
-                            banco.Pecas.Remove(pecaParaExcluir);
-                            banco.SaveChanges();
-                            MessageBox.Show("Peça excluída com sucesso!");
-                            BuscarPecas();
-                            pecaSelecionada = null;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Selecione uma peça para excluir.");
-                        }
-                
+                        banco.Pecas.Remove(pecaParaExcluir);
+                        banco.SaveChanges();
+                        MessageBox.Show("Peça excluída com sucesso!");
+                        BuscarPecas();
+                        pecaSelecionada = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Selecione uma peça para excluir.");
+                    }
+
                 }
-                
+
             }
-            
-            
+
+
 
         }
 
@@ -124,15 +124,17 @@ namespace Projeto_Integrado
             {
                 btnEditar.Enabled = true;
                 btnExcluir.Enabled = true;
-                
+
             }
             else
             {
                 btnEditar.Enabled = false;
                 btnExcluir.Enabled = false;
-               
+
             }
 
         }
+
+        
     }
 }

@@ -13,7 +13,7 @@ namespace Projeto_Integrado
     public partial class FrmVendas : Form
 
     {
-        
+
         private VendaSelecionada _vendaSelecionada;
         public FrmVendas()
         {
@@ -25,13 +25,13 @@ namespace Projeto_Integrado
         {
 
             _vendaSelecionada = vendaSelecionada;
-            
-                InitializeComponent();
-                PreencherCampos();
-                CarregarPecas();
-                CarregarCombobox();
-               
-            
+
+            InitializeComponent();
+            PreencherCampos();
+            CarregarPecas();
+            CarregarCombobox();
+
+
         }
 
         private void CarregarPecas()
@@ -89,7 +89,7 @@ namespace Projeto_Integrado
 
         private void PreencherCampos()
         {
-           
+
             // preencher campos
             if (_vendaSelecionada != null)
             {
@@ -145,7 +145,7 @@ namespace Projeto_Integrado
                     novavendas.Quantidade = quantidade;
                     novavendas.DataVenda = dataVenda;
 
-                 
+
                     banco.Vendas.Update(novavendas);
                     banco.SaveChanges();
                     MessageBox.Show("Senha cadastrada com sucesso!", "Sucesso",
@@ -221,6 +221,8 @@ namespace Projeto_Integrado
         {
             PreencherCampos();
         }
+
+       
     }
 
 }

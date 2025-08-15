@@ -50,7 +50,7 @@
             btnCancelar.Location = new Point(970, 515);
             btnCancelar.Margin = new Padding(4);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(147, 56);
+            btnCancelar.Size = new Size(146, 44);
             btnCancelar.TabIndex = 26;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
@@ -61,10 +61,10 @@
             btnSalvar.BackColor = Color.Lime;
             btnSalvar.FlatAppearance.BorderSize = 0;
             btnSalvar.FlatStyle = FlatStyle.Flat;
-            btnSalvar.Location = new Point(827, 515);
+            btnSalvar.Location = new Point(816, 515);
             btnSalvar.Margin = new Padding(4);
             btnSalvar.Name = "btnSalvar";
-            btnSalvar.Size = new Size(146, 56);
+            btnSalvar.Size = new Size(146, 44);
             btnSalvar.TabIndex = 25;
             btnSalvar.Text = "Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
@@ -90,37 +90,37 @@
             label7.Location = new Point(420, 26);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(310, 48);
+            label7.Size = new Size(262, 41);
             label7.TabIndex = 22;
             label7.Text = "Cadastro de peças";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(29, 292);
+            label4.Location = new Point(26, 312);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(281, 32);
+            label4.Size = new Size(135, 28);
             label4.TabIndex = 19;
-            label4.Text = "valor  da peça  individual";
+            label4.Text = "Valor  unitário";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(29, 186);
+            label3.Location = new Point(29, 205);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(139, 32);
+            label3.Size = new Size(115, 28);
             label3.TabIndex = 18;
             label3.Text = "Quantidade";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(32, 75);
+            label1.Location = new Point(29, 100);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(170, 32);
+            label1.Size = new Size(139, 28);
             label1.TabIndex = 16;
             label1.Text = "Nome da peça";
             // 
@@ -129,7 +129,7 @@
             txtValorPeca.Location = new Point(26, 345);
             txtValorPeca.Margin = new Padding(4, 5, 4, 5);
             txtValorPeca.Name = "txtValorPeca";
-            txtValorPeca.Size = new Size(1088, 39);
+            txtValorPeca.Size = new Size(1088, 34);
             txtValorPeca.TabIndex = 14;
             // 
             // txtQuantidadePeca
@@ -137,16 +137,16 @@
             txtQuantidadePeca.Location = new Point(26, 238);
             txtQuantidadePeca.Margin = new Padding(4, 5, 4, 5);
             txtQuantidadePeca.Name = "txtQuantidadePeca";
-            txtQuantidadePeca.Size = new Size(1083, 39);
+            txtQuantidadePeca.Size = new Size(1083, 34);
             txtQuantidadePeca.TabIndex = 13;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(26, 408);
+            label5.Location = new Point(29, 412);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(116, 32);
+            label5.Size = new Size(96, 28);
             label5.TabIndex = 19;
             label5.Text = "Descrição";
             // 
@@ -155,7 +155,7 @@
             txtDescricaoPeca.Location = new Point(29, 445);
             txtDescricaoPeca.Margin = new Padding(4, 5, 4, 5);
             txtDescricaoPeca.Name = "txtDescricaoPeca";
-            txtDescricaoPeca.Size = new Size(1088, 39);
+            txtDescricaoPeca.Size = new Size(1088, 34);
             txtDescricaoPeca.TabIndex = 14;
             // 
             // txtNomePeca
@@ -163,12 +163,12 @@
             txtNomePeca.Location = new Point(29, 133);
             txtNomePeca.Margin = new Padding(4, 5, 4, 5);
             txtNomePeca.Name = "txtNomePeca";
-            txtNomePeca.Size = new Size(1083, 39);
+            txtNomePeca.Size = new Size(1083, 34);
             txtNomePeca.TabIndex = 13;
             // 
             // FrmCadastrosPecas
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             ClientSize = new Size(1140, 591);
@@ -188,6 +188,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "FrmCadastrosPecas";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmCadastrosPecas";
             ResumeLayout(false);
             PerformLayout();

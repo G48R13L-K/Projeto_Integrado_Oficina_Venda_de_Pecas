@@ -76,7 +76,7 @@
             btnPecas.BackColor = Color.White;
             btnPecas.FlatAppearance.BorderSize = 0;
             btnPecas.FlatStyle = FlatStyle.Flat;
-            btnPecas.Location = new Point(626, 246);
+            btnPecas.Location = new Point(613, 96);
             btnPecas.Margin = new Padding(4);
             btnPecas.Name = "btnPecas";
             btnPecas.Size = new Size(218, 90);
@@ -90,7 +90,7 @@
             btnEstoqui.BackColor = Color.White;
             btnEstoqui.FlatAppearance.BorderSize = 0;
             btnEstoqui.FlatStyle = FlatStyle.Flat;
-            btnEstoqui.Location = new Point(626, 96);
+            btnEstoqui.Location = new Point(613, 246);
             btnEstoqui.Margin = new Padding(4);
             btnEstoqui.Name = "btnEstoqui";
             btnEstoqui.Size = new Size(218, 90);
@@ -104,7 +104,7 @@
             btnCadastros.BackColor = Color.White;
             btnCadastros.FlatAppearance.BorderSize = 0;
             btnCadastros.FlatStyle = FlatStyle.Flat;
-            btnCadastros.Location = new Point(344, 98);
+            btnCadastros.Location = new Point(325, 96);
             btnCadastros.Margin = new Padding(4);
             btnCadastros.Name = "btnCadastros";
             btnCadastros.Size = new Size(218, 90);
@@ -118,7 +118,7 @@
             btnClientes.BackColor = Color.White;
             btnClientes.FlatAppearance.BorderSize = 0;
             btnClientes.FlatStyle = FlatStyle.Flat;
-            btnClientes.Location = new Point(344, 246);
+            btnClientes.Location = new Point(325, 246);
             btnClientes.Margin = new Padding(4);
             btnClientes.Name = "btnClientes";
             btnClientes.Size = new Size(218, 90);
@@ -162,12 +162,12 @@
             labelBemvindo.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
             labelBemvindo.Location = new Point(164, 14);
             labelBemvindo.Name = "labelBemvindo";
-            labelBemvindo.Size = new Size(0, 45);
+            labelBemvindo.Size = new Size(0, 37);
             labelBemvindo.TabIndex = 5;
             // 
             // FrmPrincipal
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             ClientSize = new Size(902, 503);
@@ -178,6 +178,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "FrmPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);

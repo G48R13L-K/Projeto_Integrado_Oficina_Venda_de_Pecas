@@ -11,14 +11,14 @@ namespace Projeto_Integrado
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            var usuarioValidado = validarLogin(txtUsuario.Text, txtSenha.Text);
+            var usuarioValidado = validarLogin(txtUsuario.Text, maskedSenha.Text);
             if (usuarioValidado.isValid && usuarioValidado.Usuario is not null)
             {
                 UsuarioHelper.NomeUsuario = usuarioValidado.Usuario.NomeCliente;
                 UsuarioHelper.Funcao = usuarioValidado.Usuario.Funcao;
 
                 this.Hide();
-                var frmPrincipal = new FrmPrincipal(txtUsuario.Text, txtSenha.Text);
+                var frmPrincipal = new FrmPrincipal(txtUsuario.Text, maskedSenha.Text);
                 frmPrincipal.Show();
             }
         }
@@ -50,15 +50,47 @@ namespace Projeto_Integrado
                 return new UsuarioData() { Usuario = null, isValid = false }; // Ensure proper handling of null values.
             }
         }
-        private void txtUsuario_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
             Close();
             Application.Exit();
+        }
+
+        private void txtUsuario_Enter(object sender, EventArgs e)
+        {
+            if (txtUsuario.Text == "Usuário")
+            {
+                txtUsuario.Text = string.Empty;
+                txtUsuario.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtUsuario_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
+            {
+                txtUsuario.Text = "Usuário";
+                txtUsuario.ForeColor = Color.Black;
+            }
+        }
+
+        private void maskedSenha_Enter(object sender, EventArgs e)
+        {
+            if (lblSenha.Text == "Senha")
+            {
+                lblSenha.Text = string.Empty;
+                lblSenha.ForeColor = Color.Black;
+            }
+        }
+        private void maskedSenha_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(maskedSenha.Text))
+            {
+                lblSenha.Text = "Senha";
+                lblSenha.ForeColor = Color.Black;
+            }
+
         }
     }
 }

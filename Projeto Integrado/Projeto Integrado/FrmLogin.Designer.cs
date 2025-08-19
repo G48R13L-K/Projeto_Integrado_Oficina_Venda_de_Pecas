@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
             txtUsuario = new TextBox();
             btnEntrar = new Button();
             btnFechar = new Button();
@@ -36,20 +35,10 @@
             lblSenha = new Label();
             SuspendLayout();
             // 
-            // panel1
-            // 
-            panel1.BackColor = Color.Navy;
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(390, 529);
-            panel1.TabIndex = 0;
-            // 
             // txtUsuario
             // 
             txtUsuario.Font = new Font("Arial Narrow", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUsuario.Location = new Point(529, 137);
+            txtUsuario.Location = new Point(80, 117);
             txtUsuario.Margin = new Padding(4);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(367, 38);
@@ -64,7 +53,7 @@
             btnEntrar.FlatAppearance.BorderSize = 0;
             btnEntrar.FlatStyle = FlatStyle.Flat;
             btnEntrar.Font = new Font("Arial Narrow", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEntrar.Location = new Point(638, 363);
+            btnEntrar.Location = new Point(189, 343);
             btnEntrar.Margin = new Padding(4);
             btnEntrar.Name = "btnEntrar";
             btnEntrar.Size = new Size(150, 57);
@@ -88,7 +77,7 @@
             // maskedSenha
             // 
             maskedSenha.Font = new Font("Arial Narrow", 16F);
-            maskedSenha.Location = new Point(529, 257);
+            maskedSenha.Location = new Point(80, 237);
             maskedSenha.Name = "maskedSenha";
             maskedSenha.Size = new Size(368, 38);
             maskedSenha.TabIndex = 2;
@@ -101,7 +90,7 @@
             lblSenha.AutoSize = true;
             lblSenha.BackColor = Color.White;
             lblSenha.Font = new Font("Arial Narrow", 16F);
-            lblSenha.Location = new Point(529, 260);
+            lblSenha.Location = new Point(80, 240);
             lblSenha.Name = "lblSenha";
             lblSenha.Size = new Size(77, 31);
             lblSenha.TabIndex = 4;
@@ -112,15 +101,17 @@
             AutoScaleDimensions = new SizeF(11F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
+            BackgroundImage = Properties.Resources.WhatsApp_Image_2025_08_18_at_21_26_01;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(975, 529);
             Controls.Add(lblSenha);
             Controls.Add(maskedSenha);
             Controls.Add(btnFechar);
             Controls.Add(btnEntrar);
             Controls.Add(txtUsuario);
-            Controls.Add(panel1);
             Font = new Font("Arial Narrow", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
+            ImeMode = ImeMode.NoControl;
             Margin = new Padding(4);
             Name = "FrmLogin";
             Text = "Form1";
@@ -129,8 +120,6 @@
         }
 
         #endregion
-
-        private Panel panel1;
         private TextBox txtUsuario;
         private Button btnEntrar;
         private Button btnFechar;

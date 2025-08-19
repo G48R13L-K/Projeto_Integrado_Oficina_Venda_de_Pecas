@@ -43,7 +43,7 @@
             btnFechar.BackColor = Color.Transparent;
             btnFechar.FlatAppearance.BorderSize = 0;
             btnFechar.FlatAppearance.MouseDownBackColor = Color.Gray;
-            btnFechar.FlatAppearance.MouseOverBackColor = Color.MidnightBlue;
+            btnFechar.FlatAppearance.MouseOverBackColor = Color.DarkBlue;
             btnFechar.FlatStyle = FlatStyle.Flat;
             btnFechar.ForeColor = Color.White;
             btnFechar.Location = new Point(810, 13);

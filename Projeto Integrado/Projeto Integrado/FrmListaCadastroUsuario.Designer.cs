@@ -42,10 +42,12 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.Transparent;
             groupBox1.Controls.Add(btnExcluir);
             groupBox1.Controls.Add(btnMaisCadastro);
             groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(dataGridView1);
+            groupBox1.ForeColor = SystemColors.AppWorkspace;
             groupBox1.Location = new Point(13, 77);
             groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
@@ -60,6 +62,7 @@
             btnExcluir.BackColor = Color.Red;
             btnExcluir.FlatAppearance.BorderSize = 0;
             btnExcluir.FlatStyle = FlatStyle.Flat;
+            btnExcluir.ForeColor = Color.Black;
             btnExcluir.Location = new Point(645, 331);
             btnExcluir.Margin = new Padding(4);
             btnExcluir.Name = "btnExcluir";
@@ -74,6 +77,7 @@
             btnMaisCadastro.BackColor = Color.Yellow;
             btnMaisCadastro.FlatAppearance.BorderSize = 0;
             btnMaisCadastro.FlatStyle = FlatStyle.Flat;
+            btnMaisCadastro.ForeColor = Color.Black;
             btnMaisCadastro.Location = new Point(28, 331);
             btnMaisCadastro.Margin = new Padding(4);
             btnMaisCadastro.Name = "btnMaisCadastro";
@@ -88,7 +92,8 @@
             btnEditar.BackColor = Color.FromArgb(0, 192, 0);
             btnEditar.FlatAppearance.BorderSize = 0;
             btnEditar.FlatStyle = FlatStyle.Flat;
-            btnEditar.Location = new Point(491, 331);
+            btnEditar.ForeColor = Color.Black;
+            btnEditar.Location = new Point(480, 331);
             btnEditar.Margin = new Padding(4);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(146, 44);
@@ -122,6 +127,8 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.ForeColor = SystemColors.AppWorkspace;
             label1.Location = new Point(21, 21);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
@@ -131,15 +138,18 @@
             // 
             // btnFechar
             // 
+            btnFechar.BackColor = Color.Transparent;
             btnFechar.FlatAppearance.BorderSize = 0;
+            btnFechar.FlatAppearance.MouseOverBackColor = Color.MidnightBlue;
             btnFechar.FlatStyle = FlatStyle.Flat;
+            btnFechar.ForeColor = SystemColors.AppWorkspace;
             btnFechar.Location = new Point(764, 10);
             btnFechar.Margin = new Padding(4);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(51, 44);
             btnFechar.TabIndex = 5;
             btnFechar.Text = "X";
-            btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.UseVisualStyleBackColor = false;
             btnFechar.Click += btnFechar_Click;
             // 
             // FrmListaCadastroUsuario
@@ -147,6 +157,8 @@
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
+            BackgroundImage = Properties.Resources.WhatsApp_Image_2025_08_18_at_21_17_26;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(828, 493);
             Controls.Add(groupBox1);
             Controls.Add(txtPesquisa);

@@ -64,14 +64,17 @@
             // 
             // btnFechar
             // 
+            btnFechar.BackColor = Color.Transparent;
             btnFechar.FlatAppearance.BorderSize = 0;
+            btnFechar.FlatAppearance.MouseOverBackColor = Color.MidnightBlue;
             btnFechar.FlatStyle = FlatStyle.Flat;
+            btnFechar.ForeColor = SystemColors.AppWorkspace;
             btnFechar.Location = new Point(918, 0);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(56, 34);
             btnFechar.TabIndex = 0;
             btnFechar.Text = "X";
-            btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.UseVisualStyleBackColor = false;
             btnFechar.Click += btnFechar_Click;
             // 
             // maskedSenha
@@ -111,7 +114,6 @@
             Controls.Add(txtUsuario);
             Font = new Font("Arial Narrow", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
-            ImeMode = ImeMode.NoControl;
             Margin = new Padding(4);
             Name = "FrmLogin";
             Text = "Form1";

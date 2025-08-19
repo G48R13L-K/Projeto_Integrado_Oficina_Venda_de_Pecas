@@ -171,6 +171,7 @@
             ForeColor = SystemColors.AppWorkspace;
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmEstoquePecas";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmEstoquePecas";
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

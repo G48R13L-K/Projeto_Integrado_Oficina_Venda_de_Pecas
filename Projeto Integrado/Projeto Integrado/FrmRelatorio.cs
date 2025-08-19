@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore;
 
 namespace Projeto_Integrado
 {
@@ -27,19 +28,35 @@ namespace Projeto_Integrado
 
         private void BuscarVenda()
         {
+           
+        
             using (var bd = new VendasDbContest())
             {
-                var Venda = bd.Vendas.AsQueryable();
+                var venda = bd.Vendas.Include(v => v.Cliente) 
+                              .AsQueryable();
+
                 if (!string.IsNullOrEmpty(txtPesquisa.Text))
                 {
-                    Venda = Venda.Where(u => u.Id.Equals(txtPesquisa.Text) ||
-                                                    u.ClienteId.Equals(txtPesquisa.Text)||
-                                                    u.DataVenda.Equals(txtPesquisa.Text));
-
+                    venda = venda.Where(v =>
+                        v.Id.ToString().Contains(txtPesquisa.Text) ||
+                        v.Cliente.NomeCliente.Contains(txtPesquisa.Text) ||   // busca pelo nome do cliente
+                        v.Peca.NomePeca.Contains(txtPesquisa.Text) || // busca pelo nome da peça
+                        v.DataVenda.ToString().Contains(txtPesquisa.Text));
                 }
-                dataGridView1.DataSource = Venda.ToList();
 
+                // Aqui você projeta os campos que quer mostrar no DataGrid
+                var resultado = venda.Select(v => new
+                {
+                    v.Id,
+                    Cliente = v.Cliente.NomeCliente,   // mostra nome em vez do ID
+                    Peca = v.Peca.NomePeca, // mostra nome da peça em vez do ID
+                    v.Quantidade,
+                    v.DataVenda
+                }).ToList();
+
+                dataGridView1.DataSource = resultado;
             }
+        
         }
 
         private void btnMaisVendas_Click(object sender, EventArgs e)

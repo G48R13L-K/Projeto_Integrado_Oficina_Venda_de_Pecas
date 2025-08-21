@@ -93,11 +93,10 @@ namespace Projeto_Integrado
                 usuario.Funcao = Funcao;
                 usuario.Senha = Senha;
 
-                var validaUsuario = ValidarCampoParaUsuario();
-                var validaCliente = ValidarCampoCliente();
                 if (usuario.PerfilUsuario == "Cliente")
                 {
-                    validaCliente = false;
+                    var validaCliente = ValidarCampoCliente();
+
                     if (!validaCliente)
                     {
                         return;
@@ -105,7 +104,8 @@ namespace Projeto_Integrado
                 }
                 else
                 {
-                    validaUsuario = false;
+                    var validaUsuario = ValidarCampoParaUsuario();
+
                     if (!validaUsuario)
                     {
                         return;
@@ -151,19 +151,19 @@ namespace Projeto_Integrado
                     Funcao = comboFuncao.Text,
                     Senha = txtSenha.Text
                 };
-                var validaUsuario = ValidarCampoParaUsuario();
-                var validaCliente = ValidarCampoCliente();
+               
                 if (usuario.PerfilUsuario == "Cliente")
                 {
-                    validaCliente = false;
+                var validaCliente = ValidarCampoCliente();
+                    
                     if (!validaCliente)
                     {
                         return;
                     }
                 }
                 else
-                {
-                    validaUsuario = false;
+                { var validaUsuario = ValidarCampoParaUsuario();
+                   
                     if (!validaUsuario)
                     {
                         return;
@@ -222,8 +222,13 @@ namespace Projeto_Integrado
             }
         }
         private bool ValidarCampoParaUsuario()
-        {
-            errorProvider1.Clear();
+
+        {errorProvider1.Clear();
+            if(cmbUsuarios.Text.IsNullOrEmpty())
+            {
+                errorProvider1.SetError(cmbUsuarios, "O campo PERFIL é obrigatório.");
+            }
+            
             if (txtEmail.Text.IsNullOrEmpty())
             {
                 errorProvider1.SetError(txtEmail, "O campo EMAIL é obrigatório.");
@@ -260,8 +265,13 @@ namespace Projeto_Integrado
         private bool ValidarCampoCliente()
         {
             errorProvider1.Clear();
-           
-          
+
+            if (cmbUsuarios.Text.IsNullOrEmpty())
+            {
+                errorProvider1.SetError(cmbUsuarios, "O campo PERFIL é obrigatório.");
+            }
+
+
             if (txtCPF.Text.IsNullOrEmpty())
             {
                 errorProvider1.SetError(txtCPF, "O campo CPF é obrigatório.");

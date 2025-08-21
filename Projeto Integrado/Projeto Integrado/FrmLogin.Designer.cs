@@ -34,7 +34,7 @@
             maskedSenha = new MaskedTextBox();
             lblSenha = new Label();
             pictureBox1 = new PictureBox();
-            panel1.SuspendLayout();
+          
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -129,7 +129,7 @@
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
-            panel1.ResumeLayout(false);
+            
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -61,6 +61,7 @@
             // btnExcluir
             // 
             btnExcluir.BackColor = Color.Red;
+            btnExcluir.Enabled = false;
             btnExcluir.FlatAppearance.BorderSize = 0;
             btnExcluir.FlatStyle = FlatStyle.Flat;
             btnExcluir.Font = new Font("Segoe UI", 14F);
@@ -72,7 +73,7 @@
             btnExcluir.TabIndex = 1;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = false;
-            btnExcluir.Click += btnCancelar_Click;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnIncuirPecas
             // 

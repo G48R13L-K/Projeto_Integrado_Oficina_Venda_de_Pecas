@@ -19,6 +19,31 @@ namespace Projeto_Integrado
             InitializeComponent();
         }
 
+        public FrmCadastrosPecas(Peca pecaSelecionada)
+        {
+            InitializeComponent();
+            PecaSelecionada = pecaSelecionada;
+            CarregarPecas();
+        }
+
+        private void CarregarPecas()
+        {
+            using (var bd = new VendasDbContest())
+            {
+                if (PecaSelecionada != null)
+                {
+                    var peca = bd.Pecas.FirstOrDefault(p => p.Id == PecaSelecionada.Id);
+                    if (peca != null)
+                    {
+                        txtNomePeca.Text = peca.NomePeca;
+                        txtDescricaoPeca.Text = peca.DescricaoPeca;
+                        txtValorPeca.Text = peca.PrecoPeca.ToString();
+                        txtQuantidadePeca.Text = peca.QuantidadePeca.ToString();
+                    }
+                }
+            }
+        }
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (PecaSelecionada == null)
@@ -50,6 +75,7 @@ namespace Projeto_Integrado
                 banco.Pecas.Add(pecaNova);
                 banco.SaveChanges();
                 MessageBox.Show("Peça Actualizada com sucesso!");
+                CarregarPecas();
                 this.Close();
             }
         }
@@ -77,7 +103,9 @@ namespace Projeto_Integrado
                 banco.Pecas.Add(novaPeca);
                 banco.SaveChanges();
                 MessageBox.Show("Peça Cadastrada com sucesso!");
+                CarregarPecas();
                 this.Close();
+                
             }
         }
 

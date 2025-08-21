@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Projeto_Integrado
 {
     public partial class FrmCadastrosPecas : Form
     {
         Peca? PecaSelecionada;
-       
+
         public FrmCadastrosPecas()
         {
             InitializeComponent();
@@ -72,6 +73,12 @@ namespace Projeto_Integrado
                 pecaNova.PrecoPeca = decimal.Parse(txtValorPeca.Text);
                 pecaNova.QuantidadePeca = int.Parse(txtQuantidadePeca.Text);
 
+                var pecascadastrada = ValidarCamposDeCadastroPecas();
+                if (pecascadastrada == false)
+                {
+                    return;
+
+                }
                 banco.Pecas.Add(pecaNova);
                 banco.SaveChanges();
                 MessageBox.Show("Peça Actualizada com sucesso!");
@@ -86,8 +93,15 @@ namespace Projeto_Integrado
 
         private void CadastrarUmaNovaPeca()
         {
-            using (var banco = new VendasDbContest())
+
+            using ( var banco = new VendasDbContest())
             {
+                var pecascadastrada = ValidarCamposDeCadastroPecas();
+                if (pecascadastrada == false)
+                {
+                    return ;
+
+                }
                 string nomePeca = txtNomePeca.Text;
                 string descricaoPeca = txtDescricaoPeca.Text;
                 decimal precoPeca = decimal.Parse(txtValorPeca.Text);
@@ -99,7 +113,9 @@ namespace Projeto_Integrado
                     PrecoPeca = precoPeca,
                     QuantidadePeca = quantidadePeca
                 };
+                
 
+                   
                 banco.Pecas.Add(novaPeca);
                 banco.SaveChanges();
                 MessageBox.Show("Peça Cadastrada com sucesso!");
@@ -118,6 +134,30 @@ namespace Projeto_Integrado
         {
             this.Close();
         }
+        private bool ValidarCamposDeCadastroPecas()
+        {
+
+            errorProvider1.Clear();
+            if (txtDescricaoPeca.Text.IsNullOrEmpty())
+            {
+                errorProvider1.SetError(txtDescricaoPeca,"O campo DESCRÇÃO é obrigatório");
+            }
+            if (txtNomePeca.Text.IsNullOrEmpty())
+            {
+                errorProvider1.SetError(txtNomePeca, "O campo NOME é obrigatório.");
+            }
+            if (txtValorPeca.Text.IsNullOrEmpty())
+            {
+                errorProvider1.SetError(txtValorPeca, "O campo VALOR é obrigatório.");
+            }
+            if (txtQuantidadePeca.Text.IsNullOrEmpty())
+            {
+                errorProvider1.SetError(txtQuantidadePeca, "O campo QUANTIDADE é obrigatório.");
+            }
+            if (!errorProvider1.HasErrors) return true;
+            return false;
+        }
+
     }
 }
         

@@ -44,6 +44,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Location = new Point(45, 42);
             label1.Name = "label1";
             label1.Size = new Size(133, 24);
@@ -52,7 +53,9 @@
             // 
             // btnFechar
             // 
+            btnFechar.BackColor = Color.Transparent;
             btnFechar.FlatAppearance.BorderSize = 0;
+            btnFechar.FlatAppearance.MouseOverBackColor = Color.MidnightBlue;
             btnFechar.FlatStyle = FlatStyle.Flat;
             btnFechar.Location = new Point(769, 13);
             btnFechar.Margin = new Padding(3, 4, 3, 4);
@@ -60,7 +63,7 @@
             btnFechar.Size = new Size(47, 44);
             btnFechar.TabIndex = 1;
             btnFechar.Text = "X";
-            btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.UseVisualStyleBackColor = false;
             btnFechar.Click += btnFechar_Click;
             // 
             // txtQuantidadde
@@ -74,6 +77,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
             label2.Location = new Point(45, 141);
             label2.Name = "label2";
             label2.Size = new Size(47, 24);
@@ -83,6 +87,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
             label4.Location = new Point(592, 276);
             label4.Name = "label4";
             label4.Size = new Size(94, 24);
@@ -100,6 +105,7 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
             label5.Location = new Point(45, 276);
             label5.Name = "label5";
             label5.Size = new Size(45, 24);
@@ -111,6 +117,7 @@
             btnSalvar.BackColor = Color.FromArgb(0, 192, 0);
             btnSalvar.FlatAppearance.BorderSize = 0;
             btnSalvar.FlatStyle = FlatStyle.Flat;
+            btnSalvar.ForeColor = Color.Black;
             btnSalvar.Location = new Point(440, 426);
             btnSalvar.Margin = new Padding(3, 4, 3, 4);
             btnSalvar.Name = "btnSalvar";
@@ -125,6 +132,7 @@
             btnCancelar.BackColor = Color.Red;
             btnCancelar.FlatAppearance.BorderSize = 0;
             btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.ForeColor = Color.Black;
             btnCancelar.Location = new Point(629, 426);
             btnCancelar.Margin = new Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
@@ -155,6 +163,8 @@
             AutoScaleDimensions = new SizeF(10F, 24F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
+            BackgroundImage = Properties.Resources.WhatsApp_Image_2025_08_18_at_21_17_26;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(828, 493);
             Controls.Add(cbxPeca);
             Controls.Add(CBXCliente);
@@ -168,6 +178,7 @@
             Controls.Add(label1);
             Controls.Add(txtQuantidadde);
             Font = new Font("Arial Narrow", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ForeColor = SystemColors.AppWorkspace;
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "FrmVendas";

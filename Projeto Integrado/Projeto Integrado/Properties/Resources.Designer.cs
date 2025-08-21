@@ -59,5 +59,45 @@ namespace Projeto_Integrado.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2025_08_18_at_21_17_26 {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2025-08-18 at 21.17.26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2025_08_18_at_21_26_01 {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2025-08-18 at 21.26.01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2025_08_18_at_21_26_43 {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2025-08-18 at 21.26.43", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2025_08_18_at_21_39_02 {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2025-08-18 at 21.39.02", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

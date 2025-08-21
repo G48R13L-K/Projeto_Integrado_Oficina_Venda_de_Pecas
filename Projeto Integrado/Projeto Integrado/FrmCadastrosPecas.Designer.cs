@@ -47,6 +47,7 @@
             btnCancelar.BackColor = Color.Red;
             btnCancelar.FlatAppearance.BorderSize = 0;
             btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.ForeColor = Color.Black;
             btnCancelar.Location = new Point(970, 515);
             btnCancelar.Margin = new Padding(4);
             btnCancelar.Name = "btnCancelar";
@@ -61,7 +62,8 @@
             btnSalvar.BackColor = Color.Lime;
             btnSalvar.FlatAppearance.BorderSize = 0;
             btnSalvar.FlatStyle = FlatStyle.Flat;
-            btnSalvar.Location = new Point(816, 515);
+            btnSalvar.ForeColor = Color.Black;
+            btnSalvar.Location = new Point(805, 515);
             btnSalvar.Margin = new Padding(4);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(146, 44);
@@ -72,7 +74,9 @@
             // 
             // btnFechar
             // 
+            btnFechar.BackColor = Color.Transparent;
             btnFechar.FlatAppearance.BorderSize = 0;
+            btnFechar.FlatAppearance.MouseOverBackColor = Color.MidnightBlue;
             btnFechar.FlatStyle = FlatStyle.Flat;
             btnFechar.Location = new Point(1082, -2);
             btnFechar.Margin = new Padding(4);
@@ -80,12 +84,13 @@
             btnFechar.Size = new Size(72, 44);
             btnFechar.TabIndex = 24;
             btnFechar.Text = "X";
-            btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.UseVisualStyleBackColor = false;
             btnFechar.Click += btnFechar_Click;
             // 
             // label7
             // 
             label7.AutoSize = true;
+            label7.BackColor = Color.Transparent;
             label7.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.Location = new Point(420, 26);
             label7.Margin = new Padding(4, 0, 4, 0);
@@ -97,6 +102,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
             label4.Location = new Point(26, 312);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
@@ -107,6 +113,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
             label3.Location = new Point(29, 205);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
@@ -117,6 +124,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Location = new Point(29, 100);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
@@ -143,6 +151,7 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
             label5.Location = new Point(29, 412);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
@@ -170,7 +179,9 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(192, 192, 255);
+            BackColor = Color.MidnightBlue;
+            BackgroundImage = Properties.Resources.WhatsApp_Image_2025_08_18_at_21_17_26;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1140, 591);
             Controls.Add(btnCancelar);
             Controls.Add(btnSalvar);
@@ -185,6 +196,7 @@
             Controls.Add(txtNomePeca);
             Controls.Add(txtQuantidadePeca);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ForeColor = SystemColors.AppWorkspace;
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "FrmCadastrosPecas";

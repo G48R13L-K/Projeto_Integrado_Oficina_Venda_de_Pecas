@@ -37,6 +37,7 @@ namespace Projeto_Integrado
         private void btnIncuirPecas_Click(object sender, EventArgs e)
         {
             new FrmCadastrosPecas().ShowDialog();
+            BuscarPecas();
         }
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
@@ -119,7 +120,7 @@ namespace Projeto_Integrado
             }
         }
 
- 
+
 
         private void condicao()
         {
@@ -140,6 +141,9 @@ namespace Projeto_Integrado
 
         }
 
-        
+        private void FrmEstoquePecas_Load(object sender, EventArgs e)
+        {
+            BuscarPecas();
+        }
     }
 }

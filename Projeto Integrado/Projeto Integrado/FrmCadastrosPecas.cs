@@ -79,10 +79,10 @@ namespace Projeto_Integrado
                     return;
 
                 }
-                banco.Pecas.Add(pecaNova);
+                banco.Pecas.Update(pecaNova);
                 banco.SaveChanges();
                 MessageBox.Show("Peça Actualizada com sucesso!");
-                CarregarPecas();
+                
                 this.Close();
             }
         }
@@ -118,8 +118,9 @@ namespace Projeto_Integrado
                    
                 banco.Pecas.Add(novaPeca);
                 banco.SaveChanges();
-                MessageBox.Show("Peça Cadastrada com sucesso!");
                 CarregarPecas();
+                MessageBox.Show("Peça Cadastrada com sucesso!");
+                
                 this.Close();
                 
             }

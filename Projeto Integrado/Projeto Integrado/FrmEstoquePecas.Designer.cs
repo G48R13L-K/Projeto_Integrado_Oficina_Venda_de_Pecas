@@ -174,6 +174,7 @@
             Name = "FrmEstoquePecas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmEstoquePecas";
+            Load += FrmEstoquePecas_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

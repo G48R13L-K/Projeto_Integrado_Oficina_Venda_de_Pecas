@@ -14,14 +14,14 @@ namespace Projeto_Integrado
     {
         Peca? pecaSelecionada;
 
-        public FrmEstoquePecas()
+        public FrmEstoquePecas(Peca pecaSelecionada)
         {
             InitializeComponent();
             BuscarPecas();
             condicao();
         }
 
-        public FrmEstoquePecas(Peca pecaSelecionada)
+        public FrmEstoquePecas()
         {
             InitializeComponent();
             BuscarPecas();
@@ -37,6 +37,7 @@ namespace Projeto_Integrado
         private void btnIncuirPecas_Click(object sender, EventArgs e)
         {
             new FrmCadastrosPecas().ShowDialog();
+            BuscarPecas();
         }
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
@@ -62,8 +63,9 @@ namespace Projeto_Integrado
         {
             if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
             {
-                var pecaSelecionada = dataGridView1.Rows[e.RowIndex].DataBoundItem as Peca;
+                pecaSelecionada = dataGridView1.Rows[e.RowIndex].DataBoundItem as Peca;
                 btnEditar.Enabled = true;
+                btnExcluir.Enabled = true;
             }
         }
 
@@ -73,7 +75,7 @@ namespace Projeto_Integrado
             {
                 if (pecaSelecionada != null)
                 {
-                    var frmCadastros = new FrmEstoquePecas();
+                    var frmCadastros = new FrmCadastrosPecas(pecaSelecionada);
                     frmCadastros.ShowDialog();
 
                     BuscarPecas();
@@ -87,34 +89,38 @@ namespace Projeto_Integrado
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
             if (btnExcluir.Enabled == true)
             {
-
-                using (var banco = new VendasDbContest())
+                if (pecaSelecionada != null)
                 {
-                    var pecaParaExcluir = banco.Pecas.FirstOrDefault(p => p.Id == pecaSelecionada.Id);
-                    if (pecaParaExcluir != null)
+                    if (MessageBox.Show("Tem certeza que deseja excluir esta peça?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                     {
-                        banco.Pecas.Remove(pecaParaExcluir);
-                        banco.SaveChanges();
-                        MessageBox.Show("Peça excluída com sucesso!");
-                        BuscarPecas();
-                        pecaSelecionada = null;
+                        return;
                     }
                     else
                     {
-                        MessageBox.Show("Selecione uma peça para excluir.");
+                        using (var banco = new VendasDbContest())
+                        {
+                            var pecaParaExcluir = banco.Pecas.Find(pecaSelecionada.Id);
+                            banco.Pecas.Remove(pecaParaExcluir);
+                            banco.SaveChanges();
+                            MessageBox.Show("Peça excluída com sucesso!");
+                            BuscarPecas();
+                            pecaSelecionada = null;
+                        }
                     }
-
+                }
+                else
+                {
+                    MessageBox.Show("Selecione uma peça para excluir.");
                 }
 
             }
-
-
-
         }
+
+
 
         private void condicao()
         {
@@ -135,6 +141,9 @@ namespace Projeto_Integrado
 
         }
 
-        
+        private void FrmEstoquePecas_Load(object sender, EventArgs e)
+        {
+            BuscarPecas();
+        }
     }
 }

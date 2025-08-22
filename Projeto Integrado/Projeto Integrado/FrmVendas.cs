@@ -168,25 +168,21 @@ namespace Projeto_Integrado
         {
             using (var banco = new VendasDbContest())
             {
+                if (!ValidarCampos())
+                {
+                    return;
+                }
                 string nomeCliente = CBXCliente.Text;
                 string nomePeca = cbxPeca.Text;
                 int quantidade = int.Parse(txtQuantidadde.Text);
                 DateTime dataVenda = dataTime.Value;
 
+              
+
                 var clienteSelecionado = (Usuario)CBXCliente.SelectedItem;
 
-                if (clienteSelecionado == null || clienteSelecionado.Id == 0)
-                {
-                    MessageBox.Show("Selecione um cliente válido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
                 var pecaSelecionada = (Peca)cbxPeca.SelectedItem;
-                if (pecaSelecionada == null || pecaSelecionada.Id == 0)
-                {
-                    MessageBox.Show("Selecione uma peça válida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
+                
                 var novavendas = new VendaSelecionada()
                 {
                     // obter id do cbx
@@ -222,7 +218,34 @@ namespace Projeto_Integrado
             PreencherCampos();
         }
 
-       
-    }
+        private bool ValidarCampos()
+        {
+            errorProvider1.Clear();
+            if (txtQuantidadde.Text == "")
+            {
+                errorProvider1.SetError(txtQuantidadde, "O campo QUANTIDADDE é obrigatório.");
 
+            }
+            var clienteSelecionado = (Usuario)CBXCliente.SelectedItem;
+
+            if (clienteSelecionado == null || clienteSelecionado.Id == 0)
+            {
+                errorProvider1.SetError(CBXCliente, "Selecione um cliente válido.");
+                
+            }
+            var pecaSelecionada = (Peca)cbxPeca.SelectedItem;
+            if (pecaSelecionada == null || pecaSelecionada.Id == 0)
+            {
+                errorProvider1.SetError(cbxPeca, "Selecione uma peça válida.o.");               
+            }
+            int.TryParse(txtQuantidadde.Text, out int quantidade);
+            if (quantidade <= 0)
+            {
+                errorProvider1.SetError(txtQuantidadde, "A quantidade deve ser maior que zero.");
+            }
+            if (!errorProvider1.HasErrors) return true;
+            return false;
+
+        }
+    }
 }

@@ -53,9 +53,12 @@ namespace Projeto_Integrado
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            Close();
-            Application.Exit();
+            if (MessageBox.Show("Deseja sair do sistema?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
+
 
         private void txtUsuario_Enter(object sender, EventArgs e)
         {

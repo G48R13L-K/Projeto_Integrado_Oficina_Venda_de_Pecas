@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEstoquePecas));
             groupBox1 = new GroupBox();
             btnExcluir = new Button();
             btnIncuirPecas = new Button();
@@ -171,6 +172,7 @@
             Controls.Add(label1);
             ForeColor = SystemColors.AppWorkspace;
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmEstoquePecas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmEstoquePecas";

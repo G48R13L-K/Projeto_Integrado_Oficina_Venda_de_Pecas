@@ -50,6 +50,7 @@ namespace Projeto_Integrado
             cbxPeca.ValueMember = "Id"; // Id da peça a ser usado como valor do combobox
             cbxPeca.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbxPeca.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbxPeca.SelectedIndex = -2; // Nenhuma peça selecionada inicialmente
         }
 
 
@@ -69,6 +70,7 @@ namespace Projeto_Integrado
             CBXCliente.ValueMember = "Id"; // Id do cliente a ser usado como valor do combobox
             CBXCliente.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             CBXCliente.AutoCompleteSource = AutoCompleteSource.ListItems;
+            CBXCliente.SelectedIndex = -1; // Nenhum cliente selecionado inicialmente
 
             List<Peca> pecas = new List<Peca>()
             {
@@ -172,9 +174,11 @@ namespace Projeto_Integrado
                 {
                     return;
                 }
+                
+               
                 string nomeCliente = CBXCliente.Text;
                 string nomePeca = cbxPeca.Text;
-                int quantidade = int.Parse(txtQuantidadde.Text);
+                int quantidadeVenda = int.Parse(txtQuantidadde.Text);
                 DateTime dataVenda = dataTime.Value;
 
               
@@ -182,18 +186,32 @@ namespace Projeto_Integrado
                 var clienteSelecionado = (Usuario)CBXCliente.SelectedItem;
 
                 var pecaSelecionada = (Peca)cbxPeca.SelectedItem;
-                
+
+               
+
                 var novavendas = new VendaSelecionada()
                 {
                     // obter id do cbx
 
                     ClienteId = clienteSelecionado.Id,
                     PecaId = pecaSelecionada.Id,
-                    Quantidade = quantidade,
+                    Quantidade = quantidadeVenda,
                     DataVenda = dataVenda
+                    
                 };
+                if (!ValidarQuantidade())
+                {
+                    return;
+                }
+                else
+                {
+                    pecaSelecionada.QuantidadePeca = pecaSelecionada.QuantidadePeca - quantidadeVenda;
+                }
+
+                banco.Pecas.Update(pecaSelecionada);
                 banco.Vendas.Update(novavendas);
                 banco.SaveChanges();
+                
                 MessageBox.Show("Venda realizada com sucesso!", "Sucesso",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
@@ -238,10 +256,25 @@ namespace Projeto_Integrado
             {
                 errorProvider1.SetError(cbxPeca, "Selecione uma peça válida.o.");               
             }
-            int.TryParse(txtQuantidadde.Text, out int quantidade);
-            if (quantidade <= 0)
+            int.TryParse(txtQuantidadde.Text, out int quantidadeVendida);
+            if (quantidadeVendida <= 0 )
             {
                 errorProvider1.SetError(txtQuantidadde, "A quantidade deve ser maior que zero.");
+            }
+            if (!errorProvider1.HasErrors) return true;
+            return false;
+
+        }
+        private bool ValidarQuantidade()
+        {
+            errorProvider1.Clear();
+            int.TryParse(txtQuantidadde.Text, out int quantidadeVendida);
+            var pecaSelecionada = (Peca)cbxPeca.SelectedItem;
+            if ( quantidadeVendida > pecaSelecionada.QuantidadePeca)
+            {
+                errorProvider1.SetError(txtQuantidadde, "A quantidade vendida não pode ser maior que o estoque disponível. Você tem "
+                                                  + pecaSelecionada.QuantidadePeca + " disponiveis.");
+              
             }
             if (!errorProvider1.HasErrors) return true;
             return false;

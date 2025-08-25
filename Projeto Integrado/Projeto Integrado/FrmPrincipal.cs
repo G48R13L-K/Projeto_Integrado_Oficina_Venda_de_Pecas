@@ -23,9 +23,14 @@ namespace Projeto_Integrado
 
         private void btnFechar_Click_1(object sender, EventArgs e)
         {
-            var fromLogin = new FrmLogin();
-            this.Close();
-            fromLogin.Show();
+            if(MessageBox.Show("Deseja sair da conta conectada?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                var fromLogin = new FrmLogin();
+                this.Close();
+                fromLogin.Show();
+
+            }
+            
         }
 
         private void btnVendas_Click(object sender, EventArgs e)

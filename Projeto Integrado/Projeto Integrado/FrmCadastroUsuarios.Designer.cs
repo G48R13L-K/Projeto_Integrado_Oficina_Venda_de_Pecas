@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastroUsuarios));
             cmbUsuarios = new ComboBox();
             comboFuncao = new ComboBox();
             txtNome = new TextBox();
@@ -276,6 +277,7 @@
             Controls.Add(cmbUsuarios);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "FrmCadastroUsuarios";
             Text = "FrmCadastro";

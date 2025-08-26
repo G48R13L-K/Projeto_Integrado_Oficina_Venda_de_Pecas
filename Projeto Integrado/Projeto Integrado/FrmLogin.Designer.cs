@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             txtUsuario = new TextBox();
             btnEntrar = new Button();
             btnFechar = new Button();
             maskedSenha = new MaskedTextBox();
             lblSenha = new Label();
             pictureBox1 = new PictureBox();
-          
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -44,7 +44,7 @@
             txtUsuario.Location = new Point(80, 117);
             txtUsuario.Margin = new Padding(4);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(367, 44);
+            txtUsuario.Size = new Size(367, 38);
             txtUsuario.TabIndex = 1;
             txtUsuario.Text = "Usuário";
             txtUsuario.Enter += txtUsuario_Enter;
@@ -85,7 +85,7 @@
             maskedSenha.Font = new Font("Arial Narrow", 16F);
             maskedSenha.Location = new Point(80, 237);
             maskedSenha.Name = "maskedSenha";
-            maskedSenha.Size = new Size(368, 44);
+            maskedSenha.Size = new Size(368, 38);
             maskedSenha.TabIndex = 2;
             maskedSenha.UseSystemPasswordChar = true;
             maskedSenha.Enter += maskedSenha_Enter;
@@ -98,7 +98,7 @@
             lblSenha.Font = new Font("Arial Narrow", 16F);
             lblSenha.Location = new Point(80, 240);
             lblSenha.Name = "lblSenha";
-            lblSenha.Size = new Size(95, 37);
+            lblSenha.Size = new Size(77, 31);
             lblSenha.TabIndex = 4;
             lblSenha.Text = "Senha";
             // 
@@ -112,7 +112,7 @@
             // 
             // FrmLogin
             // 
-            AutoScaleDimensions = new SizeF(13F, 33F);
+            AutoScaleDimensions = new SizeF(11F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             BackgroundImage = Properties.Resources.WhatsApp_Image_2025_08_18_at_21_26_01;
@@ -125,11 +125,11 @@
             Controls.Add(txtUsuario);
             Font = new Font("Arial Narrow", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "FrmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
-            
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

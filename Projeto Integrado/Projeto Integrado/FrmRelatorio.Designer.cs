@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRelatorio));
             label1 = new Label();
             txtPesquisa = new TextBox();
             groupBox1 = new GroupBox();
@@ -169,6 +170,7 @@
             Controls.Add(txtPesquisa);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2);
             Name = "FrmRelatorio";
             StartPosition = FormStartPosition.CenterScreen;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListaCadastroUsuario));
             groupBox1 = new GroupBox();
             btnExcluir = new Button();
             btnMaisCadastro = new Button();
@@ -166,6 +167,7 @@
             Controls.Add(btnFechar);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "FrmListaCadastroUsuario";
             StartPosition = FormStartPosition.CenterScreen;

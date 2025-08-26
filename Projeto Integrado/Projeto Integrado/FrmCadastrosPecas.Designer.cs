@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadastrosPecas));
             btnCancelar = new Button();
             btnSalvar = new Button();
             btnFechar = new Button();
@@ -98,7 +99,7 @@
             label7.Location = new Point(420, 26);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(310, 48);
+            label7.Size = new Size(262, 41);
             label7.TabIndex = 22;
             label7.Text = "Cadastro de peças";
             // 
@@ -109,7 +110,7 @@
             label4.Location = new Point(26, 312);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(163, 32);
+            label4.Size = new Size(135, 28);
             label4.TabIndex = 19;
             label4.Text = "Valor  unitário";
             // 
@@ -120,7 +121,7 @@
             label3.Location = new Point(29, 205);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(139, 32);
+            label3.Size = new Size(115, 28);
             label3.TabIndex = 18;
             label3.Text = "Quantidade";
             // 
@@ -131,7 +132,7 @@
             label1.Location = new Point(29, 100);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(170, 32);
+            label1.Size = new Size(139, 28);
             label1.TabIndex = 16;
             label1.Text = "Nome da peça";
             // 
@@ -140,7 +141,7 @@
             txtValorPeca.Location = new Point(26, 345);
             txtValorPeca.Margin = new Padding(4, 5, 4, 5);
             txtValorPeca.Name = "txtValorPeca";
-            txtValorPeca.Size = new Size(1088, 39);
+            txtValorPeca.Size = new Size(1088, 34);
             txtValorPeca.TabIndex = 14;
             // 
             // txtQuantidadePeca
@@ -148,7 +149,7 @@
             txtQuantidadePeca.Location = new Point(26, 238);
             txtQuantidadePeca.Margin = new Padding(4, 5, 4, 5);
             txtQuantidadePeca.Name = "txtQuantidadePeca";
-            txtQuantidadePeca.Size = new Size(1083, 39);
+            txtQuantidadePeca.Size = new Size(1083, 34);
             txtQuantidadePeca.TabIndex = 13;
             // 
             // label5
@@ -158,7 +159,7 @@
             label5.Location = new Point(29, 412);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(116, 32);
+            label5.Size = new Size(96, 28);
             label5.TabIndex = 19;
             label5.Text = "Descrição";
             // 
@@ -167,7 +168,7 @@
             txtDescricaoPeca.Location = new Point(29, 445);
             txtDescricaoPeca.Margin = new Padding(4, 5, 4, 5);
             txtDescricaoPeca.Name = "txtDescricaoPeca";
-            txtDescricaoPeca.Size = new Size(1088, 39);
+            txtDescricaoPeca.Size = new Size(1088, 34);
             txtDescricaoPeca.TabIndex = 14;
             // 
             // txtNomePeca
@@ -175,7 +176,7 @@
             txtNomePeca.Location = new Point(29, 133);
             txtNomePeca.Margin = new Padding(4, 5, 4, 5);
             txtNomePeca.Name = "txtNomePeca";
-            txtNomePeca.Size = new Size(1083, 39);
+            txtNomePeca.Size = new Size(1083, 34);
             txtNomePeca.TabIndex = 13;
             // 
             // errorProvider1
@@ -184,7 +185,7 @@
             // 
             // FrmCadastrosPecas
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MidnightBlue;
             BackgroundImage = Properties.Resources.WhatsApp_Image_2025_08_18_at_21_17_26;
@@ -205,6 +206,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             ForeColor = SystemColors.AppWorkspace;
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "FrmCadastrosPecas";
             StartPosition = FormStartPosition.CenterScreen;

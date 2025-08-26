@@ -46,7 +46,7 @@ namespace Projeto_Integrado
             }
             else
             {
-                MessageBox.Show("Login ou Senha Invalidos");
+                MessageBox.Show("Email ou Senha Invalidos");
                 return new UsuarioData() { Usuario = null, isValid = false }; // Ensure proper handling of null values.
             }
         }

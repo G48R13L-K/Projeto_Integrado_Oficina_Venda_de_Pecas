@@ -91,14 +91,14 @@ namespace Projeto_Integrado
         {
             if (VendaSelecionada != null)
             {
-                var confirmResult = MessageBox.Show("Tem certeza que deseja cancelar esta venda?", "Confirmação", MessageBoxButtons.YesNo);
+                var confirmResult = MessageBox.Show("Tem certeza que deseja excluir esta venda?", "Confirmação", MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
                     using (var bd = new VendasDbContest())
                     {
                         bd.Vendas.Remove(VendaSelecionada);
                         bd.SaveChanges();
-                        MessageBox.Show("Venda cancelada com sucesso.");
+                        MessageBox.Show("Venda excluir com sucesso.");
                         BuscarVenda();
                         VendaSelecionada = null;
                     }
@@ -113,7 +113,7 @@ namespace Projeto_Integrado
             }
             else
             {
-                MessageBox.Show("Selecione uma venda para cancelar.");
+                MessageBox.Show("Selecione uma venda para excluir.");
             }
         }
 
@@ -128,7 +128,14 @@ namespace Projeto_Integrado
         {
             if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
             {   
-                VendaSelecionada = dataGridView1.Rows[e.RowIndex].DataBoundItem as VendaSelecionada;
+                var idVendaSelecionada = (int)dataGridView1.Rows[e.RowIndex].Cells["Id"].Value;
+                using (var bd = new VendasDbContest())
+                {
+                    VendaSelecionada = bd.Vendas
+                        .Include(v => v.Cliente)
+                        .Include(v => v.Peca)
+                        .FirstOrDefault(v => v.Id == idVendaSelecionada);
+                }
                 btnEditar.Enabled = true;
                 btnCancelar.Enabled = true;
 

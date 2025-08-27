@@ -50,7 +50,7 @@ namespace Projeto_Integrado
             cbxPeca.ValueMember = "Id"; // Id da peça a ser usado como valor do combobox
             cbxPeca.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbxPeca.AutoCompleteSource = AutoCompleteSource.ListItems;
-            cbxPeca.SelectedIndex = -2; // Nenhuma peça selecionada inicialmente
+            cbxPeca.SelectedIndex = -1; // Nenhuma peça selecionada inicialmente
         }
 
 

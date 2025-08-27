@@ -171,7 +171,7 @@ namespace Projeto_Integrado
                 }
                 banco.Usuario.Add(usuario);
                 banco.SaveChanges();
-                MessageBox.Show("Usuário atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Usuário cadastrado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }

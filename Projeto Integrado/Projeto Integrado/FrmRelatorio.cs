@@ -51,7 +51,9 @@ namespace Projeto_Integrado
                     Cliente = v.Cliente.NomeCliente,   // mostra nome em vez do ID
                     Peca = v.Peca.NomePeca, // mostra nome da peça em vez do ID
                     v.Quantidade,
+                    
                     v.DataVenda
+                    
                 }).ToList();
 
                 dataGridView1.DataSource = resultado;

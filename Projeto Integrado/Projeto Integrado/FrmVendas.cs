@@ -15,10 +15,15 @@ namespace Projeto_Integrado
     {
 
         private VendaSelecionada _vendaSelecionada;
+
+
+
         public FrmVendas()
         {
+
             InitializeComponent();
             CarregarCombobox();
+           
 
         }
         public FrmVendas(VendaSelecionada vendaSelecionada)
@@ -30,6 +35,7 @@ namespace Projeto_Integrado
             PreencherCampos();
             CarregarPecas();
             CarregarCombobox();
+            
 
 
         }
@@ -146,7 +152,7 @@ namespace Projeto_Integrado
                     novavendas.PecaId = Convert.ToInt32(cbxPeca.SelectedValue);
                     novavendas.Quantidade = quantidade;
                     novavendas.DataVenda = dataVenda;
-
+                    AtualizarPrecoTotal();
 
                     banco.Vendas.Update(novavendas);
                     banco.SaveChanges();
@@ -174,20 +180,21 @@ namespace Projeto_Integrado
                 {
                     return;
                 }
-                
-               
+
+
                 string nomeCliente = CBXCliente.Text;
                 string nomePeca = cbxPeca.Text;
                 int quantidadeVenda = int.Parse(txtQuantidadde.Text);
                 DateTime dataVenda = dataTime.Value;
+                
 
-              
+
 
                 var clienteSelecionado = (Usuario)CBXCliente.SelectedItem;
 
                 var pecaSelecionada = (Peca)cbxPeca.SelectedItem;
 
-               
+
 
                 var novavendas = new VendaSelecionada()
                 {
@@ -196,9 +203,11 @@ namespace Projeto_Integrado
                     ClienteId = clienteSelecionado.Id,
                     PecaId = pecaSelecionada.Id,
                     Quantidade = quantidadeVenda,
-                    DataVenda = dataVenda
-                    
+                    DataVenda = dataVenda,
+                    PrecoTotal = pecaSelecionada.PrecoPeca * quantidadeVenda
+
                 };
+                
                 if (!ValidarQuantidade())
                 {
                     return;
@@ -208,13 +217,29 @@ namespace Projeto_Integrado
                     pecaSelecionada.QuantidadePeca = pecaSelecionada.QuantidadePeca - quantidadeVenda;
                 }
 
-                banco.Pecas.Update(pecaSelecionada);
-                banco.Vendas.Update(novavendas);
-                banco.SaveChanges();
-                
-                MessageBox.Show("Venda realizada com sucesso!", "Sucesso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+
+
+                var confirmResult = MessageBox.Show("Confirma a venda de " + quantidadeVenda + " unidade(s) da peça " + pecaSelecionada.NomePeca +
+                    " para o cliente " + clienteSelecionado.NomeCliente + " pelo valor total de R$ " + novavendas.PrecoTotal.ToString("F2") + "?",
+                                     "Confirmação de Venda",
+                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                AtualizarPrecoTotal();
+                if (confirmResult == DialogResult.Yes)
+                {
+                    banco.Pecas.Update(pecaSelecionada);
+                    banco.Vendas.Update(novavendas);
+                    banco.SaveChanges();
+
+                    MessageBox.Show("Venda realizada com sucesso!", "Sucesso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+
+                }
+                else
+                {
+                    // Não, o usuário cancelou a venda
+                    return;
+                }
 
 
             }
@@ -234,6 +259,7 @@ namespace Projeto_Integrado
         private void FrmVendas_Load(object sender, EventArgs e)
         {
             PreencherCampos();
+
         }
 
         private bool ValidarCampos()
@@ -249,15 +275,15 @@ namespace Projeto_Integrado
             if (clienteSelecionado == null || clienteSelecionado.Id == 0)
             {
                 errorProvider1.SetError(CBXCliente, "Selecione um cliente válido.");
-                
+
             }
             var pecaSelecionada = (Peca)cbxPeca.SelectedItem;
             if (pecaSelecionada == null || pecaSelecionada.Id == 0)
             {
-                errorProvider1.SetError(cbxPeca, "Selecione uma peça válida.o.");               
+                errorProvider1.SetError(cbxPeca, "Selecione uma peça válida.o.");
             }
             int.TryParse(txtQuantidadde.Text, out int quantidadeVendida);
-            if (quantidadeVendida <= 0 )
+            if (quantidadeVendida <= 0)
             {
                 errorProvider1.SetError(txtQuantidadde, "A quantidade deve ser maior que zero.");
             }
@@ -270,15 +296,40 @@ namespace Projeto_Integrado
             errorProvider1.Clear();
             int.TryParse(txtQuantidadde.Text, out int quantidadeVendida);
             var pecaSelecionada = (Peca)cbxPeca.SelectedItem;
-            if ( quantidadeVendida > pecaSelecionada.QuantidadePeca)
+            if (quantidadeVendida > pecaSelecionada.QuantidadePeca)
             {
                 errorProvider1.SetError(txtQuantidadde, "A quantidade vendida não pode ser maior que o estoque disponível. Você tem "
                                                   + pecaSelecionada.QuantidadePeca + " disponiveis.");
-              
+
             }
             if (!errorProvider1.HasErrors) return true;
             return false;
 
         }
+
+        private void AtualizarPrecoTotal()
+        {
+            if (cbxPeca.SelectedItem is Peca peca && int.TryParse(txtQuantidadde.Text, out int quantidade))
+            {
+                decimal precoTotal = peca.PrecoPeca * quantidade;
+                lblPrecoTotal.Text = "R$ " + precoTotal.ToString("F2");
+            }
+            else
+            {
+                lblPrecoTotal.Text = "R$ 0,00";
+            }
+        }
+
+        private void txtQuantidadde_TextChanged(object sender, EventArgs e)
+        {
+            AtualizarPrecoTotal();
+        }
+
+        private void cbxPeca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AtualizarPrecoTotal();
+        }
+
+
     }
 }

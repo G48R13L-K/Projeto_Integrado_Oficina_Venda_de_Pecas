@@ -42,6 +42,7 @@
             CBXCliente = new ComboBox();
             cbxPeca = new ComboBox();
             errorProvider1 = new ErrorProvider(components);
+            lblPrecoTotal = new Label();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             label1.BackColor = Color.Transparent;
             label1.Location = new Point(45, 42);
             label1.Name = "label1";
-            label1.Size = new Size(157, 29);
+            label1.Size = new Size(133, 24);
             label1.TabIndex = 1;
             label1.Text = "Nome do Cliente";
             // 
@@ -75,8 +76,9 @@
             txtQuantidadde.Location = new Point(592, 304);
             txtQuantidadde.Margin = new Padding(3, 4, 3, 4);
             txtQuantidadde.Name = "txtQuantidadde";
-            txtQuantidadde.Size = new Size(183, 35);
+            txtQuantidadde.Size = new Size(183, 30);
             txtQuantidadde.TabIndex = 0;
+            txtQuantidadde.TextChanged += txtQuantidadde_TextChanged;
             // 
             // label2
             // 
@@ -84,7 +86,7 @@
             label2.BackColor = Color.Transparent;
             label2.Location = new Point(45, 141);
             label2.Name = "label2";
-            label2.Size = new Size(58, 29);
+            label2.Size = new Size(47, 24);
             label2.TabIndex = 1;
             label2.Text = "Peça";
             // 
@@ -94,7 +96,7 @@
             label4.BackColor = Color.Transparent;
             label4.Location = new Point(592, 276);
             label4.Name = "label4";
-            label4.Size = new Size(114, 29);
+            label4.Size = new Size(94, 24);
             label4.TabIndex = 1;
             label4.Text = "Quantidade";
             // 
@@ -103,7 +105,7 @@
             dataTime.Location = new Point(45, 304);
             dataTime.Margin = new Padding(3, 4, 3, 4);
             dataTime.Name = "dataTime";
-            dataTime.Size = new Size(370, 35);
+            dataTime.Size = new Size(370, 30);
             dataTime.TabIndex = 2;
             // 
             // label5
@@ -112,7 +114,7 @@
             label5.BackColor = Color.Transparent;
             label5.Location = new Point(45, 276);
             label5.Name = "label5";
-            label5.Size = new Size(54, 29);
+            label5.Size = new Size(45, 24);
             label5.TabIndex = 3;
             label5.Text = "Data";
             // 
@@ -151,29 +153,41 @@
             CBXCliente.FormattingEnabled = true;
             CBXCliente.Location = new Point(45, 79);
             CBXCliente.Name = "CBXCliente";
-            CBXCliente.Size = new Size(730, 37);
+            CBXCliente.Size = new Size(730, 32);
             CBXCliente.TabIndex = 6;
+            
             // 
             // cbxPeca
             // 
             cbxPeca.FormattingEnabled = true;
             cbxPeca.Location = new Point(45, 168);
             cbxPeca.Name = "cbxPeca";
-            cbxPeca.Size = new Size(730, 37);
+            cbxPeca.Size = new Size(730, 32);
             cbxPeca.TabIndex = 7;
+            cbxPeca.SelectedIndexChanged += cbxPeca_SelectedIndexChanged;
             // 
             // errorProvider1
             // 
             errorProvider1.ContainerControl = this;
             // 
+            // lblPrecoTotal
+            // 
+            lblPrecoTotal.AutoSize = true;
+            lblPrecoTotal.ForeColor = SystemColors.Window;
+            lblPrecoTotal.Location = new Point(68, 436);
+            lblPrecoTotal.Name = "lblPrecoTotal";
+            lblPrecoTotal.Size = new Size(0, 24);
+            lblPrecoTotal.TabIndex = 8;
+            // 
             // FrmVendas
             // 
-            AutoScaleDimensions = new SizeF(11F, 29F);
+            AutoScaleDimensions = new SizeF(10F, 24F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             BackgroundImage = Properties.Resources.WhatsApp_Image_2025_08_18_at_21_17_26;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(828, 493);
+            Controls.Add(lblPrecoTotal);
             Controls.Add(cbxPeca);
             Controls.Add(CBXCliente);
             Controls.Add(btnCancelar);
@@ -212,5 +226,6 @@
         private ComboBox CBXCliente;
         private ComboBox cbxPeca;
         private ErrorProvider errorProvider1;
+        private Label lblPrecoTotal;
     }
 }

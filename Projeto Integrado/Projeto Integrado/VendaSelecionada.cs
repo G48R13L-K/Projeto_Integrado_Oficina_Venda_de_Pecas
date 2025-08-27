@@ -17,5 +17,7 @@ namespace Projeto_Integrado
         public int Quantidade { get; set; }
         public DateTime DataVenda { get; set; }
 
+        public decimal PrecoTotal { get; set; }
+
     }
 }

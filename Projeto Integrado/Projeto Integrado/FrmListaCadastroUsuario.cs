@@ -34,7 +34,8 @@ namespace Projeto_Integrado
                 if (!string.IsNullOrWhiteSpace(txtPesquisa.Text))
                 {
                     usuarios = usuarios.Where(u => u.NomeCliente.ToLower().Contains(txtPesquisa.Text.ToLower()) ||
-                                                   u.CPF.ToString().Contains(txtPesquisa.Text));
+                                                   u.CPF.Contains(txtPesquisa.Text) ||
+                                                   u.Funcao.Contains(txtPesquisa.Text));
                 }
                 dataGridView1.DataSource = usuarios.ToList(); // Adicionado ToList() para materializar a consulta
                 dataGridView1.Columns["Id"].Visible = false; // Oculta a coluna Id

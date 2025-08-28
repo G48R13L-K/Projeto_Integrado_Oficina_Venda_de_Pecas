@@ -245,7 +245,7 @@ namespace Projeto_Integrado
 
             if (txtNome.Text.IsNullOrEmpty())
             {
-                errorProvider1.SetError(txtNome, "O campo NAME é obrigatório.");
+                errorProvider1.SetError(txtNome, "O campo NOME é obrigatório.");
             }
             if (txtSenha.Text.IsNullOrEmpty())
             {

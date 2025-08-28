@@ -72,20 +72,25 @@ namespace Projeto_Integrado
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (btnEditar.Enabled == true)
-            {
-                if (pecaSelecionada != null)
+            { var confirmar= MessageBox.Show("Deseja editar esta peça?", "Confirmação", MessageBoxButtons.YesNo);
+                if (confirmar == DialogResult.No)
                 {
-                    var frmCadastros = new FrmCadastrosPecas(pecaSelecionada);
-                    frmCadastros.ShowDialog();
+                    if (pecaSelecionada != null)
+                    {
+                        var frmCadastros = new FrmCadastrosPecas(pecaSelecionada);
+                        frmCadastros.ShowDialog();
 
-                    BuscarPecas();
-                    pecaSelecionada = null;
+                        BuscarPecas();
+                        pecaSelecionada = null;
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Selecione uma peça para editar.");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Selecione uma peça para editar.");
-                }
+               
+               
             }
         }
 

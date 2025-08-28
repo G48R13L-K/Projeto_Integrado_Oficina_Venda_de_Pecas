@@ -147,11 +147,14 @@ namespace Projeto_Integrado
             {
                 errorProvider1.SetError(txtNomePeca, "O campo NOME é obrigatório.");
             }
-            if (txtValorPeca.Text.IsNullOrEmpty())
+            decimal.TryParse(txtValorPeca.Text, out decimal Valordepeca);
+
+            if (Valordepeca<=0)
             {
                 errorProvider1.SetError(txtValorPeca, "O campo VALOR é obrigatório.");
             }
-            if (txtQuantidadePeca.Text.IsNullOrEmpty())
+            int.TryParse(txtQuantidadePeca.Text,out int quantidadedepeca);
+            if (quantidadedepeca<=0)
             {
                 errorProvider1.SetError(txtQuantidadePeca, "O campo QUANTIDADE é obrigatório.");
             }

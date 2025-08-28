@@ -77,10 +77,15 @@ namespace Projeto_Integrado
             // abrir tela de editar
             if (VendaSelecionada != null)
             {
-                var frmVendas = new FrmVendas(VendaSelecionada);
-                frmVendas.ShowDialog();
-                BuscarVenda();
-                VendaSelecionada = null;
+                var confirm = MessageBox.Show("Tem certeza que deseja actualizar esta venda.","Confirmação", MessageBoxButtons.YesNo);
+            if (confirm == DialogResult.Yes)
+                    {
+                    var frmVendas = new FrmVendas(VendaSelecionada);
+                    frmVendas.ShowDialog();
+                    BuscarVenda();
+                    VendaSelecionada = null;
+                }
+                
 
             }
             else

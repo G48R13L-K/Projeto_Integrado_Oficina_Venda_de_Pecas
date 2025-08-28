@@ -92,10 +92,19 @@ namespace Projeto_Integrado
         {
             if (UsuarioSelecionado != null)
             {
-                var frmCadastro = new FrmCadastroUsuarios(UsuarioSelecionado);
-                frmCadastro.ShowDialog();
-                CarregarUsuarios();
-                UsuarioSelecionado = null;
+                var comfirmar = MessageBox.Show("Deseja realmente editar este usuário?", "Confirmação", MessageBoxButtons.YesNo);
+                if (comfirmar == DialogResult.Yes)
+                {
+                    var frmCadastro = new FrmCadastroUsuarios(UsuarioSelecionado);
+                    frmCadastro.ShowDialog();
+                    CarregarUsuarios();
+                    UsuarioSelecionado = null;
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("Nenhum usuário selecionado para edição.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }

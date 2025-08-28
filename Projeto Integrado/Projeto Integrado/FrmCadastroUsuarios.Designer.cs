@@ -280,6 +280,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "FrmCadastroUsuarios";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmCadastro";
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);

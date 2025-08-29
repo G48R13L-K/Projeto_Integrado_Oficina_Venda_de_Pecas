@@ -26,6 +26,7 @@ namespace Projeto_Integrado
         public DbSet<Peca> Pecas { get; set; }
 
         public DbSet<VendaSelecionada> Vendas { get; set; }
+        public DbSet<CarrinhoTemporal> CarrinhoTemporals { get; set; }
 
 
 

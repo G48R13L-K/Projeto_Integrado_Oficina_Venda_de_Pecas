@@ -20,13 +20,23 @@ namespace Projeto_Integrado
 
         private void CargarCarrinho()
         {
-            //conexão com o banco de dados
+
             using (var db = new VendasDbContest())
             {
-                var carrinhoTemporal = db.CarrinhoTemporal.AsQueryable();
-                var carrinho = db.CarrinhoTemporal.AsQueryable();
-                dataGridView1.DataSource = carrinhoTemporal.ToList(); // Adicionado ToList() para materializar a consulta
+                var usuarios = db.Usuario.AsQueryable();
+              
+                dataGridView1.DataSource = CarrinhoTemporal.ToList(); // Adicionado ToList() para materializar a consulta
                 dataGridView1.Columns["Id"].Visible = false; // Oculta a coluna Id
+                dataGridView1.Columns["Senha"].Visible = false; // Oculta a coluna Senha
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            {
+                var caerrinho = dataGridView1.Rows[e.RowIndex].DataBoundItem as Usuario;
+               
             }
         }
     }

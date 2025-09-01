@@ -143,7 +143,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.AppWorkspace;
+            dataGridViewCellStyle2.ForeColor = SystemColors.ActiveCaptionText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.ActiveCaptionText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;

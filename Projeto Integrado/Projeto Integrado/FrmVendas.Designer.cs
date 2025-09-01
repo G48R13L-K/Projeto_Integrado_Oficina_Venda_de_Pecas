@@ -62,7 +62,7 @@
             btnFechar.FlatAppearance.BorderSize = 0;
             btnFechar.FlatAppearance.MouseOverBackColor = Color.MidnightBlue;
             btnFechar.FlatStyle = FlatStyle.Flat;
-            btnFechar.Location = new Point(769, 13);
+            btnFechar.Location = new Point(843, 13);
             btnFechar.Margin = new Padding(3, 4, 3, 4);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(47, 44);
@@ -73,7 +73,7 @@
             // 
             // txtQuantidadde
             // 
-            txtQuantidadde.Location = new Point(592, 304);
+            txtQuantidadde.Location = new Point(679, 304);
             txtQuantidadde.Margin = new Padding(3, 4, 3, 4);
             txtQuantidadde.Name = "txtQuantidadde";
             txtQuantidadde.Size = new Size(183, 30);
@@ -94,7 +94,7 @@
             // 
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
-            label4.Location = new Point(592, 276);
+            label4.Location = new Point(679, 276);
             label4.Name = "label4";
             label4.Size = new Size(94, 24);
             label4.TabIndex = 1;
@@ -124,7 +124,7 @@
             btnSalvar.FlatAppearance.BorderSize = 0;
             btnSalvar.FlatStyle = FlatStyle.Flat;
             btnSalvar.ForeColor = Color.Black;
-            btnSalvar.Location = new Point(440, 426);
+            btnSalvar.Location = new Point(527, 429);
             btnSalvar.Margin = new Padding(3, 4, 3, 4);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(146, 44);
@@ -139,7 +139,7 @@
             btnCancelar.FlatAppearance.BorderSize = 0;
             btnCancelar.FlatStyle = FlatStyle.Flat;
             btnCancelar.ForeColor = Color.Black;
-            btnCancelar.Location = new Point(629, 426);
+            btnCancelar.Location = new Point(716, 429);
             btnCancelar.Margin = new Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(146, 44);
@@ -153,16 +153,15 @@
             CBXCliente.FormattingEnabled = true;
             CBXCliente.Location = new Point(45, 79);
             CBXCliente.Name = "CBXCliente";
-            CBXCliente.Size = new Size(730, 32);
+            CBXCliente.Size = new Size(817, 32);
             CBXCliente.TabIndex = 6;
-            
             // 
             // cbxPeca
             // 
             cbxPeca.FormattingEnabled = true;
             cbxPeca.Location = new Point(45, 168);
             cbxPeca.Name = "cbxPeca";
-            cbxPeca.Size = new Size(730, 32);
+            cbxPeca.Size = new Size(817, 32);
             cbxPeca.TabIndex = 7;
             cbxPeca.SelectedIndexChanged += cbxPeca_SelectedIndexChanged;
             // 
@@ -173,10 +172,12 @@
             // lblPrecoTotal
             // 
             lblPrecoTotal.AutoSize = true;
-            lblPrecoTotal.ForeColor = SystemColors.Window;
-            lblPrecoTotal.Location = new Point(68, 436);
+            lblPrecoTotal.BackColor = Color.Transparent;
+            lblPrecoTotal.Font = new Font("Arial Narrow", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPrecoTotal.ForeColor = SystemColors.HighlightText;
+            lblPrecoTotal.Location = new Point(66, 426);
             lblPrecoTotal.Name = "lblPrecoTotal";
-            lblPrecoTotal.Size = new Size(0, 24);
+            lblPrecoTotal.Size = new Size(0, 40);
             lblPrecoTotal.TabIndex = 8;
             // 
             // FrmVendas
@@ -186,7 +187,7 @@
             BackColor = Color.FromArgb(192, 192, 255);
             BackgroundImage = Properties.Resources.WhatsApp_Image_2025_08_18_at_21_17_26;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(828, 493);
+            ClientSize = new Size(902, 503);
             Controls.Add(lblPrecoTotal);
             Controls.Add(cbxPeca);
             Controls.Add(CBXCliente);

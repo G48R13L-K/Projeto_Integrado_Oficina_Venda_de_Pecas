@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEstoquePecas));
             groupBox1 = new GroupBox();
             btnExcluir = new Button();
@@ -50,11 +52,11 @@
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Font = new Font("Segoe UI", 12F);
             groupBox1.ForeColor = SystemColors.AppWorkspace;
-            groupBox1.Location = new Point(18, 76);
+            groupBox1.Location = new Point(11, 56);
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(805, 417);
+            groupBox1.Size = new Size(880, 437);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Estoque de Peças";
@@ -67,7 +69,7 @@
             btnExcluir.FlatStyle = FlatStyle.Flat;
             btnExcluir.Font = new Font("Segoe UI", 14F);
             btnExcluir.ForeColor = Color.Black;
-            btnExcluir.Location = new Point(645, 331);
+            btnExcluir.Location = new Point(717, 378);
             btnExcluir.Margin = new Padding(2);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(146, 44);
@@ -83,7 +85,7 @@
             btnIncuirPecas.FlatStyle = FlatStyle.Flat;
             btnIncuirPecas.Font = new Font("Segoe UI", 12F);
             btnIncuirPecas.ForeColor = Color.Black;
-            btnIncuirPecas.Location = new Point(28, 331);
+            btnIncuirPecas.Location = new Point(22, 379);
             btnIncuirPecas.Margin = new Padding(2);
             btnIncuirPecas.Name = "btnIncuirPecas";
             btnIncuirPecas.Size = new Size(182, 44);
@@ -99,7 +101,7 @@
             btnEditar.FlatStyle = FlatStyle.Flat;
             btnEditar.Font = new Font("Segoe UI", 14F);
             btnEditar.ForeColor = Color.Black;
-            btnEditar.Location = new Point(478, 331);
+            btnEditar.Location = new Point(541, 379);
             btnEditar.Margin = new Padding(2);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(146, 44);
@@ -110,13 +112,28 @@
             // 
             // dataGridView1
             // 
+            dataGridViewCellStyle1.BackColor = SystemColors.ScrollBar;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.MenuHighlight;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.Location = new Point(8, 35);
             dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(783, 279);
+            dataGridView1.Size = new Size(868, 339);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -127,7 +144,7 @@
             btnFechar.FlatAppearance.MouseOverBackColor = Color.MidnightBlue;
             btnFechar.FlatStyle = FlatStyle.Flat;
             btnFechar.Font = new Font("Segoe UI", 12F);
-            btnFechar.Location = new Point(753, 11);
+            btnFechar.Location = new Point(827, 11);
             btnFechar.Margin = new Padding(2);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(64, 41);
@@ -165,7 +182,7 @@
             BackColor = Color.FromArgb(192, 192, 255);
             BackgroundImage = Properties.Resources.WhatsApp_Image_2025_08_18_at_21_17_26;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(828, 493);
+            ClientSize = new Size(902, 503);
             Controls.Add(groupBox1);
             Controls.Add(btnFechar);
             Controls.Add(txtPesquisa);

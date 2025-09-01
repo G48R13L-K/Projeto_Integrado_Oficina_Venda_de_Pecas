@@ -73,7 +73,7 @@ namespace Projeto_Integrado
         {
             if (btnEditar.Enabled == true)
             { var confirmar= MessageBox.Show("Deseja editar esta peça?", "Confirmação", MessageBoxButtons.YesNo);
-                if (confirmar == DialogResult.No)
+                if (confirmar == DialogResult.Yes)
                 {
                     if (pecaSelecionada != null)
                     {

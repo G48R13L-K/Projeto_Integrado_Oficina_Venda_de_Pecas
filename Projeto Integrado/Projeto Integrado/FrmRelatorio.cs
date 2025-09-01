@@ -23,16 +23,16 @@ namespace Projeto_Integrado
         private void FrmRelatorio_Load(object sender, EventArgs e)
         {
             BuscarVenda();
-           
+
         }
 
         private void BuscarVenda()
         {
-           
-        
+
+
             using (var bd = new VendasDbContest())
             {
-                var venda = bd.Vendas.Include(v => v.Cliente) 
+                var venda = bd.Vendas.Include(v => v.Cliente)
                               .AsQueryable();
 
                 if (!string.IsNullOrEmpty(txtPesquisa.Text))
@@ -51,14 +51,15 @@ namespace Projeto_Integrado
                     Cliente = v.Cliente.NomeCliente,   // mostra nome em vez do ID
                     Peca = v.Peca.NomePeca, // mostra nome da peça em vez do ID
                     v.Quantidade,
-                    
-                    v.DataVenda
-                    
+
+                    v.DataVenda,
+                    v.PrecoTotal
+
                 }).ToList();
 
                 dataGridView1.DataSource = resultado;
             }
-        
+
         }
 
         private void btnMaisVendas_Click(object sender, EventArgs e)
@@ -77,15 +78,15 @@ namespace Projeto_Integrado
             // abrir tela de editar
             if (VendaSelecionada != null)
             {
-                var confirm = MessageBox.Show("Tem certeza que deseja actualizar esta venda.","Confirmação", MessageBoxButtons.YesNo);
-            if (confirm == DialogResult.Yes)
-                    {
+                var confirm = MessageBox.Show("Tem certeza que deseja actualizar esta venda.", "Confirmação", MessageBoxButtons.YesNo);
+                if (confirm == DialogResult.Yes)
+                {
                     var frmVendas = new FrmVendas(VendaSelecionada);
                     frmVendas.ShowDialog();
                     BuscarVenda();
                     VendaSelecionada = null;
                 }
-                
+
 
             }
             else
@@ -113,10 +114,10 @@ namespace Projeto_Integrado
                 }
                 else
                 {
-                    
+
                     return;
                 }
-           
+
             }
             else
             {
@@ -129,12 +130,12 @@ namespace Projeto_Integrado
             this.Close();
         }
 
-      
+
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
-            {   
+            {
                 var idVendaSelecionada = (int)dataGridView1.Rows[e.RowIndex].Cells["Id"].Value;
                 using (var bd = new VendasDbContest())
                 {
@@ -148,6 +149,11 @@ namespace Projeto_Integrado
 
             }
 
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

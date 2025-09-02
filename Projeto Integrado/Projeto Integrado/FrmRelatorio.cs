@@ -54,7 +54,7 @@ namespace Projeto_Integrado
                     v.PrecoTotal,
                     v.DataVenda
                     
-                }).ToList();
+                }).OrderBy(s => s.DataVenda).ToList();
 
                 dataGridView1.DataSource = resultado;
             }

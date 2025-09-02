@@ -1,3 +1,5 @@
+using QuestPDF.Infrastructure;
+
 namespace Projeto_Integrado
 {
     internal static class Program
@@ -8,6 +10,9 @@ namespace Projeto_Integrado
         [STAThread]
         static void Main()
         {
+            /// Set the license type to use QuestPDF library
+            QuestPDF.Settings.License = LicenseType.Community;
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

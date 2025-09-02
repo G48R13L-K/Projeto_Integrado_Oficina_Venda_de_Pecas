@@ -54,7 +54,7 @@ namespace Projeto_Integrado
                 {
                     pecas = pecas.Where(u => u.NomePeca.Contains(txtPesquisa.Text));
                 }
-                dataGridView1.DataSource = pecas.ToList();
+                dataGridView1.DataSource = pecas.OrderBy(s => s.NomePeca).ToList();
 
             }
         }

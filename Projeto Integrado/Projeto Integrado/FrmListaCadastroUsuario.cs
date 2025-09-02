@@ -35,9 +35,10 @@ namespace Projeto_Integrado
                 {
                     usuarios = usuarios.Where(u => u.NomeCliente.ToLower().Contains(txtPesquisa.Text.ToLower()) ||
                                                    u.CPF.Contains(txtPesquisa.Text) ||
-                                                   u.Funcao.Contains(txtPesquisa.Text));
+                                                   u.Funcao.Contains(txtPesquisa.Text)||
+                                                   u.PerfilUsuario.Contains(txtPesquisa.Text));
                 }
-                dataGridView1.DataSource = usuarios.ToList(); // Adicionado ToList() para materializar a consulta
+                dataGridView1.DataSource = usuarios.OrderBy(s => s.NomeCliente).ToList(); // Adicionado ToList() para materializar a consulta
                 dataGridView1.Columns["Id"].Visible = false; // Oculta a coluna Id
                 dataGridView1.Columns["Senha"].Visible = false; // Oculta a coluna Senha
             }

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
+using Microsoft.EntityFrameworkCore;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
 
 namespace Projeto_Integrado
 {
@@ -75,7 +71,7 @@ namespace Projeto_Integrado
                         db.SaveChanges();
                         CarregarUsuarios();
                         MessageBox.Show("Usuário excluído com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                     
+
                         UsuarioSelecionado = null;
                     }
                 }
@@ -100,7 +96,7 @@ namespace Projeto_Integrado
                     CarregarUsuarios();
                     UsuarioSelecionado = null;
                 }
-                
+
             }
             else
             {
@@ -132,6 +128,115 @@ namespace Projeto_Integrado
                 btnExcluir.Enabled = true;
             }
         }
+
+        private void btnPdf_Click(object sender, EventArgs e)
+        {
+            QuestPDF.Settings.License = LicenseType.Community; // Defina a licença antes de tudo
+
+            SaveFileDialog salvarDialog = new SaveFileDialog();
+            salvarDialog.Filter = "Arquivo PDF (*.pdf)|*.pdf";
+            salvarDialog.FileName = "RelatorioCliente.pdf";
+
+            if (salvarDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    byte[] pdf = GerarRelatorioDeVendas(); // método acima
+                    File.WriteAllBytes(salvarDialog.FileName, pdf);
+                    MessageBox.Show("Relatório gerado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao gerar o relatório:\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        static IContainer CellStyle(IContainer container) =>
+                             container.DefaultTextStyle(x => x.SemiBold()).Background(Colors.Grey.Lighten2);
+
+        static IContainer CellData(IContainer container) =>
+                                container;
+        private byte[] GerarRelatorioDeVendas()
+        {
+            // 1. Obter os dados fora do layout
+            List<Usuario> usuario;
+            using (var bd = new VendasDbContest())
+            {
+                usuario = bd.Usuario.ToList();
+            }
+
+            // 2. Gerar o PDF com QuestPDF
+            var documento = Document.Create(container =>
+            {
+                container.Page(page =>
+                {
+                    page.Size(PageSizes.A4);
+                    page.Margin(2, Unit.Centimetre);
+                    page.PageColor(Colors.White);
+                    page.DefaultTextStyle(x => x.FontSize(12));
+
+                    // Cabeçalho
+                    page.Header()
+                        .Text("Lista de Cliente")
+                        .SemiBold().FontSize(20).FontColor(Colors.Blue.Medium);
+
+                    // Conteúdo
+                    page.Content().PaddingVertical(10).Table(table =>
+                    {
+                        // Define as colunas (5 colunas)
+                        table.ColumnsDefinition(columns =>
+                        {
+                            columns.ConstantColumn(40);  // ID
+                            columns.RelativeColumn();    // NomeCliente
+                            columns.RelativeColumn();    // CPF
+                            columns.RelativeColumn();  // PrecoPeca
+                            columns.RelativeColumn(); // QuantidadePeca
+                        });
+
+                        // Cabeçalho da tabela
+                        table.Header(header =>
+                        {
+                            header.Cell().Element(CellStyle).Text("ID");
+                            header.Cell().Element(CellStyle).Text("NomeCliente");
+                            header.Cell().Element(CellStyle).Text("CPF");
+                            header.Cell().Element(CellStyle).Text("Email");
+                            header.Cell().Element(CellStyle).Text("Telefone");
+
+
+
+
+                        });
+
+                        // Linhas de dados
+                        foreach (var usuario in usuario)
+                        {
+                            table.Cell().Element(CellData).Text(usuario.Id.ToString());
+                            table.Cell().Element(CellData).Text(usuario?.NomeCliente ?? "-");
+                            table.Cell().Element(CellData).Text(usuario?.CPF ?? "-");
+                            table.Cell().Element(CellData).Text(usuario?.Email ?? "-");
+                            table.Cell().Element(CellData).Text(usuario?.Telefone ?? "-");
+                        }
+                    });
+
+                    // Rodapé
+                    page.Footer()
+                        .AlignCenter()
+                        .Text(x =>
+                        {
+                            x.Span("Página ");
+                            x.CurrentPageNumber();
+                            x.Span(" de ");
+                            x.TotalPages();
+                        });
+                });
+            });
+
+            using var stream = new MemoryStream();
+            documento.GeneratePdf(stream);
+            return stream.ToArray();
+        }
     }
 }
+    
+
     

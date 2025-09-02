@@ -37,6 +37,7 @@
             btnFechar = new Button();
             txtPesquisa = new TextBox();
             label1 = new Label();
+            btnPdf = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -44,17 +45,18 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.Transparent;
+            groupBox1.Controls.Add(btnPdf);
             groupBox1.Controls.Add(btnExcluir);
             groupBox1.Controls.Add(btnIncuirPecas);
             groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Font = new Font("Segoe UI", 12F);
             groupBox1.ForeColor = SystemColors.AppWorkspace;
-            groupBox1.Location = new Point(18, 76);
+            groupBox1.Location = new Point(22, 95);
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(805, 417);
+            groupBox1.Size = new Size(1006, 521);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Estoque de Peças";
@@ -67,10 +69,10 @@
             btnExcluir.FlatStyle = FlatStyle.Flat;
             btnExcluir.Font = new Font("Segoe UI", 14F);
             btnExcluir.ForeColor = Color.Black;
-            btnExcluir.Location = new Point(645, 331);
+            btnExcluir.Location = new Point(806, 414);
             btnExcluir.Margin = new Padding(2);
             btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(146, 44);
+            btnExcluir.Size = new Size(182, 55);
             btnExcluir.TabIndex = 1;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = false;
@@ -83,10 +85,10 @@
             btnIncuirPecas.FlatStyle = FlatStyle.Flat;
             btnIncuirPecas.Font = new Font("Segoe UI", 12F);
             btnIncuirPecas.ForeColor = Color.Black;
-            btnIncuirPecas.Location = new Point(28, 331);
+            btnIncuirPecas.Location = new Point(35, 414);
             btnIncuirPecas.Margin = new Padding(2);
             btnIncuirPecas.Name = "btnIncuirPecas";
-            btnIncuirPecas.Size = new Size(182, 44);
+            btnIncuirPecas.Size = new Size(228, 55);
             btnIncuirPecas.TabIndex = 1;
             btnIncuirPecas.Text = "Incluir Pecas";
             btnIncuirPecas.UseVisualStyleBackColor = false;
@@ -99,10 +101,10 @@
             btnEditar.FlatStyle = FlatStyle.Flat;
             btnEditar.Font = new Font("Segoe UI", 14F);
             btnEditar.ForeColor = Color.Black;
-            btnEditar.Location = new Point(478, 331);
+            btnEditar.Location = new Point(598, 414);
             btnEditar.Margin = new Padding(2);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(146, 44);
+            btnEditar.Size = new Size(182, 55);
             btnEditar.TabIndex = 1;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = false;
@@ -112,11 +114,11 @@
             // 
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(8, 35);
+            dataGridView1.Location = new Point(10, 44);
             dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(783, 279);
+            dataGridView1.Size = new Size(979, 349);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -127,10 +129,10 @@
             btnFechar.FlatAppearance.MouseOverBackColor = Color.MidnightBlue;
             btnFechar.FlatStyle = FlatStyle.Flat;
             btnFechar.Font = new Font("Segoe UI", 12F);
-            btnFechar.Location = new Point(753, 11);
+            btnFechar.Location = new Point(941, 14);
             btnFechar.Margin = new Padding(2);
             btnFechar.Name = "btnFechar";
-            btnFechar.Size = new Size(64, 41);
+            btnFechar.Size = new Size(80, 51);
             btnFechar.TabIndex = 4;
             btnFechar.Text = "X";
             btnFechar.UseVisualStyleBackColor = false;
@@ -139,10 +141,10 @@
             // txtPesquisa
             // 
             txtPesquisa.Font = new Font("Segoe UI", 12F);
-            txtPesquisa.Location = new Point(115, 15);
+            txtPesquisa.Location = new Point(144, 19);
             txtPesquisa.Margin = new Padding(2);
             txtPesquisa.Name = "txtPesquisa";
-            txtPesquisa.Size = new Size(608, 34);
+            txtPesquisa.Size = new Size(759, 39);
             txtPesquisa.TabIndex = 5;
             txtPesquisa.TextChanged += txtPesquisa_TextChanged;
             // 
@@ -151,21 +153,33 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(18, 18);
+            label1.Location = new Point(22, 22);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(86, 28);
+            label1.Size = new Size(105, 32);
             label1.TabIndex = 3;
             label1.Text = "Pesquisa";
             // 
+            // btnPdf
+            // 
+            btnPdf.BackColor = Color.Yellow;
+            btnPdf.ForeColor = SystemColors.ActiveCaptionText;
+            btnPdf.Location = new Point(268, 410);
+            btnPdf.Name = "btnPdf";
+            btnPdf.Size = new Size(151, 59);
+            btnPdf.TabIndex = 7;
+            btnPdf.Text = "Salvar PDF";
+            btnPdf.UseVisualStyleBackColor = false;
+            btnPdf.Click += btnPdf_Click;
+            // 
             // FrmEstoquePecas
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             BackgroundImage = Properties.Resources.WhatsApp_Image_2025_08_18_at_21_17_26;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(828, 493);
+            ClientSize = new Size(1035, 616);
             Controls.Add(groupBox1);
             Controls.Add(btnFechar);
             Controls.Add(txtPesquisa);
@@ -173,6 +187,7 @@
             ForeColor = SystemColors.AppWorkspace;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 4, 4, 4);
             Name = "FrmEstoquePecas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmEstoquePecas";
@@ -193,5 +208,6 @@
         private Button btnFechar;
         private TextBox txtPesquisa;
         private Label label1;
+        private Button btnPdf;
     }
 }

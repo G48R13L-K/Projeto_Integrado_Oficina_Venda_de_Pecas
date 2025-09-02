@@ -214,6 +214,7 @@ namespace Projeto_Integrado
                             columns.RelativeColumn();    // Peça
                             columns.ConstantColumn(80);  // Quantidade
                             columns.ConstantColumn(100); // Data
+                            columns.ConstantColumn(100);
                         });
 
                         // Cabeçalho da tabela
@@ -224,8 +225,10 @@ namespace Projeto_Integrado
                             header.Cell().Element(CellStyle).Text("Peça");
                             header.Cell().Element(CellStyle).AlignRight().Text("Qtd");
                             header.Cell().Element(CellStyle).AlignRight().Text("Data");
+                            header.Cell().Element(CellStyle).AlignRight().Text("Preço Total");
 
-          
+
+
                         });
 
                         // Linhas de dados
@@ -236,6 +239,7 @@ namespace Projeto_Integrado
                             table.Cell().Element(CellData).Text(venda.Peca?.NomePeca ?? "-");
                             table.Cell().Element(CellData).AlignRight().Text(venda.Quantidade.ToString());
                             table.Cell().Element(CellData).AlignRight().Text(venda.DataVenda.ToString("dd/MM/yyyy"));
+                            table.Cell().Element(CellData).AlignRight().Text($"R$ {venda.PrecoTotal:F2}");
                         }
                     });
 
@@ -257,82 +261,5 @@ namespace Projeto_Integrado
             return stream.ToArray();
         }
     }
-}
-//            {
-//                SaveFileDialog salvarDialog = new SaveFileDialog();
-//                salvarDialog.Filter = "Arquivo PDF (*.pdf)|*.pdf";
-//                salvarDialog.FileName = "relatorio.pdf";
-
-//                if (salvarDialog.ShowDialog() == DialogResult.OK)
-//                {
-//                    string caminho = salvarDialog.FileName;
-//                var GeneradorDePDF= GerarRelatorioPDF();
-//                byte[] pdf = GeneradorDePDF;
-
-//                File.WriteAllBytes(caminho, pdf);
-
-//                    MessageBox.Show("PDF salvo com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//                }
-//            }
-
-//        private byte[] GerarRelatorioPDF()
-//        {
-//            var document = Document.Create(container =>
-//            {
-
-//                container.Page(page =>
-//                {
-//                    page.Size(PageSizes.A4);
-//                    page.Margin(2, Unit.Centimetre);
-//                    page.PageColor(Colors.White);
-//                    page.DefaultTextStyle(x => x.FontSize(12));
-
-//                    page.Header()
-//                        .Text("Relatório de vendas")
-//                        .SemiBold().FontSize(20).FontColor(Colors.Blue.Medium);
-
-//                    page.Content()
-//                        .PaddingVertical(10)
-//                        .Column(col =>
-//                        {
-//                           using(var bd = new VendasDbContest())
-//                            {
-//                                var vendas = bd.Vendas.Include(v => v.Cliente).Include(v => v.Peca).ToList();
-//                                foreach (var venda in vendas)
-//                                {
-//                                    col.Item().Text($"ID: {venda.Id}");
-//                                    col.Item().Text($"Cliente: {venda.Cliente.NomeCliente}");
-//                                    col.Item().Text($"Peça: {venda.Peca.NomePeca}");
-//                                    col.Item().Text($"Quantidade: {venda.Quantidade}");
-//                                    col.Item().Text($"Data da Venda: {venda.DataVenda.ToShortDateString()}");
-//                                    col.Item().LineHorizontal(1f).LineColor(Colors.Grey.Lighten2);
-//                                }
-//                            }
-//                        });
-
-//                    page.Footer()
-//                        .AlignCenter()
-//                        .Text(txt =>
-//                        {
-//                            txt.Span("Página ");
-//                            txt.CurrentPageNumber();
-//                            txt.Span(" de ");
-//                            txt.TotalPages();
-//                        });
-//                });
-//            });
-
-//            byte[] binaryRel = [];
-
-//            using (var stream = new MemoryStream())
-//            {
-//                document.GeneratePdf(stream);
-//                binaryRel = stream.ToArray();
-//            }
-
-//            return binaryRel;
-//        }
-//    }
-//}
-
+}           
 

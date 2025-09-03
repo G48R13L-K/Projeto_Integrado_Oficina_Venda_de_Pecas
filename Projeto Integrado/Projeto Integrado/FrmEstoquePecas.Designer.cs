@@ -32,6 +32,7 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEstoquePecas));
             groupBox1 = new GroupBox();
+            btnPdf = new Button();
             btnExcluir = new Button();
             btnIncuirPecas = new Button();
             btnEditar = new Button();
@@ -46,6 +47,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.Transparent;
+            groupBox1.Controls.Add(btnPdf);
             groupBox1.Controls.Add(btnExcluir);
             groupBox1.Controls.Add(btnIncuirPecas);
             groupBox1.Controls.Add(btnEditar);
@@ -61,6 +63,18 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Estoque de Peças";
             // 
+            // btnPdf
+            // 
+            btnPdf.BackColor = Color.Yellow;
+            btnPdf.ForeColor = SystemColors.ActiveCaptionText;
+            btnPdf.Location = new Point(266, 377);
+            btnPdf.Name = "btnPdf";
+            btnPdf.Size = new Size(151, 59);
+            btnPdf.TabIndex = 7;
+            btnPdf.Text = "Salvar PDF";
+            btnPdf.UseVisualStyleBackColor = false;
+            btnPdf.Click += btnPdf_Click;
+            // 
             // btnExcluir
             // 
             btnExcluir.BackColor = Color.Red;
@@ -72,7 +86,7 @@
             btnExcluir.Location = new Point(717, 378);
             btnExcluir.Margin = new Padding(2);
             btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(146, 44);
+            btnExcluir.Size = new Size(182, 55);
             btnExcluir.TabIndex = 1;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = false;
@@ -88,7 +102,7 @@
             btnIncuirPecas.Location = new Point(22, 379);
             btnIncuirPecas.Margin = new Padding(2);
             btnIncuirPecas.Name = "btnIncuirPecas";
-            btnIncuirPecas.Size = new Size(182, 44);
+            btnIncuirPecas.Size = new Size(228, 55);
             btnIncuirPecas.TabIndex = 1;
             btnIncuirPecas.Text = "Incluir Pecas";
             btnIncuirPecas.UseVisualStyleBackColor = false;
@@ -104,7 +118,7 @@
             btnEditar.Location = new Point(541, 379);
             btnEditar.Margin = new Padding(2);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(146, 44);
+            btnEditar.Size = new Size(182, 55);
             btnEditar.TabIndex = 1;
             btnEditar.Text = "Editar";
             btnEditar.UseVisualStyleBackColor = false;
@@ -123,7 +137,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.ForeColor = SystemColors.AppWorkspace;
             dataGridViewCellStyle2.NullValue = null;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.ActiveCaptionText;
@@ -147,7 +161,7 @@
             btnFechar.Location = new Point(827, 11);
             btnFechar.Margin = new Padding(2);
             btnFechar.Name = "btnFechar";
-            btnFechar.Size = new Size(64, 41);
+            btnFechar.Size = new Size(80, 51);
             btnFechar.TabIndex = 4;
             btnFechar.Text = "X";
             btnFechar.UseVisualStyleBackColor = false;
@@ -156,10 +170,10 @@
             // txtPesquisa
             // 
             txtPesquisa.Font = new Font("Segoe UI", 12F);
-            txtPesquisa.Location = new Point(115, 15);
+            txtPesquisa.Location = new Point(144, 19);
             txtPesquisa.Margin = new Padding(2);
             txtPesquisa.Name = "txtPesquisa";
-            txtPesquisa.Size = new Size(608, 34);
+            txtPesquisa.Size = new Size(759, 39);
             txtPesquisa.TabIndex = 5;
             txtPesquisa.TextChanged += txtPesquisa_TextChanged;
             // 
@@ -168,16 +182,16 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(18, 18);
+            label1.Location = new Point(22, 22);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(86, 28);
+            label1.Size = new Size(105, 32);
             label1.TabIndex = 3;
             label1.Text = "Pesquisa";
             // 
             // FrmEstoquePecas
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             BackgroundImage = Properties.Resources.WhatsApp_Image_2025_08_18_at_21_17_26;
@@ -190,6 +204,7 @@
             ForeColor = SystemColors.AppWorkspace;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4);
             Name = "FrmEstoquePecas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmEstoquePecas";
@@ -210,5 +225,6 @@
         private Button btnFechar;
         private TextBox txtPesquisa;
         private Label label1;
+        private Button btnPdf;
     }
 }

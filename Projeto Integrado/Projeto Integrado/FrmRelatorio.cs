@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+
 
 namespace Projeto_Integrado
 {
@@ -155,5 +151,120 @@ namespace Projeto_Integrado
         {
 
         }
+
+        private void btnPdf_Click(object sender, EventArgs e)
+        {
+            QuestPDF.Settings.License = LicenseType.Community; // Defina a licença antes de tudo
+
+            SaveFileDialog salvarDialog = new SaveFileDialog();
+            salvarDialog.Filter = "Arquivo PDF (*.pdf)|*.pdf";
+            salvarDialog.FileName = "RelatorioDeVendas.pdf";
+
+            if (salvarDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    byte[] pdf = GerarRelatorioDeVendas(); // método acima
+                    File.WriteAllBytes(salvarDialog.FileName, pdf);
+                    MessageBox.Show("Relatório gerado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao gerar o relatório:\n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        static IContainer CellStyle(IContainer container) =>
+                                container.DefaultTextStyle(x => x.SemiBold()).Background(Colors.Grey.Lighten2);
+
+        static IContainer CellData(IContainer container) =>
+                                container;
+
+        public byte[] GerarRelatorioDeVendas()
+        {
+            // 1. Obter os dados fora do layout
+            List<VendaSelecionada> vendas;
+            using (var bd = new VendasDbContest())
+            {
+                vendas = bd.Vendas
+                           .Include(v => v.Cliente)
+                           .Include(v => v.Peca)
+                           .ToList();
+            }
+
+            // 2. Gerar o PDF com QuestPDF
+            var documento = Document.Create(container =>
+            {
+                container.Page(page =>
+                {
+                    page.Size(PageSizes.A4);
+                    page.Margin(2, Unit.Centimetre);
+                    page.PageColor(Colors.White);
+                    page.DefaultTextStyle(x => x.FontSize(12));
+
+                    // Cabeçalho
+                    page.Header()
+                        .Text("Relatório de Vendas")
+                        .SemiBold().FontSize(20).FontColor(Colors.Blue.Medium);
+
+                    // Conteúdo
+                    page.Content().PaddingVertical(10).Table(table =>
+                    {
+                        // Define as colunas (5 colunas)
+                        table.ColumnsDefinition(columns =>
+                        {
+                            columns.ConstantColumn(40);  // ID
+                            columns.RelativeColumn();    // Cliente
+                            columns.RelativeColumn();    // Peça
+                            columns.ConstantColumn(80);  // Quantidade
+                            columns.ConstantColumn(100); // Data
+                            columns.ConstantColumn(100);
+                        });
+
+                        // Cabeçalho da tabela
+                        table.Header(header =>
+                        {
+                            header.Cell().Element(CellStyle).Text("ID");
+                            header.Cell().Element(CellStyle).Text("Cliente");
+                            header.Cell().Element(CellStyle).Text("Peça");
+                            header.Cell().Element(CellStyle).AlignRight().Text("Qtd");
+                            header.Cell().Element(CellStyle).AlignRight().Text("Data");
+                            header.Cell().Element(CellStyle).AlignRight().Text("Preço Total");
+
+
+
+                        });
+
+                        // Linhas de dados
+                        foreach (var venda in vendas)
+                        {
+                            table.Cell().Element(CellData).Text(venda.Id.ToString());
+                            table.Cell().Element(CellData).Text(venda.Cliente?.NomeCliente ?? "-");
+                            table.Cell().Element(CellData).Text(venda.Peca?.NomePeca ?? "-");
+                            table.Cell().Element(CellData).AlignRight().Text(venda.Quantidade.ToString());
+                            table.Cell().Element(CellData).AlignRight().Text(venda.DataVenda.ToString("dd/MM/yyyy"));
+                            table.Cell().Element(CellData).AlignRight().Text($"R$ {venda.PrecoTotal:F2}");
+                        }
+                    });
+
+                    // Rodapé
+                    page.Footer()
+                        .AlignCenter()
+                        .Text(x =>
+                        {
+                            x.Span("Página ");
+                            x.CurrentPageNumber();
+                            x.Span(" de ");
+                            x.TotalPages();
+                        });
+                });
+            });
+
+            using var stream = new MemoryStream();
+            documento.GeneratePdf(stream);
+            return stream.ToArray();
+        }
     }
-}
+}           
+

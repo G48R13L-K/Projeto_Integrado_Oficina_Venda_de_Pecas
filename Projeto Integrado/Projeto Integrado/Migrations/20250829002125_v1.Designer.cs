@@ -12,7 +12,7 @@ using Projeto_Integrado;
 namespace Projeto_Integrado.Migrations
 {
     [DbContext(typeof(VendasDbContest))]
-    [Migration("20250807231136_v1")]
+    [Migration("20250829002125_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace Projeto_Integrado.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("Projeto_Integrado.Cliente", b =>
+            modelBuilder.Entity("Projeto_Integrado.CarrinhoTemporal", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,40 +33,23 @@ namespace Projeto_Integrado.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CPF")
+                    b.Property<string>("DescricaoPeca")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NomePeca")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<decimal>("PrecoPeca")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int>("QuantidadePeca")
                         .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Endereco")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Funcao")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("NomeCliente")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("PerfilUsuario")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Senha")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clientes");
+                    b.ToTable("CarrinhoTemporals");
                 });
 
             modelBuilder.Entity("Projeto_Integrado.Peca", b =>
@@ -96,7 +79,48 @@ namespace Projeto_Integrado.Migrations
                     b.ToTable("Pecas");
                 });
 
-            modelBuilder.Entity("Projeto_Integrado.Venda", b =>
+            modelBuilder.Entity("Projeto_Integrado.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CPF")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Funcao")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NomeCliente")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PerfilUsuario")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuario");
+                });
+
+            modelBuilder.Entity("Projeto_Integrado.VendaSelecionada", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -113,12 +137,38 @@ namespace Projeto_Integrado.Migrations
                     b.Property<int>("PecaId")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("PrecoTotal")
+                        .HasColumnType("decimal(65,30)");
+
                     b.Property<int>("Quantidade")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("PecaId");
+
                     b.ToTable("Vendas");
+                });
+
+            modelBuilder.Entity("Projeto_Integrado.VendaSelecionada", b =>
+                {
+                    b.HasOne("Projeto_Integrado.Usuario", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Projeto_Integrado.Peca", "Peca")
+                        .WithMany()
+                        .HasForeignKey("PecaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Peca");
                 });
 #pragma warning restore 612, 618
         }

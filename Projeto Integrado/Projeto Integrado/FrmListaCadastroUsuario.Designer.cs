@@ -32,6 +32,7 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListaCadastroUsuario));
             groupBox1 = new GroupBox();
+            btnPdf = new Button();
             btnExcluir = new Button();
             btnMaisCadastro = new Button();
             btnEditar = new Button();
@@ -46,6 +47,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.Transparent;
+            groupBox1.Controls.Add(btnPdf);
             groupBox1.Controls.Add(btnExcluir);
             groupBox1.Controls.Add(btnMaisCadastro);
             groupBox1.Controls.Add(btnEditar);
@@ -59,6 +61,18 @@
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastros";
+            // 
+            // btnPdf
+            // 
+            btnPdf.BackColor = Color.Yellow;
+            btnPdf.ForeColor = SystemColors.ActiveCaptionText;
+            btnPdf.Location = new Point(221, 383);
+            btnPdf.Name = "btnPdf";
+            btnPdf.Size = new Size(139, 44);
+            btnPdf.TabIndex = 7;
+            btnPdf.Text = "Salvar PDF";
+            btnPdf.UseVisualStyleBackColor = false;
+            btnPdf.Click += btnPdf_Click;
             // 
             // btnExcluir
             // 
@@ -118,7 +132,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.ForeColor = SystemColors.AppWorkspace;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.ActiveCaptionText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -137,7 +151,7 @@
             txtPesquisa.Location = new Point(115, 15);
             txtPesquisa.Margin = new Padding(4);
             txtPesquisa.Name = "txtPesquisa";
-            txtPesquisa.Size = new Size(623, 34);
+            txtPesquisa.Size = new Size(623, 39);
             txtPesquisa.TabIndex = 4;
             txtPesquisa.TextChanged += txtPesquisa_TextChanged;
             // 
@@ -149,7 +163,7 @@
             label1.Location = new Point(21, 21);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(86, 28);
+            label1.Size = new Size(105, 32);
             label1.TabIndex = 3;
             label1.Text = "Pesquisa";
             // 
@@ -171,7 +185,7 @@
             // 
             // FrmListaCadastroUsuario
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             BackgroundImage = Properties.Resources.WhatsApp_Image_2025_08_18_at_21_17_26;
@@ -205,5 +219,6 @@
         private TextBox txtPesquisa;
         private Label label1;
         private Button btnFechar;
+        private Button btnPdf;
     }
 }

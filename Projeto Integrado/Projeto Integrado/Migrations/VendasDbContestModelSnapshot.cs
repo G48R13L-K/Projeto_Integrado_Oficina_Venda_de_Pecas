@@ -22,6 +22,33 @@ namespace Projeto_Integrado.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
+            modelBuilder.Entity("Projeto_Integrado.CarrinhoTemporal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DescricaoPeca")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("NomePeca")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<decimal>("PrecoPeca")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<int>("QuantidadePeca")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CarrinhoTemporals");
+                });
+
             modelBuilder.Entity("Projeto_Integrado.Peca", b =>
                 {
                     b.Property<int>("Id")

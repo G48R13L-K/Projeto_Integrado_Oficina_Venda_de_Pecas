@@ -34,6 +34,7 @@
             label1 = new Label();
             txtPesquisa = new TextBox();
             groupBox1 = new GroupBox();
+            btnPdf = new Button();
             btnCancelar = new Button();
             btnMaisVendas = new Button();
             btnEditar = new Button();
@@ -68,6 +69,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.Transparent;
+            groupBox1.Controls.Add(btnPdf);
             groupBox1.Controls.Add(btnCancelar);
             groupBox1.Controls.Add(btnMaisVendas);
             groupBox1.Controls.Add(btnEditar);
@@ -82,6 +84,18 @@
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Relatório de Vendas";
+            // 
+            // btnPdf
+            // 
+            btnPdf.BackColor = Color.Yellow;
+            btnPdf.ForeColor = SystemColors.ActiveCaptionText;
+            btnPdf.Location = new Point(270, 482);
+            btnPdf.Name = "btnPdf";
+            btnPdf.Size = new Size(151, 59);
+            btnPdf.TabIndex = 2;
+            btnPdf.Text = "Salvar PDF";
+            btnPdf.UseVisualStyleBackColor = false;
+            btnPdf.Click += btnPdf_Click;
             // 
             // btnCancelar
             // 
@@ -143,7 +157,7 @@
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.ForeColor = SystemColors.AppWorkspace;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.ActiveCaptionText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -209,5 +223,6 @@
         private Button btnEditar;
         private DataGridView dataGridView1;
         private Button btnFechar;
+        private Button btnPdf;
     }
 }

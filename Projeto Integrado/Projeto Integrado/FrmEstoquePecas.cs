@@ -189,7 +189,7 @@ namespace Projeto_Integrado
                 container.Page(page =>
                 {
                     page.Size(PageSizes.A4);
-                    page.Margin(2, Unit.Centimetre);
+                    page.Margin(1, Unit.Centimetre);
                     page.PageColor(Colors.White);
                     page.DefaultTextStyle(x => x.FontSize(12));
 
@@ -207,8 +207,8 @@ namespace Projeto_Integrado
                             columns.ConstantColumn(40);  // ID
                             columns.RelativeColumn();    // NomePeca
                             columns.RelativeColumn();    // DescricaoPeca
-                            columns.ConstantColumn(80);  // PrecoPeca
-                            columns.ConstantColumn(100); // QuantidadePeca
+                            columns.RelativeColumn();  // PrecoPeca
+                            columns.RelativeColumn(); // QuantidadePeca
                         });
 
                         // Cabeçalho da tabela

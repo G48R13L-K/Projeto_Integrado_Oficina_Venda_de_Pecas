@@ -1,2 +1,2 @@
 # Projeto_Integrado_Oficina_Venda_de_Pe-as
-Projeto integrado modelo de oficina de venda de peças em C#.
+Este projeto consiste em um sistema integrado desenvolvido em C# para gerenciar uma oficina mecânica, com foco na venda de peças automotivas. O sistema permite o controle eficiente do estoque, cadastro de clientes, gerenciamento de vendas e emissão de relatórios, facilitando o dia a dia da oficina.

@@ -53,20 +53,20 @@
             groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.ForeColor = SystemColors.AppWorkspace;
-            groupBox1.Location = new Point(13, 53);
+            groupBox1.Location = new Point(9, 45);
             groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4);
-            groupBox1.Size = new Size(876, 437);
+            groupBox1.Size = new Size(882, 447);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cadastros";
             // 
             // btnPdf
             // 
-            btnPdf.BackColor = Color.Yellow;
+            btnPdf.BackColor = Color.MediumAquamarine;
             btnPdf.ForeColor = SystemColors.ActiveCaptionText;
-            btnPdf.Location = new Point(221, 383);
+            btnPdf.Location = new Point(216, 386);
             btnPdf.Name = "btnPdf";
             btnPdf.Size = new Size(139, 44);
             btnPdf.TabIndex = 7;
@@ -151,7 +151,7 @@
             txtPesquisa.Location = new Point(115, 15);
             txtPesquisa.Margin = new Padding(4);
             txtPesquisa.Name = "txtPesquisa";
-            txtPesquisa.Size = new Size(623, 39);
+            txtPesquisa.Size = new Size(623, 34);
             txtPesquisa.TabIndex = 4;
             txtPesquisa.TextChanged += txtPesquisa_TextChanged;
             // 
@@ -160,10 +160,10 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.ForeColor = SystemColors.AppWorkspace;
-            label1.Location = new Point(21, 21);
+            label1.Location = new Point(18, 18);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(105, 32);
+            label1.Size = new Size(86, 28);
             label1.TabIndex = 3;
             label1.Text = "Pesquisa";
             // 
@@ -174,7 +174,7 @@
             btnFechar.FlatAppearance.MouseOverBackColor = Color.MidnightBlue;
             btnFechar.FlatStyle = FlatStyle.Flat;
             btnFechar.ForeColor = SystemColors.AppWorkspace;
-            btnFechar.Location = new Point(838, 15);
+            btnFechar.Location = new Point(838, 13);
             btnFechar.Margin = new Padding(4);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(51, 44);
@@ -185,7 +185,7 @@
             // 
             // FrmListaCadastroUsuario
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
             BackgroundImage = Properties.Resources.WhatsApp_Image_2025_08_18_at_21_17_26;

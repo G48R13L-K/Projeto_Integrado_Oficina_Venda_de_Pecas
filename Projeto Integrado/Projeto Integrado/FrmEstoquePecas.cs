@@ -68,7 +68,8 @@ namespace Projeto_Integrado
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (btnEditar.Enabled == true)
-            { var confirmar= MessageBox.Show("Deseja editar esta peça?", "Confirmação", MessageBoxButtons.YesNo);
+            {
+                var confirmar = MessageBox.Show("Deseja editar esta peça?", "Confirmação", MessageBoxButtons.YesNo);
                 if (confirmar == DialogResult.Yes)
                 {
                     if (pecaSelecionada != null)
@@ -219,7 +220,7 @@ namespace Projeto_Integrado
                             header.Cell().Element(CellStyle).Text("DescricaoPeca");
                             header.Cell().Element(CellStyle).AlignRight().Text("QuantidadePeca");
                             header.Cell().Element(CellStyle).AlignRight().Text("PrecoPeca");
-                       
+
 
 
 
@@ -230,7 +231,7 @@ namespace Projeto_Integrado
                         {
                             table.Cell().Element(CellData).Text(pescas.Id.ToString());
                             table.Cell().Element(CellData).Text(pescas?.NomePeca ?? "-");
-                            table.Cell().Element(CellData).Text(pescas?.DescricaoPeca?? "-");
+                            table.Cell().Element(CellData).Text(pescas?.DescricaoPeca ?? "-");
                             table.Cell().Element(CellData).AlignRight().Text(pescas.QuantidadePeca.ToString());
                             table.Cell().Element(CellData).AlignRight().Text($"R$ {pescas.PrecoPeca:F2}");
                         }
@@ -253,6 +254,8 @@ namespace Projeto_Integrado
             documento.GeneratePdf(stream);
             return stream.ToArray();
         }
+
+        
     }
 } 
         

@@ -7,6 +7,7 @@ namespace Projeto_Integrado
         public FrmLogin()
         {
             InitializeComponent();
+            InicializarDados.Semear();
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)

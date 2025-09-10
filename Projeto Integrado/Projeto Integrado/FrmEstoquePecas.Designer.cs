@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEstoquePecas));
@@ -40,8 +41,15 @@
             btnFechar = new Button();
             txtPesquisa = new TextBox();
             label1 = new Label();
+            pecaBindingSource = new BindingSource(components);
+            idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nomePecaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descricaoPecaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            precoPecaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            quantidadePecaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pecaBindingSource).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -133,8 +141,11 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.MenuHighlight;
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, nomePecaDataGridViewTextBoxColumn, descricaoPecaDataGridViewTextBoxColumn, precoPecaDataGridViewTextBoxColumn, quantidadePecaDataGridViewTextBoxColumn });
+            dataGridView1.DataSource = pecaBindingSource;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F);
@@ -190,6 +201,50 @@
             label1.TabIndex = 3;
             label1.Text = "Pesquisa";
             // 
+            // pecaBindingSource
+            // 
+            pecaBindingSource.DataSource = typeof(Peca);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            idDataGridViewTextBoxColumn.HeaderText = "Id";
+            idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            idDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nomePecaDataGridViewTextBoxColumn
+            // 
+            nomePecaDataGridViewTextBoxColumn.DataPropertyName = "NomePeca";
+            nomePecaDataGridViewTextBoxColumn.HeaderText = "NomePeca";
+            nomePecaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            nomePecaDataGridViewTextBoxColumn.Name = "nomePecaDataGridViewTextBoxColumn";
+            nomePecaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // descricaoPecaDataGridViewTextBoxColumn
+            // 
+            descricaoPecaDataGridViewTextBoxColumn.DataPropertyName = "DescricaoPeca";
+            descricaoPecaDataGridViewTextBoxColumn.HeaderText = "DescricaoPeca";
+            descricaoPecaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            descricaoPecaDataGridViewTextBoxColumn.Name = "descricaoPecaDataGridViewTextBoxColumn";
+            descricaoPecaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // precoPecaDataGridViewTextBoxColumn
+            // 
+            precoPecaDataGridViewTextBoxColumn.DataPropertyName = "PrecoPeca";
+            precoPecaDataGridViewTextBoxColumn.HeaderText = "PrecoPeca";
+            precoPecaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            precoPecaDataGridViewTextBoxColumn.Name = "precoPecaDataGridViewTextBoxColumn";
+            precoPecaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // quantidadePecaDataGridViewTextBoxColumn
+            // 
+            quantidadePecaDataGridViewTextBoxColumn.DataPropertyName = "QuantidadePeca";
+            quantidadePecaDataGridViewTextBoxColumn.HeaderText = "QuantidadePeca";
+            quantidadePecaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            quantidadePecaDataGridViewTextBoxColumn.Name = "quantidadePecaDataGridViewTextBoxColumn";
+            quantidadePecaDataGridViewTextBoxColumn.Width = 125;
+            // 
             // FrmEstoquePecas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -211,6 +266,7 @@
             Load += FrmEstoquePecas_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pecaBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -226,5 +282,11 @@
         private TextBox txtPesquisa;
         private Label label1;
         private Button btnPdf;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nomePecaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descricaoPecaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn precoPecaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn quantidadePecaDataGridViewTextBoxColumn;
+        private BindingSource pecaBindingSource;
     }
 }

@@ -35,8 +35,15 @@ namespace Projeto_Integrado
                                                    u.PerfilUsuario.Contains(txtPesquisa.Text));
                 }
                 dataGridView1.DataSource = usuarios.OrderBy(s => s.NomeCliente).ToList(); // Adicionado ToList() para materializar a consulta
-                dataGridView1.Columns["Id"].Visible = false; // Oculta a coluna Id
-                dataGridView1.Columns["Senha"].Visible = false; // Oculta a coluna Senha
+                if (dataGridView1.Columns["Id"] != null)
+                {
+                    if (dataGridView1.Columns.Contains("Id"))
+                    {
+                        dataGridView1.Columns["Id"].Visible = false;
+                    }
+                    dataGridView1.Columns["Id"].Visible = false;
+                }
+                
             }
         }
         private void txtPesquisa_TextChanged(object sender, EventArgs e)

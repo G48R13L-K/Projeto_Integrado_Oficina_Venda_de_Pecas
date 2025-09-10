@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRelatorio));
@@ -39,9 +40,19 @@
             btnMaisVendas = new Button();
             btnEditar = new Button();
             dataGridView1 = new DataGridView();
+            idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            clienteIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            clienteDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            pecaIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            pecaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            quantidadeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataVendaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            precoTotalDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            vendaSelecionadaBindingSource = new BindingSource(components);
             btnFechar = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)vendaSelecionadaBindingSource).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -153,12 +164,15 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.ActiveCaptionText;
             dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, clienteIdDataGridViewTextBoxColumn, clienteDataGridViewTextBoxColumn, pecaIdDataGridViewTextBoxColumn, pecaDataGridViewTextBoxColumn, quantidadeDataGridViewTextBoxColumn, dataVendaDataGridViewTextBoxColumn, precoTotalDataGridViewTextBoxColumn });
+            dataGridView1.DataSource = vendaSelecionadaBindingSource;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.AppWorkspace;
+            dataGridViewCellStyle2.ForeColor = SystemColors.ActiveCaptionText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.ActiveCaptionText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -171,6 +185,76 @@
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            idDataGridViewTextBoxColumn.HeaderText = "Id";
+            idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            idDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // clienteIdDataGridViewTextBoxColumn
+            // 
+            clienteIdDataGridViewTextBoxColumn.DataPropertyName = "ClienteId";
+            clienteIdDataGridViewTextBoxColumn.HeaderText = "ClienteId";
+            clienteIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            clienteIdDataGridViewTextBoxColumn.Name = "clienteIdDataGridViewTextBoxColumn";
+            clienteIdDataGridViewTextBoxColumn.Visible = false;
+            clienteIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // clienteDataGridViewTextBoxColumn
+            // 
+            clienteDataGridViewTextBoxColumn.DataPropertyName = "Cliente";
+            clienteDataGridViewTextBoxColumn.HeaderText = "Cliente";
+            clienteDataGridViewTextBoxColumn.MinimumWidth = 6;
+            clienteDataGridViewTextBoxColumn.Name = "clienteDataGridViewTextBoxColumn";
+            clienteDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // pecaIdDataGridViewTextBoxColumn
+            // 
+            pecaIdDataGridViewTextBoxColumn.DataPropertyName = "PecaId";
+            pecaIdDataGridViewTextBoxColumn.HeaderText = "PecaId";
+            pecaIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            pecaIdDataGridViewTextBoxColumn.Name = "pecaIdDataGridViewTextBoxColumn";
+            pecaIdDataGridViewTextBoxColumn.Visible = false;
+            pecaIdDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // pecaDataGridViewTextBoxColumn
+            // 
+            pecaDataGridViewTextBoxColumn.DataPropertyName = "Peca";
+            pecaDataGridViewTextBoxColumn.HeaderText = "Peca";
+            pecaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            pecaDataGridViewTextBoxColumn.Name = "pecaDataGridViewTextBoxColumn";
+            pecaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // quantidadeDataGridViewTextBoxColumn
+            // 
+            quantidadeDataGridViewTextBoxColumn.DataPropertyName = "Quantidade";
+            quantidadeDataGridViewTextBoxColumn.HeaderText = "Quantidade";
+            quantidadeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            quantidadeDataGridViewTextBoxColumn.Name = "quantidadeDataGridViewTextBoxColumn";
+            quantidadeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dataVendaDataGridViewTextBoxColumn
+            // 
+            dataVendaDataGridViewTextBoxColumn.DataPropertyName = "DataVenda";
+            dataVendaDataGridViewTextBoxColumn.HeaderText = "DataVenda";
+            dataVendaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            dataVendaDataGridViewTextBoxColumn.Name = "dataVendaDataGridViewTextBoxColumn";
+            dataVendaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // precoTotalDataGridViewTextBoxColumn
+            // 
+            precoTotalDataGridViewTextBoxColumn.DataPropertyName = "PrecoTotal";
+            precoTotalDataGridViewTextBoxColumn.HeaderText = "PrecoTotal";
+            precoTotalDataGridViewTextBoxColumn.MinimumWidth = 6;
+            precoTotalDataGridViewTextBoxColumn.Name = "precoTotalDataGridViewTextBoxColumn";
+            precoTotalDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // vendaSelecionadaBindingSource
+            // 
+            vendaSelecionadaBindingSource.DataSource = typeof(VendaSelecionada);
             // 
             // btnFechar
             // 
@@ -210,6 +294,7 @@
             Load += FrmRelatorio_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)vendaSelecionadaBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -225,5 +310,14 @@
         private DataGridView dataGridView1;
         private Button btnFechar;
         private Button btnPdf;
+        private BindingSource vendaSelecionadaBindingSource;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn clienteIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn clienteDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn pecaIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn pecaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn quantidadeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataVendaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn precoTotalDataGridViewTextBoxColumn;
     }
 }

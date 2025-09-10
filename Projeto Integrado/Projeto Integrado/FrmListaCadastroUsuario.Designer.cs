@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmListaCadastroUsuario));
@@ -37,11 +38,21 @@
             btnMaisCadastro = new Button();
             btnEditar = new Button();
             dataGridView1 = new DataGridView();
+            idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nomeClienteDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cPFDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            telefoneDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            perfilUsuarioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            senhaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            funcaoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            usuarioBindingSource = new BindingSource(components);
             txtPesquisa = new TextBox();
             label1 = new Label();
             btnFechar = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -127,12 +138,15 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.MenuHighlight;
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, nomeClienteDataGridViewTextBoxColumn, cPFDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, telefoneDataGridViewTextBoxColumn, perfilUsuarioDataGridViewTextBoxColumn, senhaDataGridViewTextBoxColumn, funcaoDataGridViewTextBoxColumn });
+            dataGridView1.DataSource = usuarioBindingSource;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.AppWorkspace;
+            dataGridViewCellStyle2.ForeColor = SystemColors.ActiveCaptionText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.ActiveCaptionText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
@@ -145,6 +159,74 @@
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            idDataGridViewTextBoxColumn.HeaderText = "Id";
+            idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            idDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nomeClienteDataGridViewTextBoxColumn
+            // 
+            nomeClienteDataGridViewTextBoxColumn.DataPropertyName = "NomeCliente";
+            nomeClienteDataGridViewTextBoxColumn.HeaderText = "NomeCliente";
+            nomeClienteDataGridViewTextBoxColumn.MinimumWidth = 6;
+            nomeClienteDataGridViewTextBoxColumn.Name = "nomeClienteDataGridViewTextBoxColumn";
+            nomeClienteDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // cPFDataGridViewTextBoxColumn
+            // 
+            cPFDataGridViewTextBoxColumn.DataPropertyName = "CPF";
+            cPFDataGridViewTextBoxColumn.HeaderText = "CPF";
+            cPFDataGridViewTextBoxColumn.MinimumWidth = 6;
+            cPFDataGridViewTextBoxColumn.Name = "cPFDataGridViewTextBoxColumn";
+            cPFDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            emailDataGridViewTextBoxColumn.MinimumWidth = 6;
+            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            emailDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // telefoneDataGridViewTextBoxColumn
+            // 
+            telefoneDataGridViewTextBoxColumn.DataPropertyName = "Telefone";
+            telefoneDataGridViewTextBoxColumn.HeaderText = "Telefone";
+            telefoneDataGridViewTextBoxColumn.MinimumWidth = 6;
+            telefoneDataGridViewTextBoxColumn.Name = "telefoneDataGridViewTextBoxColumn";
+            telefoneDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // perfilUsuarioDataGridViewTextBoxColumn
+            // 
+            perfilUsuarioDataGridViewTextBoxColumn.DataPropertyName = "PerfilUsuario";
+            perfilUsuarioDataGridViewTextBoxColumn.HeaderText = "PerfilUsuario";
+            perfilUsuarioDataGridViewTextBoxColumn.MinimumWidth = 6;
+            perfilUsuarioDataGridViewTextBoxColumn.Name = "perfilUsuarioDataGridViewTextBoxColumn";
+            perfilUsuarioDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // senhaDataGridViewTextBoxColumn
+            // 
+            senhaDataGridViewTextBoxColumn.DataPropertyName = "Senha";
+            senhaDataGridViewTextBoxColumn.HeaderText = "Senha";
+            senhaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            senhaDataGridViewTextBoxColumn.Name = "senhaDataGridViewTextBoxColumn";
+            senhaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // funcaoDataGridViewTextBoxColumn
+            // 
+            funcaoDataGridViewTextBoxColumn.DataPropertyName = "Funcao";
+            funcaoDataGridViewTextBoxColumn.HeaderText = "Funcao";
+            funcaoDataGridViewTextBoxColumn.MinimumWidth = 6;
+            funcaoDataGridViewTextBoxColumn.Name = "funcaoDataGridViewTextBoxColumn";
+            funcaoDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // usuarioBindingSource
+            // 
+            usuarioBindingSource.DataSource = typeof(Usuario);
             // 
             // txtPesquisa
             // 
@@ -205,6 +287,7 @@
             Load += FrmListaCadastroUsuario_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)usuarioBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -220,5 +303,14 @@
         private Label label1;
         private Button btnFechar;
         private Button btnPdf;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nomeClienteDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn telefoneDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn perfilUsuarioDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn senhaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn funcaoDataGridViewTextBoxColumn;
+        private BindingSource usuarioBindingSource;
     }
 }

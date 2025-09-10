@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Projeto_Integrado
 {
@@ -20,14 +15,27 @@ namespace Projeto_Integrado
             optionsBuilder.UseMySql(conexao, ServerVersion.AutoDetect(conexao));
             base.OnConfiguring(optionsBuilder);
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<VendaSelecionada>(entity =>
+            {
+                entity.Property(e => e.PrecoTotal).HasColumnType("decimal(10,2)");
 
+            });
+            modelBuilder.Entity<Peca>(entity =>
+            {
+                entity.Property(e => e.PrecoPeca).HasColumnType("decimal(8,2)");
+            });
+            base.OnModelCreating(modelBuilder);
+
+        }
         public DbSet<Usuario> Usuario { get; set; }
 
         public DbSet<Peca> Pecas { get; set; }
 
         public DbSet<VendaSelecionada> Vendas { get; set; }
       
-        public object CarrinhoTemporal { get; internal set; }
+        
     }
     
     

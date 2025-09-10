@@ -1,10 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Projeto_Integrado
 {
-    public class Peca
+    public class Peca 
     {
+        
+       
+        
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
@@ -14,5 +19,6 @@ namespace Projeto_Integrado
         public decimal PrecoPeca { get; set; }
         public int QuantidadePeca { get; set; }
 
+        
     }
 }

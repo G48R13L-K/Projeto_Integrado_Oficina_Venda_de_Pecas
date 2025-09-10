@@ -131,7 +131,7 @@ namespace Projeto_Integrado
         {
             if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
             {
-                var idVendaSelecionada = (int)dataGridView1.Rows[e.RowIndex].Cells["Id"].Value;
+                var idVendaSelecionada = (int)dataGridView1.Rows[e.RowIndex].Cells["idDataGridViewTextBoxColumn"].Value;
                 using (var bd = new VendasDbContest())
                 {
                     VendaSelecionada = bd.Vendas

@@ -215,11 +215,7 @@ namespace Projeto_Integrado
                 comboFuncao.Enabled = false;
                 txtSenha.Enabled = false;
             }
-            else
-            {
-                comboFuncao.Enabled = true;
-                txtSenha.Enabled = false;
-            }
+            
         }
         private bool ValidarCampoParaUsuario()
 

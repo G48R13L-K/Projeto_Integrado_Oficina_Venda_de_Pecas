@@ -84,13 +84,14 @@ namespace Projeto_Integrado
             TipRelatorioVendas.SetToolTip(btnRelatorio, "Clique aqui para ver o relatório de vendas");
 
             ToolTip TipCadastroUsuarios = new ToolTip();
-            TipCadastroUsuarios.SetToolTip(btnCadastros, "Clique aqui para ver a lista de clientes e usuários cadastrados");
+            TipCadastroUsuarios.SetToolTip(btnCadastros, "Clique aqui para cadastrar novos clientes e usuários");
 
             ToolTip TipCadastroPecas = new ToolTip();
             TipCadastroPecas.SetToolTip(btnPecas, "Clique aqui para cadastrar novas peças");
 
             ToolTip Clientes = new ToolTip();
-            Clientes.SetToolTip(btnClientes, "Clique aqui para cadastrar novos clientes e usuários");
+            Clientes.SetToolTip(btnClientes, "Clique aqui para ver a lista de clientes e usuários cadastrados");
+                
 
             ToolTip Estoque = new ToolTip();
             Estoque.SetToolTip(btnEstoqui, "Clique aqui para ver o estoque de peças");

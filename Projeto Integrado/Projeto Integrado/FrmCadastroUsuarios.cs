@@ -197,7 +197,7 @@ namespace Projeto_Integrado
         private void comboFuncao_SelectedIndexChanged(object sender, EventArgs e)
         {
             //crear uma condição onde avilite o campo senha apenas se o a função da pessoa for diferente de Funcionário 
-            if (comboFuncao.Text == "Funcionário")
+            if (comboFuncao.Text == "Funcionario")
             {
                 txtSenha.Enabled = false;
             }
@@ -210,10 +210,10 @@ namespace Projeto_Integrado
 
         private void cmbUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbUsuarios.Text == "Cliente")
+            if (cmbUsuarios.Text == "Funcionario")
             {
-                comboFuncao.Enabled = false;
-                txtSenha.Enabled = false;
+                comboFuncao.Enabled = true;
+                txtSenha.Enabled = true;
             }
             
         }

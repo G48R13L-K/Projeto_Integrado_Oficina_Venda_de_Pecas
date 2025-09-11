@@ -24,7 +24,7 @@ namespace Projeto_Integrado
             });
             modelBuilder.Entity<Peca>(entity =>
             {
-                entity.Property(e => e.PrecoPeca).HasColumnType("decimal(8,2)");
+                entity.Property(a => a.PrecoPeca).HasColumnType("decimal(8,2)");
             });
             base.OnModelCreating(modelBuilder);
 

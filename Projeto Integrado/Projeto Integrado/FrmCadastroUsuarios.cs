@@ -92,6 +92,7 @@ namespace Projeto_Integrado
                 usuario.Telefone = Telefone;
                 usuario.Funcao = Funcao;
                 usuario.Senha = Senha;
+                condicaoFuncao();
 
                 if (usuario.PerfilUsuario == "Cliente")
                 {
